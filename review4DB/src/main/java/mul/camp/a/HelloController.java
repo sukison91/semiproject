@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import mul.camp.a.dto.MemberDto;
+import mul.camp.a.service.BbsService;
 import mul.camp.a.service.MemberService;
 
 @Controller
@@ -20,6 +21,7 @@ public class HelloController {
 	
 	@Autowired
 	MemberService service;	// MemberServiceImpl이 생성되서 넘어옴
+
 	
 	@RequestMapping(value = "hello.do", method = RequestMethod.GET)
 	public String hello(Model model) {

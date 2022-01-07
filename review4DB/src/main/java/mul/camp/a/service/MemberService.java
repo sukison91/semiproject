@@ -12,3 +12,4 @@ public interface MemberService {
 	 * MemberDto getmember(MemberDto dto);
 	 */
 }
+
