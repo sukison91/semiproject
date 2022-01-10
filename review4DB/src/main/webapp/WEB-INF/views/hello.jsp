@@ -17,6 +17,11 @@
 
 <h1>hello jsp</h1>
 
+<a href="#">김다균</a>
+<a href="#">손병석</a>
+<a href="#">허승회</a>
+<a href="#">김정원</a>
+
 <%-- <table border="1">
 <tr>
 	<th>번호</th><th>아이디</th><th>비밀번호</th><th>이름</th>
