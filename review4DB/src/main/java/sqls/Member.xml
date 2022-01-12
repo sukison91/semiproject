@@ -29,7 +29,24 @@
 	SELECT ID, PWD, NAME, EMAIL
 	FROM MEMBER
 	WHERE ID=#{ id } <!-- 소문자 틀리지 말것 -->
+</select>
 
+<select id="getId" parameterType="String" resultType="Integer">
+	SELECT COUNT(*)
+	FROM MEMBER
+	WHERE ID=#{ id }
+</select>
+
+<select id="getaka" parameterType="String" resultType="Integer">
+	SELECT COUNT(*)
+	FROM MEMBER
+	WHERE AKA=#{ aka }
+</select>
+
+<select id="getemail" parameterType="String" resultType="Integer">
+	SELECT COUNT(*)
+	FROM MEMBER
+	WHERE EMAIL=#{ email }
 </select>
 
 </mapper>        

@@ -83,11 +83,11 @@ public class HelloController {
 	
 	@ResponseBody
 	@RequestMapping(value = "akacheck.do", method = RequestMethod.POST)
-	public String akacheck(String id) {
+	public String akacheck(String aka) {
 		logger.info("MemberController akacheck() " + new Date());		
-		System.out.println("aka:" + id);
+		System.out.println("aka:" + aka);
 		
-		int count = service.getaka(id);
+		int count = service.getaka(aka);
 		System.out.println("count:" + count);		
 		if(count > 0) {	
 			return "NO";
@@ -98,11 +98,11 @@ public class HelloController {
 	
 	@ResponseBody
 	@RequestMapping(value = "emailcheck.do", method = RequestMethod.POST)
-	public String emailcheck(String id) {
+	public String emailcheck(String email) {
 		logger.info("MemberController emailcheck() " + new Date());		
-		System.out.println("email:" + id);
+		System.out.println("email:" + email);
 		
-		int count = service.getemail(id);
+		int count = service.getemail(email);
 		System.out.println("count:" + count);		
 		if(count > 0) {	
 			return "NO";
