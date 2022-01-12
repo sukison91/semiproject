@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.f-text {
+  font-size: 80px;
+}
+.h-text {
+  font-size: 80px;
+}
+.h1style {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 150px;
+  color: #fbb717;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.background {
+  background-color: #1b6187;
+}
+.divbackground {
+  background-color: #ede8e7;
+}
+.divwidth {
+  width: 30%;
+}
+.buttoncolor {
+  background-color: #fbb717;
+}
+
+.test {
+  background-color: #fbb717;
+  background-color: #ede8e7;
+  background-color: #1b6187;
+  background-color: #082636;
+}

@@ -20,8 +20,7 @@
 	
 	<!-- java 공통 패키지 설정 -->
 	<context:component-scan base-package="mul.camp.a"/> <!-- 패키지명은 mul.camp.a다. -->
-	
-	
+
 	
 	<!-- 비동기 처리: 현재 화면은 유지한 채, data만 끌어오는것 -->
 	<!-- Ajax 사용하기 위해 아래 두 코드 추가 -->
