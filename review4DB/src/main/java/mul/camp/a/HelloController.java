@@ -30,4 +30,9 @@ public class HelloController {
 		return "hello";
 	}
 	
+	@RequestMapping(value = "main.do", method = RequestMethod.GET)
+	public String main() {
+		return "main"; 
+	}
+	
 }

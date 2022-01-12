@@ -1,3 +1,4 @@
+<%@page import="mul.camp.a.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,7 +8,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
-		<link rel="stylesheet" href=".resources/css/main.css"/>
+		<link rel="stylesheet" href="resources/css/main.css"/>
 		<script defer src=""></script>
 		<script
 			src="https://kit.fontawesome.com/e95584c635.js"
