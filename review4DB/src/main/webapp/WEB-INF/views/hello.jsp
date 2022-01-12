@@ -21,6 +21,7 @@
 <a href="#">손병석Suki</a>
 <a href="#">허승회</a>
 <a href="#">김정원</a>
+<a href="#">Main.jsp</a>
 
 <%-- <table border="1">
 <tr>
