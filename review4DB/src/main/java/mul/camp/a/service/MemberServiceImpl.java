@@ -9,15 +9,34 @@ import mul.camp.a.dao.MemberDao;
 import mul.camp.a.dto.MemberDto;
 
 @Service	// DAO를 편집할 수 있는 공간
-public class MemberServiceImpl implements MemberService {
+public abstract class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	MemberDao dao;
 
 	@Override
 	public boolean addmember(MemberDto dto) {
-		// TODO Auto-generated method stub
-		return false;
+		int count = dao.addmember(dto);		
+		return count>0?true:false;
+	}
+
+	@Override
+	public int getId(String id) {
+		return dao.getId(id);
+	}
+	
+	@Override
+	public MemberDto login(MemberDto mem) {		
+		return dao.login(mem);
+	}
+	
+	@Override
+	public int getaka(String aka) {
+		return dao.getaka(aka);
+	}
+	@Override
+	public int getemail(String email) {
+		return dao.getemail(email);
 	}
 	
 	/*

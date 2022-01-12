@@ -20,7 +20,7 @@
 </select>
 
 <!-- 1명에 대한 데이터 -->
-<select id="getmember" parameterType="mul.camp.a.dto.MemberDto" resultType="mul.camp.a.dto.MemberDto">
+<select id="getmember" parameterType="String" resultType="String">
 	SELECT ID, PWD, NAME, EMAIL
 	FROM MEMBER
 	WHERE ID=#{ id } <!-- 소문자 틀리지 말것 -->
