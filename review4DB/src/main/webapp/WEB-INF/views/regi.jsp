@@ -25,7 +25,7 @@
 		<th>아이디</th>
 		<td>
 			<input type="text" name="id" id="id" size="20">&nbsp;
-			<input type="button" onclick="idcheck()" value="확인"><br>
+			<input type="button" onclick="idcheck()" value="중복확인"><br>
 			<p id="idcheck" style="font-size: 8px"></p>		
 		</td>
 	</tr>
@@ -96,12 +96,9 @@
 </div>
 
 <script type="text/javascript">
-$(document).ready(function () {
-	
-	$("#btn").click(function () {
-		
+	function idcheck(){
 		// id 확인 -> ajax
-		$.ajax({
+ 		$.ajax({
 			url:"idcheck.do",
 			type:"post",
 			data:{ id:$("#id").val() },
@@ -120,13 +117,9 @@ $(document).ready(function () {
 				alert('error');
 			}
 		});
-	});	
-});
-
-$(document).ready(function () {
-	
-	$("#btn").click(function () {
-		
+	};	
+ 
+		function akacheck(){
 		$.ajax({
 			url:"akacheck.do",
 			type:"post",
@@ -135,10 +128,10 @@ $(document).ready(function () {
 			
 				if(msg == "YES"){
 					$("#akacheck").css("color", "#0000ff");
-					$("#akacheck").html("사용할 수 있는 아이디입니다");
+					$("#akacheck").html("사용할 수 있는 닉네임입니다");
 				}else{
 					$("#akacheck").css("color", "#ff0000");
-					$("#akacheck").html("사용 중인 아이디입니다");
+					$("#akacheck").html("사용 중인 닉네임입니다");
 					$("#aka").val("");
 				}			
 			},
@@ -146,13 +139,9 @@ $(document).ready(function () {
 				alert('error');
 			}
 		});
-	});	
-});
+	};	
 
-$(document).ready(function () {
-	
-	$("#btn").click(function () {
-		
+		function emailcheck(){
 		$.ajax({
 			url:"emailcheck.do",
 			type:"post",
@@ -161,10 +150,10 @@ $(document).ready(function () {
 			
 				if(msg == "YES"){
 					$("#emailcheck").css("color", "#0000ff");
-					$("#emailcheck").html("사용할 수 있는 아이디입니다");
+					$("#emailcheck").html("사용할 수 있는 이메일입니다");
 				}else{
 					$("#emailcheck").css("color", "#ff0000");
-					$("#emailcheck").html("사용 중인 아이디입니다");
+					$("#emailcheck").html("사용 중인 이메일입니다");
 					$("#email").val("");
 				}			
 			},
@@ -172,15 +161,15 @@ $(document).ready(function () {
 				alert('error');
 			}
 		});
-	});	
-});
-function account() {
+	};	 
+
+ function account() {
 
 	if($("#id").val() == ''){
 		alert('아이디를 입력해 주십시오');
 	}
 	else if($("#pwd").val() == ''){
-		alert('패스워드를 입력해 주십시오');
+		alert('패스워드를 입력해 주십시오'); // 비밀번호 조건 설정
 	}
 	else if($("#aka").val() == ''){
 		alert('닉네임을 입력해 주십시오');
@@ -195,7 +184,6 @@ function account() {
 		$("#frm").submit();
 	}
 }
-function 
 
 </script>
 
