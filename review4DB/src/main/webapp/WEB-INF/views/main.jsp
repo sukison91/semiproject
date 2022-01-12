@@ -20,7 +20,7 @@
 		<navbar class="navContainer">
 			<div class="navInner">
 				<div class="navLeft">
-					<a href="#"><img src="\WEB-INF\img\logo.png" alt="logo" /></a>
+					<a href="#"><img src="resources/img/logo.png" alt="logo" /></a>
 					<ul>
 						<li><a href="#">Home</a></li>
 						<li><a href="#">Announcement</a></li>
@@ -29,7 +29,7 @@
 				</div>
 				<div class="navCenter"></div>
 				<div class="navRight">
-					<img src="\WEB-INF\img\logo.png" alt="logo" />
+					<img src="resources/img/logo.png" alt="logo" />
 					<p>
 						Hi <br />
 						aka!
