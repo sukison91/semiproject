@@ -35,7 +35,6 @@ public class HelloController {
 		logger.info("MemberController hello() " + new Date());
 		return "hello";
 	}
-	
 	@RequestMapping(value = "regi.do", method = RequestMethod.GET)
 	public String regi() {
 		logger.info("MemberController regi() " + new Date());
@@ -65,4 +64,5 @@ public class HelloController {
 		}
 		
 	}
+
 }
