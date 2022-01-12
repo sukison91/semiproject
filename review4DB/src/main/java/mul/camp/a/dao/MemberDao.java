@@ -11,4 +11,8 @@ public interface MemberDao {
 	 * 
 	 * MemberDto getmember(MemberDto dto);
 	 */
-}
+	public MemberDto logininfo(MemberDto dto);
+	
+	
+	}
+

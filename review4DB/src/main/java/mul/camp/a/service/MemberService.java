@@ -13,5 +13,7 @@ public interface MemberService {
 	 * 
 	 * MemberDto getmember(MemberDto dto);
 	 */
+	
+	public MemberDto logininfo(MemberDto dto);
 }
 

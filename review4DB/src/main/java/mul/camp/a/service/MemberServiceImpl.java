@@ -19,6 +19,12 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public MemberDto logininfo(MemberDto dto) {
+		
+		return dao.logininfo(dto);
+	}
 	
 	/*
 	 * @Override public List<MemberDto> allmember() { return dao.allmember(); // 받아서

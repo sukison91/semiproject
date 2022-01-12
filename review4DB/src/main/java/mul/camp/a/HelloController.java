@@ -3,6 +3,8 @@ package mul.camp.a;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,19 @@ public class HelloController {
 		if(b == true) {
 			System.out.println("가입되었음");
 		}
-		return "redirect:/login.do";
+		return "redirect:/hello.do";
+	}
+	@RequestMapping(value = "loginAf.do", method = RequestMethod.POST)
+	public String loginAF(MemberDto dto,HttpServletRequest req){
+		logger.info("MemberController loginAF() " + new Date());
+		MemberDto mem = service.logininfo(dto);
+		if(mem != null) {
+			req.getSession().setAttribute("logininfo", dto);
+			System.out.println("로그인성공");
+			return "main";
+		}else {
+			return "redirect:/hello.do";
+		}
+		
 	}
 }

@@ -17,6 +17,12 @@ public class MemberDaoImpl implements MemberDao {
 	
 	String namespace = "Member.";
 
+	@Override
+	public MemberDto logininfo(MemberDto dto) {
+		
+		return sqlSession.selectOne(namespace+"login", dto);
+	}
+
 	/*
 	 * @Override public List<MemberDto> allmember() { // DB로부터 불러오는 작업 2개이상의 데이터는
 	 * selectList List<MemberDto> list = sqlSession.selectList(namespace +
