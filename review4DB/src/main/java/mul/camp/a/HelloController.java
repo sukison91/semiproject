@@ -23,11 +23,20 @@ public class HelloController {
 	MemberService service;	// MemberServiceImpl이 생성되서 넘어옴
 
 	
-	@RequestMapping(value = "hello.do", method = RequestMethod.GET)
-	public String hello(Model model) {
-		logger.info("HelloController hello() "  + new Date());
-	
-		return "hello";
+	@RequestMapping(value = "regi.do", method = RequestMethod.GET)
+	public String regi() {
+		logger.info("MemberController regi() " + new Date());
+		return "regi";
 	}
 	
+	@RequestMapping(value = "regiAf.do", method = RequestMethod.POST)
+	public String regiAf(MemberDto dto) {
+		logger.info("MemberController regiAf() " + new Date());
+		
+		boolean b = service.addmember(dto);
+		if(b == true) {
+			System.out.println("가입되었음");
+		}
+		return "redirect:/login.do";
+	}
 }

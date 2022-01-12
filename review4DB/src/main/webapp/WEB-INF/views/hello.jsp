@@ -42,12 +42,12 @@ for(int i=0; i<list.size(); i++){
 <%
 }
 %>
-</table><br> --%>
+</table><br> 
 <form action="home.do">
 ID:<input type="text" name="id">
 <input type="submit" value="회원정보">
 </form>
-
+--%>
 
 
 

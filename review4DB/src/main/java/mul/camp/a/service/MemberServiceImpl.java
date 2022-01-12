@@ -13,6 +13,12 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	MemberDao dao;
+
+	@Override
+	public boolean addmember(MemberDto dto) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	/*
 	 * @Override public List<MemberDto> allmember() { return dao.allmember(); // 받아서
