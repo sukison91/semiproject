@@ -50,7 +50,7 @@ text-align: center;
 	<td colspan="2">
 		<button type="button" onclick="login()">로그인</button>
 		<input type="checkbox" id="chk_save_id">ID 저장
-		<a href="">회원가입</a> 
+		<a href="goregi.do">회원가입</a> 
 	</td>
 </tr>
 

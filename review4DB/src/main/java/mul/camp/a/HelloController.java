@@ -21,7 +21,18 @@ public class HelloController {
 	
 	@Autowired
 	MemberService service;	// MemberServiceImpl이 생성되서 넘어옴
-
+	
+	@RequestMapping(value = "goregi.do", method = RequestMethod.GET)
+	public String goregi() {
+		logger.info("MemberController goregi() " + new Date());
+		return "regi";
+	}
+	
+	@RequestMapping(value = "hello.do", method = RequestMethod.GET)
+	public String hello() {
+		logger.info("MemberController hello() " + new Date());
+		return "hello";
+	}
 	
 	@RequestMapping(value = "regi.do", method = RequestMethod.GET)
 	public String regi() {
