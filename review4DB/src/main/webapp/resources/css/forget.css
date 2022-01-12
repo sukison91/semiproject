@@ -1,0 +1,52 @@
+.background {
+  background-color: #1b6187;
+}
+.divbackground {
+  z-index: 10;
+  background-color: #ede8e7;
+}
+.divsize {
+  width: 600px;
+  height: 500px;
+}
+.buttoncolor {
+  background-color: #fbb717;
+}
+.btnsize {
+  width: 170px;
+  height: 170px;
+}
+.flex {
+  display: flex;
+}
+.flexcl {
+  flex-direction: column;
+}
+.center {
+  justify-content: center;
+  margin: auto;
+}
+.textcenter {
+  text-align: center;
+}
+.bigtext {
+  font-size: 20pt;
+  font-weight: 1000;
+  line-height: 200px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+.smalltext {
+  font-size: 15pt;
+  font-weight: 1000;
+}
+.buttonmargin {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.test {
+  background-color: #fbb717;
+  background-color: #ede8e7;
+  background-color: #1b6187;
+  background-color: #082636;
+}

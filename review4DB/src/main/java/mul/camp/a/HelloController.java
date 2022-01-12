@@ -30,6 +30,11 @@ public class HelloController {
 		logger.info("MemberController goregi() " + new Date());
 		return "regi";
 	}
+	@RequestMapping(value = "forget.do", method = RequestMethod.GET)
+	public String forget() {
+		logger.info("MemberController forget() " + new Date());
+		return "forget";
+	}
 	
 	@RequestMapping(value = "hello.do", method = RequestMethod.GET)
 	public String hello() {
@@ -45,7 +50,7 @@ public class HelloController {
 	@RequestMapping(value = "regiAf.do", method = RequestMethod.POST)
 	public String regiAf(MemberDto dto) {
 		logger.info("MemberController regiAf() " + new Date());
-		
+		System.out.println(dto.toString());
 		boolean b = service.addmember(dto);
 		if(b == true) {
 			System.out.println("가입되었음");
