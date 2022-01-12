@@ -22,7 +22,31 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return sqlSession.selectOne(namespace+"login", dto);
 	}
+	public int addmember(MemberDto mem) {
+		int count = sqlSession.insert(namespace + "addmember", mem);
+		return count;
+	}
 
+	@Override
+	public int getId(String id) {
+		int count = sqlSession.selectOne(namespace + "getId", id);
+		return count;
+	}
+
+	@Override
+	public MemberDto login(MemberDto mem) {
+		return  sqlSession.selectOne(namespace + "login", mem);
+	}
+	
+	@Override
+	public int getaka(String aka) {
+		return sqlSession.selectOne(namespace + "getaka", aka);
+	}
+
+	@Override
+	public int getemail(String email) {
+		return sqlSession.selectOne(namespace + "getemail", email);
+	}
 	/*
 	 * @Override public List<MemberDto> allmember() { // DB로부터 불러오는 작업 2개이상의 데이터는
 	 * selectList List<MemberDto> list = sqlSession.selectList(namespace +

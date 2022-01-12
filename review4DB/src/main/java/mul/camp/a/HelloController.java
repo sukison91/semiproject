@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import mul.camp.a.dto.MemberDto;
 import mul.camp.a.service.BbsService;
@@ -64,5 +65,49 @@ public class HelloController {
 		}
 		
 	}
-
+	
+	@ResponseBody
+	@RequestMapping(value = "idcheck.do", method = RequestMethod.POST)
+	public String idcheck(String id) {
+		logger.info("MemberController idcheck() " + new Date());		
+		System.out.println("id:" + id);
+		
+		int count = service.getId(id);
+		System.out.println("count:" + count);		
+		if(count > 0) {	// 아이디가 있음
+			return "NO";
+		}else {			// 아이디가 없음
+			return "YES";
+		}		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "akacheck.do", method = RequestMethod.POST)
+	public String akacheck(String id) {
+		logger.info("MemberController akacheck() " + new Date());		
+		System.out.println("aka:" + id);
+		
+		int count = service.getaka(id);
+		System.out.println("count:" + count);		
+		if(count > 0) {	
+			return "NO";
+		}else {		
+			return "YES";
+		}		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "emailcheck.do", method = RequestMethod.POST)
+	public String emailcheck(String id) {
+		logger.info("MemberController emailcheck() " + new Date());		
+		System.out.println("email:" + id);
+		
+		int count = service.getemail(id);
+		System.out.println("count:" + count);		
+		if(count > 0) {	
+			return "NO";
+		}else {			
+			return "YES";
+		}		
+	}
 }

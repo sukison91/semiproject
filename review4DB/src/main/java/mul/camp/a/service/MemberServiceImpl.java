@@ -16,8 +16,27 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public boolean addmember(MemberDto dto) {
-		// TODO Auto-generated method stub
-		return false;
+		int count = dao.addmember(dto);		
+		return count>0?true:false;
+	}
+
+	@Override
+	public int getId(String id) {
+		return dao.getId(id);
+	}
+	
+	@Override
+	public MemberDto login(MemberDto mem) {		
+		return dao.login(mem);
+	}
+	
+	@Override
+	public int getaka(String aka) {
+		return dao.getaka(aka);
+	}
+	@Override
+	public int getemail(String email) {
+		return dao.getemail(email);
 	}
 
 	@Override
