@@ -9,7 +9,7 @@ import mul.camp.a.dao.MemberDao;
 import mul.camp.a.dto.MemberDto;
 
 @Service	// DAO를 편집할 수 있는 공간
-public abstract class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	MemberDao dao;
