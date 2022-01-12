@@ -1,0 +1,274 @@
+@charset "UTF-8";
+
+/* Import URL */
+
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+
+/* General Style */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	font-family: "Nanum Gothic", sans-serif;
+	font-size: 14px;
+}
+
+/* Navbar */
+.navbarContainer {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.navInner {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center; /* in a row, which it is because of flex, it's vertical alignment */
+	max-width: 1440px;
+	margin: 0 auto;
+	height: 90px;
+	padding: 0 20px;
+}
+
+.navInner .navLeft,
+.navInner .navRight {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+}
+ul {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	list-style: none;
+}
+
+/* Navbar Left UL */
+
+.navLeft ul li {
+	padding: 0 20px;
+	font-weight: 700;
+	font-size: 1.3rem;
+}
+
+.navLeft ul li a {
+	display: block;
+	color: inherit;
+	text-decoration: none;
+}
+
+.navLeft img {
+	width: 50px;
+	height: 50px;
+}
+
+/* Navbar Right */
+
+.navRight ul li {
+	width: 70px;
+	padding: 0 5px;
+	display: flex;
+	flex-direction: column;
+	margin-right: 5px;
+	text-align: center;
+}
+
+.navRight ul li a {
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 1.1rem;
+}
+
+.navRight ul li a:hover {
+	color: grey;
+}
+
+.navRight ul li a:visited {
+	color: white;
+}
+
+.navRight img {
+	width: 50px;
+	height: 50px;
+	padding: 0 5px;
+	border-radius: 50%;
+	border: 3px solid black;
+}
+
+.navRight p {
+	font-size: 12px;
+	width: 100px;
+	padding: 0 5px;
+}
+
+.navRight .profile {
+	padding: 5px;
+	background-color: #fbb717;
+}
+
+.navRight .logout {
+	padding: 5px;
+	color: white;
+	background-color: #1b6187;
+}
+
+/* Black Space */
+
+.blackSpace {
+	width: 100%;
+	height: 300px;
+	background-color: #1b6187;
+}
+
+.blackSpace h1 {
+	color: #fbb717;
+	padding: 130px 0;
+	text-align: center;
+	font-size: 50px;
+}
+
+/* Main Body */
+
+.mainBody {
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+/* Search and Categories */
+
+.searchNCat {
+	width: 20%;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	font-size: 24px;
+}
+
+.searchNCat a {
+	text-decoration: none;
+	color: black;
+}
+
+.searchNCat .search {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.searchNCat .cat ul {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	padding: 20px 0;
+}
+
+.searchNCat .cat ul li {
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+/* Show Boards */
+
+.showBoards {
+	width: 75%;
+	height: auto;
+	background-color: #ede8e7;
+	margin: 50px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.showBoards a {
+	text-decoration: none;
+	color: black;
+}
+
+/* Recent Posts */
+
+.showBoards .recentPosts {
+	text-align: center;
+}
+
+.recentPosts span {
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 20ch;
+}
+
+.recentPosts h3 {
+	font-size: 30px;
+	margin: 20px 0;
+}
+
+.rpList ul {
+	display: flex;
+	flex-direction: column;
+}
+
+.rpList ul li {
+	padding: 10px;
+	margin: 10px 0;
+}
+
+.rpList ul li a span:nth-child(2) {
+	margin: 0 60px;
+}
+
+/* Show Cat */
+
+.showCat {
+	width: 75%;
+	display: flex;
+	flex-flow: row wrap;
+	height: auto;
+	background-color: #ede8e7;
+	margin: 50px 0;
+	align-items: center;
+}
+
+.showCat h3 {
+	font-size: 20px;
+	text-align: center;
+	margin: 10px 0;
+}
+
+.showCat li {
+	padding: 10px;
+	margin: 10px 0;
+}
+
+.showCat ul li a span:nth-child(2) {
+	margin: 0 15px;
+}
+
+.showCat span {
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 20ch;
+}
+
+.topLeft,
+.topRight,
+.bottomLeft,
+.bottomRight {
+	width: 48%;
+}
+
+.cat1List ul,
+.cat2List ul,
+.cat3List ul,
+.cat4List ul {
+	display: flex;
+	flex-flow: column wrap;
+}
