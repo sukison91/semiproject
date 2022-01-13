@@ -63,6 +63,7 @@ public class HelloController {
 		MemberDto mem = service.logininfo(dto);
 		if(mem != null) {
 			req.getSession().setAttribute("logininfo", dto);
+			req.setAttribute("logininfo", dto);
 			System.out.println("로그인성공");
 			return "main";
 		}else {
