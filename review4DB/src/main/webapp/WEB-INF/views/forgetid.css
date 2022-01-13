@@ -1,0 +1,22 @@
+.background {
+  background-color: #1b6187;
+}
+.divbackground {
+  background-color: #ede8e7;
+  width: 400px;
+  height: 340px;
+  text-align: center;
+}
+
+.test {
+  background-color: #fbb717;
+  background-color: #ede8e7;
+  background-color: #1b6187;
+  background-color: #082636;
+}
+.space {
+  white-space: nowrap;
+}
+.flex {
+  display: flex;
+}
