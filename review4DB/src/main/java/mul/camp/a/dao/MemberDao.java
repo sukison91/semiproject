@@ -13,14 +13,8 @@ public interface MemberDao {
 	int getemail(String email);
 	
 	MemberDto login(MemberDto mem);
-
-	/*
-	 * return값이 allmember니까 List로 넘겨줌 List<MemberDto> allmember();
-	 * 
-	 * MemberDto getmember(MemberDto dto);
-	 */
-	public MemberDto logininfo(MemberDto dto);
 	
+	public MemberDto logininfo(MemberDto dto);
 	
 	}
 
