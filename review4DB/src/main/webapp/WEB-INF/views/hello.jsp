@@ -26,6 +26,7 @@ text-align: center;
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
 <link href="${pageContext.request.contextPath}/resources/css/hello.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/resources/css/ball.css" rel="stylesheet" type="text/css"/>
 
 
 
@@ -57,7 +58,7 @@ text-align: center;
 		</form>
 		<div class="dropdown-divider"></div>
 		<a class="dropdown-item" href="goregi.do">회원가입</a>
-		<a class="dropdown-item" href="#">아이디,비밀번호 찾기</a>
+		<a class="dropdown-item" href="forget.do">아이디,비밀번호 찾기</a>
 	  </div>
 	
 	
@@ -66,7 +67,7 @@ text-align: center;
 	</table>
 	</form>
 	</div>
-
+<script src="${pageContext.request.contextPath}/resources/js/ball.js"></script>
 <script type="text/javascript">
 function login() {
 	
