@@ -21,7 +21,7 @@
 </head>
 
 <body class="background">
-
+<!-- 최신상태 -->
     <div class="position-absolute top-50 start-50 translate-middle divbackground rounded-3 divwidth zindex">
         <form id="frm" action="regiAf.do" method="post" class="px-4 py-3">
           <div class="mb-3 flex flexcl divheight">
