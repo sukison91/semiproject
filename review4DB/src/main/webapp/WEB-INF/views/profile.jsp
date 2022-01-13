@@ -1,10 +1,13 @@
+<%@page import="java.util.List"%>
+<%@page import="mul.camp.a.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <!-- DB로부터 MemberDto 값을 전달받음 -->
 <%
-	
+ MemberDto mem = (MemberDto)request.getSession().getAttribute("logininfo");
 %>
+<%System.out.println(mem); %>
 
 <!DOCTYPE html>
 <html>
@@ -28,11 +31,12 @@
 </tr>	
 <tr>
 	<!-- MemberDto의 aka를 출력 -->
-	<td>님</td>
+	
+	<td>Nickname<%=mem.getAka() %></td>
 </tr>
 <tr>
 	<!-- MemberDto의 id를 출력 -->
-	<td>ID</td>
+	<td>ID<%=mem.getId() %></td>
 </tr>
 <tr>
 	<!-- MemberDto의 email를 출력 -->

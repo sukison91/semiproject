@@ -64,8 +64,9 @@ private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 		MemberDto mem = service.logininfo(dto);
 		
 		if(mem != null) {
-			req.getSession().setAttribute("logininfo", dto);
-			System.out.println("로그인성공" + req);
+			req.setAttribute("logininfo", mem);
+			req.getSession().setAttribute("logininfo", mem);
+			System.out.println("로그인성공" + mem);
 			return "main";
 		}else {
 			return "redirect:/hello.do";
@@ -119,11 +120,13 @@ private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 	}
 	
 	@RequestMapping(value = "profileAf.do", method = RequestMethod.GET)
-	public String profileAf(MemberDto dto) {
+	public String profileAf() {	// HttpServletRequest req
 		logger.info("MemberController profileAf() " + new Date());
 		
-		System.out.println(dto);
-	
+		/*
+		 * MemberDto mem = (MemberDto)req.getSession().getAttribute("logininfo");
+		 * System.out.println("mem:" + mem);
+		 */
 		
 		return "profile";
 		

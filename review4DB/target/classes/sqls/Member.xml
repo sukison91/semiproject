@@ -20,7 +20,7 @@
 </select>					
 						
 <select id="allmember" resultType="mul.camp.a.dto.MemberDto">	<!-- 나오는 값은 객체로 나온다 -->
-	SELECT ID, PWD, NAME, EMAIL, AUTH
+	SELECT ID,PWD,EMAIL,NAME,AUTH,AKA,IMG,QST,ASW,EXP,LV
 	FROM MEMBER
 </select>
 
