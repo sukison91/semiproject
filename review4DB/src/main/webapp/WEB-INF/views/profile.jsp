@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
     
 <!-- DB로부터 MemberDto 값을 전달받음 -->
-
+<%
+	
+%>
 
 <!DOCTYPE html>
 <html>
@@ -26,7 +28,7 @@
 </tr>	
 <tr>
 	<!-- MemberDto의 aka를 출력 -->
-	<td>aka님</td>
+	<td>님</td>
 </tr>
 <tr>
 	<!-- MemberDto의 id를 출력 -->
