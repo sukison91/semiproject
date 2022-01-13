@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +19,8 @@ import mul.camp.a.service.BbsService;
 import mul.camp.a.service.MemberService;
 
 @Controller
-public class MemberController {
-	private static Logger logger = LoggerFactory.getLogger(MemberController.class);
+public class HelloController {
+private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 	
 	@Autowired
 	MemberService service;	// MemberServiceImpl이 생성되서 넘어옴
@@ -63,29 +62,14 @@ public class MemberController {
 	public String loginAF(MemberDto dto,HttpServletRequest req){
 		logger.info("MemberController loginAF() " + new Date());
 		MemberDto mem = service.logininfo(dto);
-		System.out.println(mem);
 		
 		if(mem != null) {
 			req.getSession().setAttribute("logininfo", dto);
-<<<<<<< HEAD:review4DB/src/main/java/mul/camp/a/MemberController.java
 			System.out.println("로그인성공" + req);
-=======
-			req.setAttribute("logininfo", dto);
-			System.out.println("로그인성공");
->>>>>>> 28b7ca345125dd9e3fdd58d7af14a1dcef41e735:review4DB/src/main/java/mul/camp/a/HelloController.java
 			return "main";
 		}else {
 			return "redirect:/hello.do";
 		}
-		
-	}
-	
-	@RequestMapping(value = "logoutAf.do", method = RequestMethod.GET)
-	public String logoutAf(HttpSession session){
-		logger.info("MemberController logoutAF() " + new Date());
-		session.invalidate();
-		
-		return "redirect:/hello.do";
 		
 	}
 	
@@ -135,13 +119,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "profileAf.do", method = RequestMethod.GET)
-	public String profileAf(MemberDto dto, HttpServletRequest req) {
+	public String profileAf(MemberDto dto) {
 		logger.info("MemberController profileAf() " + new Date());
-		MemberDto mem = service.logininfo(dto);
-		System.out.println(mem);
+		
+		System.out.println(dto);
 	
 		
 		return "profile";
 		
 	}
 }
+
