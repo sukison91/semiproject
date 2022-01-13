@@ -1,6 +1,9 @@
 <%@page import="mul.camp.a.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%MemberDto dto = (MemberDto)request.getAttribute("logininfo");%>
+   	<%System.out.println(dto);%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -32,7 +35,7 @@
 					<img src="resources/img/logo.png" alt="logo" />
 					<p>
 						Hi <br />
-						aka!
+						<%=dto.getAka()%>!
 					</p>
 					<ul>
 						<li class="profile">

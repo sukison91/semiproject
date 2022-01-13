@@ -59,11 +59,12 @@ public class HelloController {
 		return "redirect:/hello.do";
 	}
 	@RequestMapping(value = "loginAf.do", method = RequestMethod.POST)
-	public String loginAf(MemberDto dto,HttpServletRequest req){
+	public String loginAF(MemberDto dto,HttpServletRequest req){
 		logger.info("MemberController loginAF() " + new Date());
 		MemberDto mem = service.logininfo(dto);
 		if(mem != null) {
 			req.getSession().setAttribute("logininfo", dto);
+			req.setAttribute("logininfo", dto);
 			System.out.println("로그인성공");
 			return "main";
 		}else {
