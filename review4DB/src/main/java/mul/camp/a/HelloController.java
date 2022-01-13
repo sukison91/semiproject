@@ -60,6 +60,7 @@ private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 	
 	@RequestMapping(value = "loginAf.do", method = RequestMethod.POST)
 	public String loginAF(MemberDto dto,HttpServletRequest req){
+		
 		logger.info("MemberController loginAF() " + new Date());
 		MemberDto mem = service.logininfo(dto);
 		
