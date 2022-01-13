@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +54,7 @@ public class HelloController {
 		return "redirect:/hello.do";
 	}
 	@RequestMapping(value = "loginAf.do", method = RequestMethod.POST)
-	public String loginAF(MemberDto dto,HttpServletRequest req){
+	public String loginAf(MemberDto dto,HttpServletRequest req){
 		logger.info("MemberController loginAF() " + new Date());
 		MemberDto mem = service.logininfo(dto);
 		if(mem != null) {
@@ -63,6 +64,15 @@ public class HelloController {
 		}else {
 			return "redirect:/hello.do";
 		}
+		
+	}
+	
+	@RequestMapping(value = "logoutAf.do", method = RequestMethod.GET)
+	public String logoutAf(HttpSession session){
+		logger.info("MemberController logoutAF() " + new Date());
+		session.invalidate();
+		
+		return "redirect:/hello.do";
 		
 	}
 	

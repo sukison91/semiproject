@@ -39,7 +39,7 @@
 							<a href="#">Profile</a>
 						</li>
 						<li class="logout">
-							<a href="#">Logout</a>
+							<a href="logoutAf.do">Logout</a>
 						</li>
 					</ul>
 				</div>
