@@ -35,8 +35,10 @@
 						aka!
 					</p>
 					<ul>
+						<!-- 회원정보 수정 -->
 						<li class="profile">
-							<a href="#">Profile</a>
+							<!-- MemberController의 profileAf.do로 이동 -->
+							<a href="profileAf.do">Profile</a>
 						</li>
 						<li class="logout">
 							<a href="#">Logout</a>

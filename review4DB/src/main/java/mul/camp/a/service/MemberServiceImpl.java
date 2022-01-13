@@ -45,12 +45,4 @@ public class MemberServiceImpl implements MemberService {
 		return dao.logininfo(dto);
 	}
 	
-	/*
-	 * @Override public List<MemberDto> allmember() { return dao.allmember(); // 받아서
-	 * 바로 넘겨줘버림 }
-	 * 
-	 * @Override public MemberDto getmember(MemberDto dto) { return
-	 * dao.getmember(dto); }
-	 */
-	
 }

@@ -19,8 +19,8 @@ import mul.camp.a.service.BbsService;
 import mul.camp.a.service.MemberService;
 
 @Controller
-public class HelloController {
-	private static Logger logger = LoggerFactory.getLogger(HelloController.class);
+public class MemberController {
+	private static Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
 	MemberService service;	// MemberServiceImpl이 생성되서 넘어옴
@@ -57,13 +57,16 @@ public class HelloController {
 		}
 		return "redirect:/hello.do";
 	}
+	
 	@RequestMapping(value = "loginAf.do", method = RequestMethod.POST)
 	public String loginAF(MemberDto dto,HttpServletRequest req){
 		logger.info("MemberController loginAF() " + new Date());
 		MemberDto mem = service.logininfo(dto);
+		System.out.println(mem);
+		
 		if(mem != null) {
 			req.getSession().setAttribute("logininfo", dto);
-			System.out.println("로그인성공");
+			System.out.println("로그인성공" + req);
 			return "main";
 		}else {
 			return "redirect:/hello.do";
@@ -114,5 +117,16 @@ public class HelloController {
 		}else {			
 			return "YES";
 		}		
+	}
+	
+	@RequestMapping(value = "profileAf.do", method = RequestMethod.GET)
+	public String profileAf(MemberDto dto, HttpServletRequest req) {
+		logger.info("MemberController profileAf() " + new Date());
+		MemberDto mem = service.logininfo(dto);
+		System.out.println(mem);
+	
+		
+		return "profile";
+		
 	}
 }

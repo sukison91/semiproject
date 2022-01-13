@@ -12,14 +12,11 @@ public interface MemberService {
 	int getaka(String aka);
 	int getemail(String email);
 	
+	
 	MemberDto login(MemberDto mem);
 	
-	/*
-	 * List<MemberDto> allmember();
-	 * 
-	 * MemberDto getmember(MemberDto dto);
-	 */
-	
 	public MemberDto logininfo(MemberDto dto);
+	
+	
 }
 
