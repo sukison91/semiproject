@@ -33,11 +33,15 @@
             </div>    
           </div>
         <button id="cen" name="cen" onclick="location.href='hello.do'" type="button" class="btn btn-primary">돌아가기</button>
-        </form>
-        <div class="dropdown-divider"></div>
-        <p id="showid" name="showid" class="dropdown-item"></p>
-      </div>
         
+        <div class="mb-3">
+          <label for="exampleDropdownFormEmail1" class="form-label">이메일을 적어주세요</label>
+              <div class="flex">
+                  <input  type="email" class="form-control" id="email" name="email" placeholder="email@example.com">
+                  <button id="go" name="go" onclick="sub()" type="button" class="btn btn-primary space">확인</button>
+              </div>
+        </div>
+      </form>
     </div>
 </body>
 <script src="${pageContext.request.contextPath}/resources/js/ball.js"></script>
