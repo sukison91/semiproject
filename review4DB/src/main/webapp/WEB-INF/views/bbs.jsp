@@ -83,7 +83,6 @@
 			<div class="showBoards">
 				<!-- recent post -->
 				<div class="recentPosts">
-				
 					<h3><a href="#">전체계시판</a></h3>
 					
 					<!-- recent post list -->
