@@ -16,6 +16,7 @@
 <head>
 <meta charset="UTF-8">
 <title>프로필 수정</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -69,7 +70,7 @@
 
 <!-- 프로필 수정 -->
 <div>
-<form action="profileUpdate.do" method="post">
+<form action="profile.do" method="post">
 <table border="1">
 <!-- (1).프로필 사진 수정 -->
 <tr>
@@ -86,7 +87,13 @@
 	<th>Nickname</th>
 	<td>
 		<input type="text" name="aka" id="aka" placeholder="<%=mem.getAka() %>">
-		<button type="button" onclick="akacheck()">중복확인</button> 
+		<button type="button" onclick="akacheck()">중복확인</button>
+		<p id="akacheck" style="font-size: 8px"></p>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+		<button type="submit">수정완료</button>
 	</td>
 </tr>
 </table>
@@ -96,7 +103,30 @@
 </div>
 
 <script type="text/javascript">
-
+let akainfo = 0;
+function akacheck(){
+	$.ajax({
+		url:"akacheck.do",
+		type:"post",
+		data:{ aka:$("#aka").val() },
+		success:function( msg ){
+			
+			if(msg == "YES"){
+				$("#akacheck").css("color", "#0000ff");
+				$("#akacheck").html("사용할 수 있는 닉네임입니다");
+				akainfo = 1;
+			}else{
+				$("#akacheck").css("color", "#ff0000");
+				$("#akacheck").html("사용 중인 닉네임입니다");
+				$("#aka").val("");
+				akainfo = 0;
+			}			
+		},
+		error:function(){
+			alert('error');
+		}
+	});
+};	
 </script>
 
 
