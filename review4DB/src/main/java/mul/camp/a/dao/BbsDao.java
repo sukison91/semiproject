@@ -8,6 +8,6 @@ public interface BbsDao {
 
 	List<BbsDto> getBbs();
 
-	
-	
+	List<BbsDto> getBbs(String cat);
+
 }
