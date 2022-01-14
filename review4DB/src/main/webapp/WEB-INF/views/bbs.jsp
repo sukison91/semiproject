@@ -71,10 +71,11 @@
 				</div>
 				<div class="cat">
 					<ul>
-						<li><a href="#">Cat 1</a></li>
-						<li><a href="#">Cat 2</a></li>
-						<li><a href="#">Cat 3</a></li>
-						<li><a href="#">Cat 4</a></li>
+						<li><a href="bbsall.do">전체</a></li>
+						<li><a href="bbs.do?cat=1">Cat 1</a></li>
+						<li><a href="bbs.do?cat=2">Cat 2</a></li>
+						<li><a href="bbs.do?cat=3">Cat 3</a></li>
+						<li><a href="bbs.do?cat=4">Cat 4</a></li>
 					</ul>
 				</div>
 			</div>

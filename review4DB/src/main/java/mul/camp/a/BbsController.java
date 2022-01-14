@@ -24,6 +24,14 @@ public class BbsController {
 	
 	@RequestMapping(value = "bbs.do", method = RequestMethod.GET)
 	public String getBbs(HttpServletRequest req) {
+		String cat = req.getParameter("cat");
+		List<BbsDto> bbsList = service.getBbs(cat);
+		req.getSession().setAttribute("bbsList", bbsList);
+		
+		return "bbs";
+	}
+	@RequestMapping(value = "bbsall.do", method = RequestMethod.GET)
+	public String getallBbs(HttpServletRequest req) {
 		
 		List<BbsDto> bbsList = service.getBbs();
 		req.getSession().setAttribute("bbsList", bbsList);

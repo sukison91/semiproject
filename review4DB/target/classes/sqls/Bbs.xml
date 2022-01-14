@@ -5,11 +5,17 @@
 <mapper namespace="Bbs">
 
 
-<select id="getBbs" parameterType="Integer" resultType="mul.camp.a.dto.BbsDto">
+<select id="getBbs" resultType="mul.camp.a.dto.BbsDto">
 	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
 	FROM BBS
 	WHERE CAT=#{cat}
-	ORDER BY SEQ 
+	ORDER BY SEQ DESC
+</select>
+<select id="getBbscat" parameterType="String" resultType="mul.camp.a.dto.BbsDto">
+	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
+	FROM BBS
+	WHERE CAT=#{cat}
+	ORDER BY SEQ DESC
 </select>
 
 

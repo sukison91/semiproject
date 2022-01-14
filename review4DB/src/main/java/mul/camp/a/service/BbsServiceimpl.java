@@ -20,5 +20,11 @@ public class BbsServiceimpl implements BbsService {
 		// TODO Auto-generated method stub
 		return dao.getBbs();
 	}
+
+	@Override
+	public List<BbsDto> getBbs(String cat) {
+		
+		return dao.getBbs(cat);
+	}
 	
 }
