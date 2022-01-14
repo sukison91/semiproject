@@ -1,4 +1,6 @@
 <%@page import="mul.camp.a.dto.MemberDto"%>
+<%@page import="mul.camp.a.dto.BbsDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -38,8 +40,10 @@
 						<%=dto.getAka()%>!
 					</p>
 					<ul>
+						<!-- 회원정보 수정 -->
 						<li class="profile">
-							<a href="#">Profile</a>
+							<!-- MemberController의 profileAf.do로 이동 -->
+							<a href="profileAf.do">Profile</a>
 						</li>
 						<li class="logout">
 							<a href="logoutAf.do">Logout</a>
@@ -64,7 +68,7 @@
 				</div>
 				<div class="cat">
 					<ul>
-						<li><a href="#">Cat 1</a></li>
+						<li><a href="bbs.do">Cat 1</a></li>
 						<li><a href="#">Cat 2</a></li>
 						<li><a href="#">Cat 3</a></li>
 						<li><a href="#">Cat 4</a></li>
