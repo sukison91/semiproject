@@ -16,8 +16,9 @@ public class BbsDto implements Serializable {
 	private int readcount;
 	private String img;
 	private int blike;
-	
-	public BbsDto() {}
+
+	public BbsDto() {
+	}
 
 	public BbsDto(int cat, int seq, String id, int ref, int step, int depth, String title, String content, String wdate,
 			int del, int readcount, String img, int blike) {
@@ -145,8 +146,7 @@ public class BbsDto implements Serializable {
 	public String toString() {
 		return "BbsDto [cat=" + cat + ", seq=" + seq + ", id=" + id + ", ref=" + ref + ", step=" + step + ", depth="
 				+ depth + ", title=" + title + ", content=" + content + ", wdate=" + wdate + ", del=" + del
-				+ ", readcount=" + readcount + ", img=" + img + ", like=" + blike + "]";
+				+ ", readcount=" + readcount + ", img=" + img + ", blike=" + blike + "]";
 	}
-	
-	
+
 }
