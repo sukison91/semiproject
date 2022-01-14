@@ -22,4 +22,11 @@ public class BbsDaoimpl implements BbsDao {
 	public List<BbsDto> getBbs() {
 		return sqlSession.selectList(ns+"getBbs");
 	}
+
+
+	@Override
+	public List<BbsDto> getBbs(String cat) {
+		
+		return sqlSession.selectList(ns+"getBbscat",cat);
+	}
 }
