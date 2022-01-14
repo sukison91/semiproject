@@ -56,6 +56,31 @@ public class MemberDaoImpl implements MemberDao {
 	 * parameterType(들어오는값) MemberDto mem = sqlSession.selectOne(namespace +
 	 * "getmember", dto); return mem; }
 	 */
+	@Override
+	public String forgetemailCheck(String email) {
+		
+		return sqlSession.selectOne(namespace+"forgetemailCheck", email);
+	}
+	@Override
+	public String forgetaswCheck(MemberDto dto) {
+		
+		return sqlSession.selectOne(namespace+"forgetaswCheck", dto);
+	}
+	@Override
+	public MemberDto forgetpwdaswCheck(MemberDto dto) {
+		
+		return sqlSession.selectOne(namespace+"forgetpwdaswCheck", dto);
+	}
+	@Override
+	public MemberDto resetpwd(MemberDto dto) {
+		
+		return sqlSession.selectOne(namespace+"resetpwd", dto);
+	}
+	@Override
+	public String forgetidCheck(String id) {
+		
+		return sqlSession.selectOne(namespace+"forgetidCheck", id);
+	}
 	
 
 }
