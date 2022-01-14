@@ -15,12 +15,12 @@ public class BbsDto implements Serializable {
 	private int del;
 	private int readcount;
 	private String img;
-	private int like;
+	private int blike;
 	
 	public BbsDto() {}
 
 	public BbsDto(int cat, int seq, String id, int ref, int step, int depth, String title, String content, String wdate,
-			int del, int readcount, String img, int like) {
+			int del, int readcount, String img, int blike) {
 		super();
 		this.cat = cat;
 		this.seq = seq;
@@ -34,7 +34,7 @@ public class BbsDto implements Serializable {
 		this.del = del;
 		this.readcount = readcount;
 		this.img = img;
-		this.like = like;
+		this.blike = blike;
 	}
 
 	public int getCat() {
@@ -133,19 +133,19 @@ public class BbsDto implements Serializable {
 		this.img = img;
 	}
 
-	public int getLike() {
-		return like;
+	public int getbLike() {
+		return blike;
 	}
 
-	public void setLike(int like) {
-		this.like = like;
+	public void setbLike(int blike) {
+		this.blike = blike;
 	}
 
 	@Override
 	public String toString() {
 		return "BbsDto [cat=" + cat + ", seq=" + seq + ", id=" + id + ", ref=" + ref + ", step=" + step + ", depth="
 				+ depth + ", title=" + title + ", content=" + content + ", wdate=" + wdate + ", del=" + del
-				+ ", readcount=" + readcount + ", img=" + img + ", like=" + like + "]";
+				+ ", readcount=" + readcount + ", img=" + img + ", blike=" + blike + "]";
 	}
 	
 	

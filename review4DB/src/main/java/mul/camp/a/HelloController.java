@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,7 +73,14 @@ private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 		}else {
 			return "redirect:/hello.do";
 		}
+	}
+	
+	@RequestMapping(value = "logoutAf.do", method = RequestMethod.GET)
+	public String logoutAf(HttpSession session){
+		logger.info("MemberController logoutAF() " + new Date());
+		session.invalidate();
 		
+		return "redirect:/hello.do";
 	}
 	
 	@ResponseBody

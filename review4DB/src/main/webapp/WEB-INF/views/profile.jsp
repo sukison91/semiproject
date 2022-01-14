@@ -9,6 +9,8 @@
 %>
 <%System.out.println(mem); %>
 
+<!-- 프로필 이미지를 세팅.-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +19,9 @@
 </head>
 <body>
 
+<!-- 내용물을 중앙으로 맞춤 -->
+<div align="center">
+
 <h1>프로필 수정 화면</h1>
 
 <p>회원정보 및 프로필 수정이 가능합니다.</p>
@@ -24,69 +29,77 @@
 
 <!-- 사용자 정보 출력 -->
 <div>
-사용자 정보
+<p>Hobby Flow 회원정보</p>
 <table border="1">
 <tr>
-	<td rowspan="6">프로필 사진</td>
-</tr>	
+	<td rowspan="6">
+		<img src="resources\img\default.png" width=150px height=150px>
+	</td>
+</tr>
 <tr>
 	<!-- MemberDto의 aka를 출력 -->
-	
-	<td>Nickname<%=mem.getAka() %></td>
+	<th>Nickname</th> 
+	<td><%=mem.getAka() %></td>
 </tr>
 <tr>
 	<!-- MemberDto의 id를 출력 -->
-	<td>ID<%=mem.getId() %></td>
+	<th>ID</th> 
+	<td><%=mem.getId() %></td>
 </tr>
 <tr>
 	<!-- MemberDto의 email를 출력 -->
-	<td>Email</td>
+	<th>Email</th>
+	<td><%=mem.getEmail() %></td>
 </tr>
 <tr>	
 	<!-- MemberDto의 exp를 출력 -->
-	<td>경험치</td>
+	<th>경험치</th>
+	<td><%=mem.getExp() %></td>
 </tr>
 <tr>
 	<!-- MemberDto의 lv를 출력 -->
-	<td>레벨</td>
+	<th>레벨</th>
+	<td><%=mem.getLv() %></td>
 </tr>
 </table>
 </div>
+<hr>
 
 <br><br><br>
 
 <!-- 프로필 수정 -->
-<button>프로필 수정</button>
-<!-- 개인정보 수정 -->
-<button>개인정보 수정</button>
-
-<br><br><br>
-
-
-
-
-
-<!-- 프로필 사진 및 닉네임 수정 -->
 <div>
+<form action="profileUpdate.do" method="post">
 <table border="1">
+<!-- (1).프로필 사진 수정 -->
 <tr>
-	<th>Profile Picture</th>
+	<th>프로필 사진</th>
 	<td>
-		
-		<button type="button" onclick="changePic">사진 업로드</button>
-		<button type="button" onclick="deletePic">삭제</button>
+		<img src="resources\img\default.png" width=150px height=150px>
+		<button type="button" onclick="changePic()">사진변경</button>
+		<button type="button" onclick="deletePic()">삭제</button>
 	</td>
-</tr>
 
+</tr>
+<!-- (2).닉네임 수정 -->
 <tr>
 	<th>Nickname</th>
 	<td>
-		<input type="text" id="akacheck" name="akacheck">
+		<input type="text" name="aka" id="aka" placeholder="<%=mem.getAka() %>">
 		<button type="button" onclick="akacheck()">중복확인</button> 
 	</td>
 </tr>
 </table>
+</form>
 </div>
+
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+
 
 </body>
 </html>
