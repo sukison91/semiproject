@@ -35,7 +35,6 @@ public class BbsController {
 		
 		List<BbsDto> bbsList = service.getBbs();
 		req.getSession().setAttribute("bbsList", bbsList);
-		
 		return "bbs";
 	}
 	
