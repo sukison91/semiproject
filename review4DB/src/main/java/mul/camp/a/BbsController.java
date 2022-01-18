@@ -38,7 +38,7 @@ public class BbsController {
 		return "bbs";
 	}
 	@RequestMapping(value = "bbswriteAF.do", method = RequestMethod.GET)
-	public String bbswrite(BbsDto dto) {
+	public String bbswriteAF(BbsDto dto) {
 		System.out.println(dto);
 		service.bbswrite(dto);
 		
@@ -48,5 +48,12 @@ public class BbsController {
 	public String bbswrite() {
 		
 		return "bbswrite";
+	}
+	@RequestMapping(value = "bbsdetail.do", method = RequestMethod.GET)
+	public String bbsdetail(int seq) {
+		
+		// 추가 부탁드리겠습니다 (_ _ )
+		
+		return "bbsdetail";
 	}
 }
