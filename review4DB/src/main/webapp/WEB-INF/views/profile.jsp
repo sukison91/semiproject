@@ -103,24 +103,32 @@
 <div align="center"><!-- 2.사용자의 작성글을 출력 -->
 <h3>작성글 목록</h3>
 <table border="1" style="width: 1000px">
-<tr>
-	<th>게시판</th>
-	<th>제목</th>
-	<th>날짜</th>
-</tr>
-<tr>
-	<%if(bbslist == null || bbslist.size() == 0) {%>
-	<td colspan="3">
-	작성된 글이 없습니다.
-	</td>
-	<%} %>
-</tr>
-<tr>
-	<td>CAT</td>
-	<td>Title</td>
-	<td>WDate</td>
-</tr>
-
+	<tr>
+		<th>카테고리</th>
+		<th>제목</th>
+		<th>날짜</th>
+	</tr>
+	<tr>
+	<% if(bbslist == null || bbslist.size() == 0){ %>
+		<td colspan="3">작성된 글이 없습니다</td> 
+	</tr>
+	<%
+	} else {
+	for(int i = 0;i < bbslist.size(); i++){
+		BbsDto bbs = bbslist.get(i);
+	%>
+	<tr>	
+		<td>Cat<%=bbs.getCat() %></td>
+		<td>
+			<a href="bbsdetail.do?seq=<%=bbs.getSeq() %>"><%=bbs.getTitle() %></a>
+		</td>
+		<td>
+			<%=bbs.getWdate() %>
+		</td>	
+		<%
+		}
+	}
+	%>
 
 </table>
 </div>

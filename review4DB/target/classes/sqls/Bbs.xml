@@ -20,7 +20,7 @@
 <select id="getBbscat" parameterType="String" resultType="mul.camp.a.dto.BbsDto">
 	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
 	FROM BBS
-	WHERE ID=#{id}
+	WHERE CAT=#{cat}
 	ORDER BY SEQ DESC
 </select>
 

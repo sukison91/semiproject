@@ -173,13 +173,6 @@ public class HelloController {
 	  return "redirect:/profile.do"; 
 	}
 	
-	
-	@RequestMapping(value = "main.do", method = RequestMethod.GET) 
-	public String main() { 
-		logger.info("MemberController main() " + new Date());
-		
-	    return "main"; 
-	}
 	@ResponseBody
 	@RequestMapping(value = "forgetemailCheck.do", method = RequestMethod.POST)
 	public String forgetemailCheck(String email) {
