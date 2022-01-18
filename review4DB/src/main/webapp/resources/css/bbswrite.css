@@ -12,3 +12,22 @@
 .textareaheight {
   height: 400px;
 }
+.flex {
+  display: flex;
+}
+.textline {
+  line-height: 55px;
+  margin-right: 15px;
+}
+.content {
+  width: 90%;
+  margin: auto;
+}
+.formwidth {
+  width: 650px;
+  margin: auto;
+}
+.pwidth {
+  width: 550px;
+  overflow-wrap: break-word;
+}

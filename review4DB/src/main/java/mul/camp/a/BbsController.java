@@ -49,4 +49,11 @@ public class BbsController {
 		
 		return "bbswrite";
 	}
+	@RequestMapping(value = "bbsdetail.do", method = RequestMethod.GET)
+	public String bbsdetail(int seq) {
+		
+		// 추가 부탁드리겠습니다 (_ _ )
+		
+		return "bbsdetail";
+	}
 }
