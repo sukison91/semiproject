@@ -9,4 +9,20 @@ public interface BbsDao {
 	List<BbsDto> getBbs();
 
 	List<BbsDto> getime(String category);
+
+	List<BbsDto> getBbs(String cat);
+
+	int bbswrite(BbsDto dto);
+	List<BbsDto> getCat1();
+
+	List<BbsDto> getCat2();
+
+	List<BbsDto> getCat3();
+
+	List<BbsDto> getCat4();
+
+	List<BbsDto> getSearch(String searchValue);
+
+	/* List<BbsDto> getSearchList(List<String> searchValue); */
+
 }

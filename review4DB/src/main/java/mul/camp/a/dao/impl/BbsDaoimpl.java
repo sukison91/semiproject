@@ -33,7 +33,46 @@ public class BbsDaoimpl implements BbsDao {
 	}
 
 
+
+	public List<BbsDto> getBbs(String cat) {
+		
+		return sqlSession.selectList(ns+"getBbscat",cat);
+	}
 	
-
-
+	@Override
+	public int bbswrite(BbsDto dto) {
+		
+		return sqlSession.insert(ns+"bbswrite", dto);
+	}
+	@Override
+	public List<BbsDto> getCat1() {
+		return sqlSession.selectList(ns+"getCat1");
+	}
+	
+	@Override
+	public List<BbsDto> getCat2() {
+		return sqlSession.selectList(ns+"getCat2");
+	}
+	
+	@Override
+	public List<BbsDto> getCat3() {
+		return sqlSession.selectList(ns+"getCat3");
+	}
+	
+	@Override
+	public List<BbsDto> getCat4() {
+		return sqlSession.selectList(ns+"getCat4");
+	}
+	
+	@Override
+	public List<BbsDto> getSearch(String searchValue) {
+		System.out.println(searchValue);
+		return sqlSession.selectList(ns+"getSearch", searchValue); 
+	}
+	
+	/*
+	 * @Override public List<BbsDto> getSearchList(List<String> searchValue) {
+	 * return sqlSession.selectList(ns+"getSearchList", searchValue); }
+	 */
+	
 }

@@ -44,6 +44,36 @@ public class MemberServiceImpl implements MemberService {
 		
 		return dao.logininfo(dto);
 	}
+
+	@Override
+	public String forgetemailCheck(String email) {
+		
+		return dao.forgetemailCheck(email);
+	}
+
+	@Override
+	public String forgetaswCheck(MemberDto dto) {
+		
+		return dao.forgetaswCheck(dto);
+	}
+
+	@Override
+	public MemberDto forgetpwdaswCheck(MemberDto dto) {
+		
+		return dao.forgetpwdaswCheck(dto);
+	}
+
+	@Override
+	public MemberDto resetpwd(MemberDto dto) {
+		
+		return dao.resetpwd(dto);
+	}
+
+	@Override
+	public String forgetidCheck(String id) {
+		
+		return dao.forgetidCheck(id);
+	}
 	
 	/*
 	 * @Override public List<MemberDto> allmember() { return dao.allmember(); // 받아서

@@ -6,8 +6,10 @@
     
     <%MemberDto dto = (MemberDto)request.getSession().getAttribute("logininfo");%>
     <%List<BbsDto> bbsList = (List<BbsDto>)request.getSession().getAttribute("bbsList");%>
+    <%String cat = request.getParameter("cat");%>
    	<%System.out.println(dto);%>
    	<%System.out.println(bbsList);%>
+   	<%System.out.println(cat);%>
    	
 <!DOCTYPE html>
 <html lang="ko">
@@ -33,7 +35,7 @@
 				<div class="navLeft">
 					<a href="#"><img src="resources/img/logo.png" alt="logo" /></a>
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><a href="main.do">Home</a></li>
 						<li><a href="#">Announcement</a></li>
 						<li><a href="#">About Us</a></li>
 					</ul>
@@ -70,14 +72,15 @@
 			<!-- Search Bar and Category Link -->
 			<div class="searchNCat">
 				<div class="search">
-					<h3><a href="#">Search</a> <i class="fas fa-search"></i></h3>
+					<h3><a href="search.do">Search</a> <i class="fas fa-search"></i></h3>
 				</div>
 				<div class="cat">
 					<ul>
-						<li><a href="#">Cat 1</a></li>
-						<li><a href="#">Cat 2</a></li>
-						<li><a href="#">Cat 3</a></li>
-						<li><a href="#">Cat 4</a></li>
+						<li><a href="bbsall.do">전체</a></li>
+						<li><a href="bbs.do?cat=1">Cat 1</a></li>
+						<li><a href="bbs.do?cat=2">Cat 2</a></li>
+						<li><a href="bbs.do?cat=3">Cat 3</a></li>
+						<li><a href="bbs.do?cat=4">Cat 4</a></li>
 					</ul>
 				</div>
 			</div>
@@ -86,7 +89,16 @@
 				<!-- recent post -->
 				<div class="recentPosts">
 				
+
 					<h3><a href="#">전체 게시판</a></h3>
+					 <% if(cat == null){ %>
+					 <h3>전체계시판</h3>
+							
+					 <%} else { %>
+						 <h3>Cat <%=cat%></h3>
+						 <h3><a href="bbswrite.do">글쓰기</a></h3>
+					 <%}%> 
+
 					
 				<!-- 글 정렬 -->
 				<div>
@@ -109,7 +121,7 @@
 								BbsDto bbs = bbsList.get(i);
 							%>
 							<li>
-								<a href="#">
+								<a href="bbsdetail.do?seq=<%=bbs.getSeq()%>" >
 									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
 									><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 								</a>

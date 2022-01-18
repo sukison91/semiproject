@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import mul.camp.a.dto.BbsDto;
 import mul.camp.a.dto.MemberDto;
 import mul.camp.a.service.BbsService;
 import mul.camp.a.service.MemberService;
@@ -69,7 +70,7 @@ private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 			req.setAttribute("logininfo", mem);
 			req.getSession().setAttribute("logininfo", mem);
 			System.out.println("로그인성공" + mem);
-			return "main";
+			return "redirect:/main.do";
 		}else {
 			return "redirect:/hello.do";
 		}
@@ -141,6 +142,83 @@ private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 		
 		return "profile";
 		
+	}
+	@ResponseBody
+	@RequestMapping(value = "forgetemailCheck.do", method = RequestMethod.POST)
+	public String forgetemailCheck(String email) {
+		logger.info("MemberController forgetemailCheck() " + new Date());
+		String result = service.forgetemailCheck(email);
+		System.out.println(result);
+		if(result == null) {
+			return "NO";
+		}
+		else {
+			return result;
+		}
+	}
+	@ResponseBody
+	@RequestMapping(value = "forgetaswCheck.do", method = RequestMethod.POST)
+	public String forgetaswCheck(MemberDto dto) {
+		logger.info("MemberController forgetemailCheck() " + new Date());
+		String result = service.forgetaswCheck(dto);
+		System.out.println(result);
+		if(result == null) {
+			return "NO";
+		}
+		else {
+			return result;
+		}
+	}
+	@RequestMapping(value = "forgetid.do", method = RequestMethod.GET)
+	public String forgetid() {	// HttpServletRequest req
+		logger.info("MemberController forgetid() " + new Date());
+		
+		return "forgetid";
+	}
+	@RequestMapping(value = "forgetpwd.do", method = RequestMethod.GET)
+	public String forgetpwd() {	// HttpServletRequest req
+		logger.info("MemberController forgetpwd() " + new Date());
+		
+		return "forgetpwd";
+	}
+	@ResponseBody
+	@RequestMapping(value = "forgetidaswCheck.do", method = RequestMethod.POST)
+	public String forgetidaswCheck(MemberDto dto,HttpServletRequest sr) {	// HttpServletRequest req
+		logger.info("MemberController forgetidaswCheck() " + new Date());
+		MemberDto mem = service.forgetpwdaswCheck(dto);
+		if(mem == null) {
+			return "NO";
+		}
+		else {
+			sr.getSession().setAttribute("forget", mem);
+			return "YES";
+		}
+	}
+	@ResponseBody
+	@RequestMapping(value = "forgetidCheck.do", method = RequestMethod.POST)
+	public String forgetidCheck(String id) {	// HttpServletRequest req
+		logger.info("MemberController forgetaswCheck() " + new Date());
+		String mem = service.forgetidCheck(id);
+		if(mem == null) {
+			return "NO";
+		}
+		else {
+			return mem;
+		}
+	}
+	@RequestMapping(value = "resetpwd.do", method = RequestMethod.GET)
+	public String resetpwd() {
+		logger.info("MemberController resetpwd() " + new Date());
+		
+		return "resetpwd";
+	}
+	@RequestMapping(value = "resetpwdAF.do", method = RequestMethod.GET)
+	public String resetpwdAF(MemberDto dto) {
+		logger.info("MemberController resetpwdAF() " + new Date());
+		System.out.println(dto);
+		service.resetpwd(dto);
+		
+		return "redirect:/hello.do";
 	}
 }
 
