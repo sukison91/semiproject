@@ -39,12 +39,4 @@ public class BbsController {
 		
 		return "bbs";
 	}
-	
-	@RequestMapping(value = "main.do", method = RequestMethod.GET) 
-	  public String main() {
-		  logger.info("BBSController profile() " + new Date()); 
-		
-	  return "main"; 
-	  }
-	
 }

@@ -2,6 +2,7 @@ package mul.camp.a.service;
 
 import java.util.List;
 
+import mul.camp.a.dto.BbsDto;
 import mul.camp.a.dto.MemberDto;
 
 public interface MemberService {
@@ -20,5 +21,6 @@ public interface MemberService {
 	List<MemberDto> profileUpdate(MemberDto dto);
 	
 	MemberDto profileAf(MemberDto dto);
+
 }
 

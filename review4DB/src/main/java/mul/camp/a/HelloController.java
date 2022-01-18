@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import mul.camp.a.dto.BbsDto;
 import mul.camp.a.dto.MemberDto;
 import mul.camp.a.service.BbsService;
 import mul.camp.a.service.MemberService;
@@ -30,6 +31,9 @@ public class HelloController {
 
 	@Autowired
 	MemberService service;	// MemberServiceImpl이 생성되서 넘어옴
+	
+	@Autowired
+	BbsService bbsService;
 	
 	@RequestMapping(value = "goregi.do", method = RequestMethod.GET)
 	public String goregi() {
@@ -134,15 +138,18 @@ public class HelloController {
 	}
 	
 	@RequestMapping(value = "profile.do", method = RequestMethod.GET)
-	public String profile() {
+	public String profile(HttpServletRequest req) {
 		logger.info("MemberController profile() " + new Date());
+		
+		List<BbsDto> bbsList = bbsService.getBbs();
+		req.getSession().setAttribute("bbsList", bbsList);
 		
 		return "profile";
 	}
 	
 	@RequestMapping(value = "editProfile.do", method = RequestMethod.GET)
 	public String editProfile(MemberDto dto, HttpServletRequest req) {
-		logger.info("MemberController profile() " + new Date());
+		logger.info("MemberController editprofile() " + new Date());
 		
 		return "editProfile";
 	}
@@ -150,7 +157,8 @@ public class HelloController {
 	@RequestMapping(value = "profileAf.do", method = RequestMethod.POST) 
 	public String profileAf(MemberDto dto, HttpServletRequest req) {
 		logger.info("MemberController profile() " + new Date());
-		service.profileUpdate(dto); System.out.println("test"+ dto.toString());
+		service.profileUpdate(dto); 
+		System.out.println("test"+ dto.toString());
 	  
 		MemberDto mem = service.profileAf(dto);
 	  
@@ -160,6 +168,13 @@ public class HelloController {
 		
 	  return "redirect:/profile.do"; 
 	}
-
+	
+	
+	@RequestMapping(value = "main.do", method = RequestMethod.GET) 
+	public String main() { 
+		logger.info("MemberController main() " + new Date());
+		
+	    return "main"; 
+	}
 }
 

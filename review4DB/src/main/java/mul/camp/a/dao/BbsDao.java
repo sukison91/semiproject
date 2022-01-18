@@ -10,4 +10,5 @@ public interface BbsDao {
 
 	List<BbsDto> getBbs(String cat);
 
+	List<BbsDto> getMyBbs(String id);
 }

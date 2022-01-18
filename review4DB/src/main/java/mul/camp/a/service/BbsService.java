@@ -9,4 +9,6 @@ public interface BbsService {
 	List<BbsDto> getBbs();
 
 	List<BbsDto> getBbs(String cat);
+	
+	List<BbsDto> getMyBbs(String id);
 }

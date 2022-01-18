@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mul.camp.a.dao.BbsDao;
+import mul.camp.a.dao.MemberDao;
 import mul.camp.a.dto.BbsDto;
 
 @Service
@@ -17,14 +18,17 @@ public class BbsServiceimpl implements BbsService {
 
 	@Override
 	public List<BbsDto> getBbs() {
-		// TODO Auto-generated method stub
 		return dao.getBbs();
 	}
 
 	@Override
 	public List<BbsDto> getBbs(String cat) {
-		
 		return dao.getBbs(cat);
+	}
+
+	@Override
+	public List<BbsDto> getMyBbs(String id) {
+		return dao.getMyBbs(id);
 	}
 	
 }

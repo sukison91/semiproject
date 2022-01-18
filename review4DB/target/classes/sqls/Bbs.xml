@@ -18,5 +18,11 @@
 	ORDER BY SEQ DESC
 </select>
 
+<select id="getMyBbs" parameterType="String" resultType="mul.camp.a.dto.BbsDto">
+	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
+	FROM BBS
+	WHERE ID=#{id}
+	ORDER BY SEQ DESC
+</select>
 
 </mapper>

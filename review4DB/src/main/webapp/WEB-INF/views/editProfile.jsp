@@ -50,7 +50,7 @@
 			</div>
 		</navbar>
 
-	
+<div align="center">
 <h2>회원정보 수정</h2>
 <br>
 
@@ -123,7 +123,7 @@
 		</tr>
 	</table>
 </form>	
-
+</div>
 
 <script type="text/javascript">
 let pwdinfo = 0;

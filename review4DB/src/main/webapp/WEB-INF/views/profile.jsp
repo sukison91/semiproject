@@ -6,9 +6,8 @@
 	<%MemberDto dto = (MemberDto)request.getSession().getAttribute("logininfo"); %>
 	<%System.out.println("프로필 " + dto); %>
 
-    <%List<BbsDto> bbsList = (List<BbsDto>)request.getSession().getAttribute("bbsList");%>
-   	<%System.out.println(dto);%>
-   	<%System.out.println(bbsList);%>
+    <%List<BbsDto> bbslist = (List<BbsDto>)request.getSession().getAttribute("bbslist"); %> 
+   	<%System.out.println(bbslist);%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -54,14 +53,11 @@
 			</div>
 		</navbar>
 
-	
-<h2>Hobby Flow 회원정보</h2>
-<br>
-
 <!-- Hobby Flow 회원정보 화면을 출력한다. -->
 <!-- 두개의 div에 회원정보, 작성 게시글 목록 출력 -->
-
-<div> <!-- 1.회원정보 출력 -->
+<div align="center"> <!-- 1.회원정보 출력 -->
+<h2>Hobby Flow 회원정보</h2>
+<br>
 <table border="1">
 <tr>
 	<td rowspan="6">
@@ -104,11 +100,23 @@
 
 <br><br>
 
-<div><!-- 2.사용자의 작성글을 출력 -->
-<table border="1">
+<div align="center"><!-- 2.사용자의 작성글을 출력 -->
+<h3>작성글 목록</h3>
+<table border="1" style="width: 1000px">
 <tr>
-	<th>번호</th><th>제목</th><th>작성일</th>
+	<th>게시판</th>
+	<th>제목</th>
+	<th>날짜</th>
 </tr>
+<%-- <tr>
+	<%if(bbslist == null || bbslist.size() == 0) {%>
+	<%} %>
+</tr> --%>
+<!-- <tr>
+	<td>CAT</td>
+	<td>Title</td>
+	<td>WDate</td>
+</tr> -->
 
 
 </table>
