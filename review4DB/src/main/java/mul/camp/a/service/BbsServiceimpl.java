@@ -31,4 +31,44 @@ public class BbsServiceimpl implements BbsService {
 		return dao.getMyBbs(id);
 	}
 	
+	@Override
+	public int bbswrite(BbsDto dto) {
+		
+		return dao.bbswrite(dto);
+	}
+	
+	@Override
+	public List<BbsDto> getCat1() {
+		// TODO Auto-generated method stub
+		return dao.getCat1();
+	}
+	
+	
+	@Override
+	public List<BbsDto> getCat2() {
+		// TODO Auto-generated method stub
+		return dao.getCat2();
+	}
+	
+	@Override
+	public List<BbsDto> getCat3() {
+		// TODO Auto-generated method stub
+		return dao.getCat3();
+	}
+	
+	
+	@Override
+	public List<BbsDto> getCat4() {
+		// TODO Auto-generated method stub
+		return dao.getCat4();
+	}
+	@Override	
+	public List<BbsDto> getSearch(String searchValue) {
+		return dao.getSearch(searchValue); 
+	}
+	
+//	@Override	
+//	public List<BbsDto> getSearchList(List<String> searchValue) {
+//		return dao.getSearchList(searchValue); 
+//	}
 }

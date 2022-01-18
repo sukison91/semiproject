@@ -19,9 +19,9 @@
     <div class="position-absolute top-50 start-50 translate-middle border border-secondary divwidth rounded divbackground divsize flex flexcl textcenter">
         <label for="exampleDropdownFormEmail1" class="form-label bigtext">아이디/비밀번호 찾기</label>
         <div class="flex center">
-            <button type="button" onclick="" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" 
+            <button type="button" onclick="location.href='forgetid.do'" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" 
             class="btn btn-secondary buttoncolor btnsize smalltext buttonmargin">아이디찾기</button>
-            <button type="button" onclick="" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" 
+            <button type="button" onclick="location.href='forgetpwd.do'" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" 
             class="btn btn-secondary buttoncolor btnsize smalltext buttonmargin">비밀번호찾기</button>
         </div>
     </div>

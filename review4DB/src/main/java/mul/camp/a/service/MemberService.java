@@ -18,9 +18,20 @@ public interface MemberService {
 	
 	public MemberDto logininfo(MemberDto dto);
 	
+
 	List<MemberDto> profileUpdate(MemberDto dto);
 	
 	MemberDto profileAf(MemberDto dto);
+
+	String forgetemailCheck(String email);
+	
+	String forgetaswCheck(MemberDto dto);
+	
+	MemberDto forgetpwdaswCheck(MemberDto dto);
+	
+	MemberDto resetpwd(MemberDto dto);
+	
+	String forgetidCheck(String id);
 
 }
 

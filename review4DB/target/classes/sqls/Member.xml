@@ -54,6 +54,33 @@
 	FROM MEMBER
 	WHERE EMAIL=#{ email }
 </select>
+<select id="forgetemailCheck" parameterType="String" resultType="String">
+	SELECT QST
+	FROM MEMBER
+	WHERE EMAIL=#{ email }
+</select>
+<select id="forgetidCheck" parameterType="String" resultType="String">
+	SELECT QST
+	FROM MEMBER
+	WHERE ID=#{id}
+</select>
+<select id="forgetaswCheck" parameterType="mul.camp.a.dto.MemberDto" resultType="String">
+	SELECT ID
+	FROM MEMBER
+	WHERE EMAIL=#{ email } AND ASW=#{ asw }
+</select>
+
+<select id="forgetpwdaswCheck" parameterType="mul.camp.a.dto.MemberDto" resultType="mul.camp.a.dto.MemberDto">
+	SELECT ID
+	FROM MEMBER
+	WHERE ID=#{ id } AND ASW=#{ asw }
+</select>
+<update id="resetpwd" parameterType="mul.camp.a.dto.MemberDto">
+	UPDATE MEMBER
+	SET PWD=#{ pwd }
+	WHERE ID=#{ id }
+</update>
+
 
 <!-- 프로필 수정(프로필 사진, 닉네임) -->
 <update id="profileUpdate" parameterType="mul.camp.a.dto.MemberDto">

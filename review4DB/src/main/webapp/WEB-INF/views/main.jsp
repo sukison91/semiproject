@@ -5,7 +5,15 @@
     pageEncoding="UTF-8"%>
     
     <%MemberDto dto = (MemberDto)request.getSession().getAttribute("logininfo");%>
+
+    <%List<BbsDto> bbsList = (List<BbsDto>)request.getSession().getAttribute("bbsList");%>
+    <%List<BbsDto> cat1 = (List<BbsDto>)request.getSession().getAttribute("cat1");%>
+    <%List<BbsDto> cat2 = (List<BbsDto>)request.getSession().getAttribute("cat2");%>
+    <%List<BbsDto> cat3 = (List<BbsDto>)request.getSession().getAttribute("cat3");%>
+    <%List<BbsDto> cat4 = (List<BbsDto>)request.getSession().getAttribute("cat4");%>
+
    	<%System.out.println(dto);%>
+   	<%System.out.println(bbsList);%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -27,7 +35,7 @@
 				<div class="navLeft">
 					<a href="#"><img src="resources/img/logo.png" alt="logo" /></a>
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><a href="main.do">Home</a></li>
 						<li><a href="#">Announcement</a></li>
 						<li><a href="#">About Us</a></li>
 					</ul>
@@ -64,7 +72,7 @@
 			<!-- Search Bar and Category Link -->
 			<div class="searchNCat">
 				<div class="search">
-					<h3><a href="#">Search</a> <i class="fas fa-search"></i></h3>
+					<h3><a href="search.do">Search</a> <i class="fas fa-search"></i></h3>
 				</div>
 				<div class="cat">
 					<ul>
@@ -80,41 +88,29 @@
 			<div class="showBoards">
 				<!-- recent post -->
 				<div class="recentPosts">
-					<h3><a href="#">최신글</a></h3>
 
+					<h3>최신글</h3>
+					
 					<!-- recent post list -->
 					<div class="rpList">
 						<ul>
+							<% if(bbsList == null || bbsList.size() == 0){ %>
+								<p>작성된 글이 없습니다!</p>
+							<% }else{
+							
+							for(int i = 0; i < 5; i++){
+								BbsDto bbs = bbsList.get(i);
+							%>
 							<li>
 								<a href="#">
-									<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-									><span><i class="fas fa-eye"></i> 1101</span>
+									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
+									><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 								</a>
 							</li>
-							<li>
-								<a href="#">
-									<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-									><span><i class="fas fa-eye"></i> 1101</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-									><span><i class="fas fa-eye"></i> 1101</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-									><span><i class="fas fa-eye"></i> 1101</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-									><span><i class="fas fa-eye"></i> 1101</span>
-								</a>
-							</li>
+							<%
+								}
+							}
+							%>
 						</ul>
 					</div>
 					<!-- recent post list -->
@@ -126,36 +122,23 @@
 						<h3><a href="#">Cat 1</a></h3>
 						<div class="cat1List">
 							<ul>
+								<% if(cat1 == null || cat1.size() == 0){ %>
+									<p>작성된 글이 없습니다!</p>
+								<% }else{
+							
+									for(int i = 0; i < 3; i++){
+									BbsDto bbs = cat1.get(i);
+								%>
 								<li>
 									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
+										<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
+										><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 									</a>
 								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
+								<%
+									}
+								}
+								%>
 							</ul>
 						</div>
 					</div>
@@ -163,36 +146,23 @@
 						<h3><a href="#">Cat 2</a></h3>
 						<div class="cat2List">
 							<ul>
+								<% if(cat2 == null || cat2.size() == 0){ %>
+									<p>작성된 글이 없습니다!</p>
+								<% }else{
+							
+									for(int i = 0; i < 3; i++){
+									BbsDto bbs = cat2.get(i);
+								%>
 								<li>
 									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
+										<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
+										><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 									</a>
 								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
+								<%
+									}
+								}
+								%>
 							</ul>
 						</div>
 					</div>
@@ -200,36 +170,22 @@
 						<h3><a href="#">Cat 3</a></h3>
 						<div class="cat3List">
 							<ul>
+								<% if(cat3 == null || cat3.size() == 0){ %>
+									<p>작성된 글이 없습니다!</p>
+								<% } else {
+									for(int i = 0; i < 3; i++){
+									BbsDto bbs = cat3.get(i);
+								%>
 								<li>
 									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
+										<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
+										><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 									</a>
 								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
+								<%
+									}
+								}
+								%>
 							</ul>
 						</div>
 					</div>
@@ -237,36 +193,23 @@
 						<h3><a href="#">Cat 4</a></h3>
 						<div class="cat4List">
 							<ul>
+								<% if(cat4 == null || cat4.size() == 0){ %>
+									<p>작성된 글이 없습니다!</p>
+								<% }else{
+							
+									for(int i = 0; i < 3; i++){
+									BbsDto bbs = cat4.get(i);
+								%>
 								<li>
 									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
+										<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
+										><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 									</a>
 								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>Cat 1</span><span>박지성 복귀 썰 AGAIN 2002</span
-										><span><i class="fas fa-eye"></i> 1101</span>
-									</a>
-								</li>
+								<%
+									}
+								}
+								%>
 							</ul>
 						</div>
 					</div>
