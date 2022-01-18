@@ -6,7 +6,7 @@
 	<%MemberDto dto = (MemberDto)request.getSession().getAttribute("logininfo"); %>
 	<%System.out.println("프로필 " + dto); %>
 
-    <%List<BbsDto> bbslist = (List<BbsDto>)request.getSession().getAttribute("bbslist"); %> 
+    <%List<BbsDto> bbslist = (List<BbsDto>)request.getAttribute("bbsList"); %> 
    	<%System.out.println(bbslist);%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -108,15 +108,18 @@
 	<th>제목</th>
 	<th>날짜</th>
 </tr>
-<%-- <tr>
+<tr>
 	<%if(bbslist == null || bbslist.size() == 0) {%>
+	<td colspan="3">
+	작성된 글이 없습니다.
+	</td>
 	<%} %>
-</tr> --%>
-<!-- <tr>
+</tr>
+<tr>
 	<td>CAT</td>
 	<td>Title</td>
 	<td>WDate</td>
-</tr> -->
+</tr>
 
 
 </table>

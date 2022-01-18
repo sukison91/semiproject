@@ -138,11 +138,15 @@ public class HelloController {
 	}
 	
 	@RequestMapping(value = "profile.do", method = RequestMethod.GET)
-	public String profile(HttpServletRequest req) {
+	public String profile(HttpServletRequest req, Model model) {
 		logger.info("MemberController profile() " + new Date());
+		String id = ((MemberDto)req.getSession().getAttribute("logininfo")).getId();
 		
-		List<BbsDto> bbsList = bbsService.getBbs();
-		req.getSession().setAttribute("bbsList", bbsList);
+		List<BbsDto> bbsList = bbsService.getMyBbs("aaa");
+		for (BbsDto bbsDto : bbsList) {
+			System.out.println(bbsDto.toString());
+		}
+		model.addAttribute("bbsList", bbsList);
 		
 		return "profile";
 	}
