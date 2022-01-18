@@ -54,10 +54,12 @@ public class BbsController {
 		return "bbswrite";
 	}
 	@RequestMapping(value = "bbsdetail.do", method = RequestMethod.GET)
-	public String bbsdetail(int seq) {
-		
-		// 추가 부탁드리겠습니다 (_ _ )
-		
+	public String bbsdetail(int ref,Model model) {
+
+		List<BbsDto> dto = service.bbsdetail(ref);
+		System.out.println("detail"+dto);
+		System.out.println("=================================================");
+		model.addAttribute("detail",dto);
 		return "bbsdetail";
 	}
 	@RequestMapping(value = "main.do", method = RequestMethod.GET)
@@ -125,6 +127,23 @@ public class BbsController {
 		System.out.println("searchResults: " + searchResults);		
 		
 		return searchResults; 
+	}
+	@ResponseBody
+	@RequestMapping(value = "comment.do", method = RequestMethod.POST)
+	public String comment(BbsDto dto) {
+		System.out.println("코멘트---------"+dto);
+
+		service.comment(dto);
+		
+		return "YES";
+	}
+	@RequestMapping(value = "commentAF.do", method = RequestMethod.GET)
+	public String commentAF(int ref,Model model) {
+
+		List<BbsDto> dto = service.bbsdetail(ref);
+
+		model.addAttribute("detail",dto);
+		return "bbsdetail";
 	}
 	
 }

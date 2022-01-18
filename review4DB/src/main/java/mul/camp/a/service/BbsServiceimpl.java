@@ -67,4 +67,13 @@ public class BbsServiceimpl implements BbsService {
 //	public List<BbsDto> getSearchList(List<String> searchValue) {
 //		return dao.getSearchList(searchValue); 
 //	}
+	@Override
+	public List<BbsDto> bbsdetail(int ref) {
+		
+		return dao.bbsdetail(ref);
+	}
+	@Override
+	public int comment(BbsDto dto) {
+		return dao.comment(dto);
+	}
 }

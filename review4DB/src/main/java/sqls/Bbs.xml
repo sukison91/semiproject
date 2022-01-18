@@ -8,6 +8,7 @@
 <select id="getBbs" resultType="mul.camp.a.dto.BbsDto">
 	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
 	FROM BBS
+	WHERE CAT != 10
 	ORDER BY SEQ DESC
 </select>
 <select id="getBbscat" parameterType="String" resultType="mul.camp.a.dto.BbsDto">
@@ -55,7 +56,21 @@
 	<!-- <bind name="searchValue" value="'%' + #{searchValue} + '%'" /> -->
 	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG,BLIKE 
 	FROM BBS
-	WHERE LOWER(TITLE) LIKE CONCAT('%',#{searchValue},'%')
+	WHERE LOWER(TITLE) LIKE CONCAT('%',#{searchValue},'%') AND CAT != 10
 	ORDER BY SEQ DESC
 </select>
+<select id="bbsdetail" parameterType="Integer" resultType="mul.camp.a.dto.BbsDto">
+	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG,BLIKE
+	FROM BBS
+	WHERE REF=#{ref}
+	ORDER BY STEP DESC
+</select>
+<insert id="comment" parameterType="mul.camp.a.dto.BbsDto">
+	INSERT INTO BBS(CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG,BLIKE)
+	VALUES (10 , NEXTVAL(SEQ__BBS), #{id} , 
+	(SELECT REF FROM BBS ALIAS_FOR_SUBQUERY WHERE SEQ=#{seq}),
+	(SELECT STEP FROM BBS ALIAS_FOR_SUBQUERY WHERE SEQ=#{seq}) + 1 , 
+	(SELECT DEPTH FROM BBS ALIAS_FOR_SUBQUERY WHERE SEQ=#{seq}) + 1 , 
+	'댓글' , #{content} ,NOW(), 0,0,0,0 )
+</insert>
 </mapper>

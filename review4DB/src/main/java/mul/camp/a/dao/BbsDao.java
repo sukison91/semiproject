@@ -22,5 +22,9 @@ public interface BbsDao {
 	List<BbsDto> getSearch(String searchValue);
 
 	/* List<BbsDto> getSearchList(List<String> searchValue); */
+	
+	List<BbsDto> bbsdetail(int ref);
+	
+	int comment(BbsDto dto);
 
 }
