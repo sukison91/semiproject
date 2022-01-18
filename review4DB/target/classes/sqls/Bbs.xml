@@ -5,11 +5,41 @@
 <mapper namespace="Bbs">
 
 
-<select id="getBbs" resultType="mul.camp.a.dto.BbsDto">
+<select id="getBbs" parameterType="String" resultType="mul.camp.a.dto.BbsDto"> <!-- (추천)최신순 오래된순은 FOR문으로 반대로 쓰기 --> 
 	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
-	FROM BBS
-	ORDER BY SEQ 
-</select>
+	FROM BBS	
+	ORDER BY SEQ DESC
+</select> 
 
-
+ <!-- 게시글 조회 (시간순) -->
+ <select id="getime" parameterType="String" resultType="mul.camp.a.dto.BbsDto">
+ 
+	SELECT *
+  	FROM BBS 
+  	WHERE TITLE IS NOT NULL
+  	<if test="category == 'recently'">
+		ORDER BY SEQ DESC
+	</if>
+	<if test="category == 'old'">
+		ORDER BY SEQ 
+	</if>
+	<if test="category =='readcount'">
+		ORDER BY READCOUNT DESC
+	</if>
+  	
+ </select>
+ 
+  <!-- 게시글 조회 (조회순)
+ <select id="getreadcount" parameterType="String" resultType="mul.camp.a.dto.BbsDto">
+  	SELECT *
+  	FROM BBS
+  	ORDER BY READCOUNT DESC
+ </select>--> 
+ 
+ <!-- 게시글 조회 (공감순)
+ <select id="getblike" parameterType="String" resultType="mul.camp.a.dto.BbsDto">
+  	SELECT BLIKE
+  	FROM BBS
+  	ORDER BY BLIKE DESC
+ </select>-->
 </mapper>

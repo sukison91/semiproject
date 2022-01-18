@@ -22,4 +22,18 @@ public class BbsDaoimpl implements BbsDao {
 	public List<BbsDto> getBbs() {
 		return sqlSession.selectList(ns+"getBbs");
 	}
+
+
+	@Override
+	public List<BbsDto> getime(String category) {
+		
+		System.out.println("여기는 category입니다 " + category);
+		
+		return sqlSession.selectList(ns+"getime", category);
+	}
+
+
+	
+
+
 }

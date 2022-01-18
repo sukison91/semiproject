@@ -78,7 +78,7 @@
 			  <select class="form-select form-select-sm magin height" name ="qst" id ="qst" aria-label=".form-select-sm example">
 				<option selected value="0">질문을 선택하세요.</option>
 				<option value="1">당신이 좋아하는 장소는?</option>
-				<option value="2">당신이 존경하는 것은?o</option>
+				<option value="2">당신이 존경하는 것은?</option>
 				<option value="3">당신의 인상깊게 봤던 영화는?</option>
 				<option value="4">당신의 비밀은?</option>
 				<option value="5">당신의 좋아하는계절은?</option>

@@ -22,6 +22,9 @@
 			src="https://kit.fontawesome.com/e95584c635.js"
 			crossorigin="anonymous"
 		></script>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	</head>
 	<body>
 		<!-- NavBar -->
@@ -83,11 +86,21 @@
 				<!-- recent post -->
 				<div class="recentPosts">
 				
-					<h3><a href="#">전체계시판</a></h3>
+					<h3><a href="#">전체 게시판</a></h3>
 					
+				<!-- 글 정렬 -->
+				<div>
+					<select id="category" onchange="func()">
+						<option value="recently">최신순</option>
+						<option value="old">오래된순</option>
+						<option value="readcount">조회순</option>
+						<option>공감순</option>
+					</select>
+				</div>	
+				
 					<!-- recent post list -->
 					<div class="rpList">
-						<ul>
+						<ul id="rpul">
 							<% if(bbsList == null || bbsList.size() == 0){ %>
 								<p>작성된 글이 없습니다!</p>
 							<% }else{
@@ -110,5 +123,113 @@
 				</div>	
 			</div>
 		</div>
+		
+		<script type="text/javascript">
+		function func() {
+			alert('func');
+			$.ajax({
+				type : "get",
+				url : "bbssort.do",
+				data : {category :$("#category").val()},
+				success : function(bbsList){
+					console.log(bbsList)
+					alert(bbsList[0].id)
+					$("#rpul").html("<li>" + bbsList[0].id + "</li>");
+					
+				/*	if(category == "recently"){
+						$("#recently").reverse();//내림차순
+					} */
+				},
+				error : function(){
+					alert('error');
+				}
+			});
+		};
+		
+		function test(){
+			console.log($("#category").val());
+		};
+		/*
+		function func() {
+			alert('func');
+			$.ajax({
+				type : "post",
+				url : "bbs.do",
+				data : recently :$("#old").val(),
+				dataType : "String",
+				success : function(category){
+					if(category == "old"){
+						$("#old").sortBy();//오름차순
+						alert('success');
+					} 
+				},
+				error : function(){
+					alert('error');
+				}
+			});
+		};
+		*/	
+		</script>
+		
+		<!-- 게시글 정렬 
+		<script type="text/javascript">
+		
+		function(recently){
+			$.ajax({
+				type : "post",
+				url : "recently.do",
+				data : wdate :$("#wdate").val(),
+				success : function(data){
+					//여기다가 조건 넣어야함
+				},
+				error : function(){
+					alert('error');
+				}
+			});
+		};
+		
+		function(old){
+			$.ajax({
+				type : "post",
+				url : "old.do",
+				data : wdate :$("#wdate").val(),
+				success : function(data){
+					//여기다가 조건 넣어야함
+				},
+				error : function(){
+					alert('error');
+				}
+			});
+		};
+		
+		function(readcount){
+			$.ajax({
+				type : "post",
+				url : "readcount.do",
+				data : readcount :$("#readcount").val(),
+				success : function(data){
+					//여기다가 조건 넣어야함
+				},
+				error : function(){
+					alert('error');
+				}
+			});
+		};
+		
+		function(blike){
+			$.ajax({
+				type : "post",
+				url : "blike.do",
+				data : blike :$("#blike").val(),
+				success : function(data){
+					//여기다가 조건 넣어야함
+				},
+				error : function(){
+					alert('error');
+				}
+			});
+		};
+		
+		 </script>-->
 	</body>
 </html>
