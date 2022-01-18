@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%MemberDto dto = (MemberDto)request.getAttribute("logininfo");%>
+    <%MemberDto dto = (MemberDto)request.getSession().getAttribute("logininfo");%>
    	<%System.out.println(dto);%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -42,8 +42,8 @@
 					<ul>
 						<!-- 회원정보 수정 -->
 						<li class="profile">
-							<!-- MemberController의 profileAf.do로 이동 -->
-							<a href="profileAf.do">Profile</a>
+							<!-- HelloController의 profile.do로 이동 -->
+							<a href="profile.do">Profile</a>
 						</li>
 						<li class="logout">
 							<a href="logoutAf.do">Logout</a>

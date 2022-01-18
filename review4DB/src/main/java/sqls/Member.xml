@@ -9,7 +9,7 @@
 						
 <insert id="addmember" parameterType="mul.camp.a.dto.MemberDto">
 	INSERT INTO MEMBER(ID,PWD,EMAIL,NAME,AUTH,AKA,IMG,QST,ASW,EXP,LV)
-	VALUES (#{id},#{pwd},#{email},#{name},1,#{aka},1,#{qst},#{asw},0,1)
+	VALUES (#{id},#{pwd},#{email},#{name},1,#{aka},'default.png',#{qst},#{asw},0,1)
 	<!-- 이미지 변경 필요(추후) -->
 
 </insert>
@@ -17,7 +17,13 @@
 	SELECT ID,PWD,EMAIL,NAME,AUTH,AKA,IMG,QST,ASW,EXP,LV
 	FROM MEMBER
 	WHERE ID=#{id} AND PWD=#{pwd}
-</select>					
+</select>	
+
+<select id="profileAf" parameterType="mul.camp.a.dto.MemberDto" resultType="mul.camp.a.dto.MemberDto">
+	SELECT ID,PWD,EMAIL,NAME,AUTH,AKA,IMG,QST,ASW,EXP,LV
+	FROM MEMBER
+	WHERE ID=#{id}
+</select>				
 						
 <select id="allmember" resultType="mul.camp.a.dto.MemberDto">	<!-- 나오는 값은 객체로 나온다 -->
 	SELECT ID,PWD,EMAIL,NAME,AUTH,AKA,IMG,QST,ASW,EXP,LV
@@ -48,5 +54,12 @@
 	FROM MEMBER
 	WHERE EMAIL=#{ email }
 </select>
+
+<!-- 프로필 수정(프로필 사진, 닉네임) -->
+<update id="profileUpdate" parameterType="mul.camp.a.dto.MemberDto">
+	UPDATE MEMBER
+	SET PWD=#{pwd}, NAME=#{name}, AKA=#{aka}, EMAIL=#{email}, IMG=#{img}, QST=#{qst}, ASW=#{asw}
+	WHERE ID=#{ id }
+</update>
 
 </mapper>        

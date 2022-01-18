@@ -1,5 +1,6 @@
 package mul.camp.a;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -9,11 +10,15 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import mul.camp.a.dto.MemberDto;
 import mul.camp.a.service.BbsService;
@@ -21,8 +26,8 @@ import mul.camp.a.service.MemberService;
 
 @Controller
 public class HelloController {
-private static Logger logger = LoggerFactory.getLogger(HelloController.class);
-	
+	private static Logger logger = LoggerFactory.getLogger(HelloController.class);
+
 	@Autowired
 	MemberService service;	// MemberServiceImpl이 생성되서 넘어옴
 	
@@ -128,17 +133,33 @@ private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 		}		
 	}
 	
-	@RequestMapping(value = "profileAf.do", method = RequestMethod.GET)
-	public String profileAf() {	// HttpServletRequest req
-		logger.info("MemberController profileAf() " + new Date());
-		
-		/*
-		 * MemberDto mem = (MemberDto)req.getSession().getAttribute("logininfo");
-		 * System.out.println("mem:" + mem);
-		 */
+	@RequestMapping(value = "profile.do", method = RequestMethod.GET)
+	public String profile() {
+		logger.info("MemberController profile() " + new Date());
 		
 		return "profile";
-		
 	}
+	
+	@RequestMapping(value = "editProfile.do", method = RequestMethod.GET)
+	public String editProfile(MemberDto dto, HttpServletRequest req) {
+		logger.info("MemberController profile() " + new Date());
+		
+		return "editProfile";
+	}
+	
+	@RequestMapping(value = "profileAf.do", method = RequestMethod.POST) 
+	public String profileAf(MemberDto dto, HttpServletRequest req) {
+		logger.info("MemberController profile() " + new Date());
+		service.profileUpdate(dto); System.out.println("test"+ dto.toString());
+	  
+		MemberDto mem = service.profileAf(dto);
+	  
+		req.setAttribute("logininfo", mem);
+		req.getSession().setAttribute("logininfo", mem); 
+		System.out.println("test" + mem.toString());
+		
+	  return "redirect:/profile.do"; 
+	}
+
 }
 

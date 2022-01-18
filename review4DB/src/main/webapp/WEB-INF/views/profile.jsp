@@ -1,134 +1,118 @@
-<%@page import="java.util.List"%>
 <%@page import="mul.camp.a.dto.MemberDto"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<!-- DB로부터 MemberDto 값을 전달받음 -->
-<%
- MemberDto mem = (MemberDto)request.getSession().getAttribute("logininfo");
-%>
-<%System.out.println(mem); %>
+<%@page import="mul.camp.a.dto.BbsDto"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	<!-- DB로부터 MemberDto 값을 전달받음 -->
+	<%MemberDto dto = (MemberDto)request.getSession().getAttribute("logininfo"); %>
+	<%System.out.println("프로필 " + dto); %>
 
-<!-- 프로필 이미지를 세팅.-->
-
+    <%List<BbsDto> bbsList = (List<BbsDto>)request.getSession().getAttribute("bbsList");%>
+   	<%System.out.println(dto);%>
+   	<%System.out.println(bbsList);%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>프로필 수정</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>회원정보-Hobby Flow</title>
+		<link rel="stylesheet" href="resources/css/main.css"/>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://kit.fontawesome.com/0032d948de.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+	<!-- NavBar -->
+		<navbar class="navContainer">
+			<div class="navInner">
+				<div class="navLeft">
+					<a href="#"><img src="resources/img/logo.png" alt="logo" /></a>
+					<ul>
+						<li><a href="main.do">Home</a></li>
+						<li><a href="#">Announcement</a></li>
+						<li><a href="#">About Us</a></li>
+					</ul>
+				</div>
+				<div class="navCenter"></div>
+				<div class="navRight">
+					<img src="resources/img/logo.png" alt="logo" />
+					<p>
+						Hi <br />
+						<%=dto.getAka()%>!
+					</p>
+					<ul>
+						<!-- 회원정보 수정 -->
+						<li class="profile">
+							<!-- HelloController의 profile.do로 이동 -->
+							<a href="profile.do">Profile</a>
+						</li>
+						<li class="logout">
+							<a href="logoutAf.do">Logout</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</navbar>
 
-<!-- 내용물을 중앙으로 맞춤 -->
-<div align="center">
+	
+<h2>Hobby Flow 회원정보</h2>
+<br>
 
-<h1>프로필 수정 화면</h1>
+<!-- Hobby Flow 회원정보 화면을 출력한다. -->
+<!-- 두개의 div에 회원정보, 작성 게시글 목록 출력 -->
 
-<p>회원정보 및 프로필 수정이 가능합니다.</p>
-<hr>
-
-<!-- 사용자 정보 출력 -->
-<div>
-<p>Hobby Flow 회원정보</p>
+<div> <!-- 1.회원정보 출력 -->
 <table border="1">
 <tr>
 	<td rowspan="6">
-		<img src="resources\img\default.png" width=150px height=150px>
+		<!-- 프로필 이미지를 세팅.-->
+		<img src="resources\img\<%=dto.getImg() %>" width=150px height=150px>
 	</td>
 </tr>
 <tr>
-	<!-- MemberDto의 aka를 출력 -->
-	<th>Nickname</th> 
-	<td><%=mem.getAka() %></td>
-</tr>
-<tr>
-	<!-- MemberDto의 id를 출력 -->
+	<!-- 사용자 id를 출력 -->
 	<th>ID</th> 
-	<td><%=mem.getId() %></td>
+	<td><%=dto.getId() %></td>
 </tr>
 <tr>
-	<!-- MemberDto의 email를 출력 -->
+	<!-- 사용자 닉네임을 출력 -->
+	<th>Nickname</th> 
+	<td><%=dto.getAka() %></td>
+</tr>
+<tr>
+	<!-- 사용자 email을 출력 -->
 	<th>Email</th>
-	<td><%=mem.getEmail() %></td>
+	<td><%=dto.getEmail() %></td>
 </tr>
 <tr>	
-	<!-- MemberDto의 exp를 출력 -->
-	<th>경험치</th>
-	<td><%=mem.getExp() %></td>
+	<!-- 사용자의 exp를 출력 -->
+	<th>현재 경험치</th>
+	<td><%=dto.getExp() %></td>
 </tr>
 <tr>
-	<!-- MemberDto의 lv를 출력 -->
+	<!-- 사용자의 lv를 출력 -->
 	<th>레벨</th>
-	<td><%=mem.getLv() %></td>
+	<td><%=dto.getLv() %></td>
+</tr>
+<tr>
+	<td colspan="3">
+	<button type="button" onclick="location.href='editProfile.do'">회원정보 수정</button><!-- 회원정보 수정 페이지로 이동하는 버튼 -->
+	</td>
 </tr>
 </table>
 </div>
-<hr>
 
-<br><br><br>
+<br><br>
 
-<!-- 프로필 수정 -->
-<div>
-<form action="profile.do" method="post">
+<div><!-- 2.사용자의 작성글을 출력 -->
 <table border="1">
-<!-- (1).프로필 사진 수정 -->
 <tr>
-	<th>프로필 사진</th>
-	<td>
-		<img src="resources\img\default.png" width=150px height=150px>
-		<button type="button" onclick="changePic()">사진변경</button>
-		<button type="button" onclick="deletePic()">삭제</button>
-	</td>
+	<th>번호</th><th>제목</th><th>작성일</th>
+</tr>
 
-</tr>
-<!-- (2).닉네임 수정 -->
-<tr>
-	<th>Nickname</th>
-	<td>
-		<input type="text" name="aka" id="aka" placeholder="<%=mem.getAka() %>">
-		<button type="button" onclick="akacheck()">중복확인</button>
-		<p id="akacheck" style="font-size: 8px"></p>
-	</td>
-</tr>
-<tr>
-	<td colspan="2">
-		<button type="submit">수정완료</button>
-	</td>
-</tr>
+
 </table>
-</form>
 </div>
-
-</div>
-
-<script type="text/javascript">
-let akainfo = 0;
-function akacheck(){
-	$.ajax({
-		url:"akacheck.do",
-		type:"post",
-		data:{ aka:$("#aka").val() },
-		success:function( msg ){
-			
-			if(msg == "YES"){
-				$("#akacheck").css("color", "#0000ff");
-				$("#akacheck").html("사용할 수 있는 닉네임입니다");
-				akainfo = 1;
-			}else{
-				$("#akacheck").css("color", "#ff0000");
-				$("#akacheck").html("사용 중인 닉네임입니다");
-				$("#aka").val("");
-				akainfo = 0;
-			}			
-		},
-		error:function(){
-			alert('error');
-		}
-	});
-};	
-</script>
-
 
 
 </body>

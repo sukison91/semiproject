@@ -17,6 +17,8 @@ public interface MemberService {
 	
 	public MemberDto logininfo(MemberDto dto);
 	
+	List<MemberDto> profileUpdate(MemberDto dto);
 	
+	MemberDto profileAf(MemberDto dto);
 }
 

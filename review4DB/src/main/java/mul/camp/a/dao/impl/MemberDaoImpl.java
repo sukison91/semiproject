@@ -1,5 +1,7 @@
 package mul.camp.a.dao.impl;
 
+
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -47,6 +49,19 @@ public class MemberDaoImpl implements MemberDao {
 	public int getemail(String email) {
 		return sqlSession.selectOne(namespace + "getemail", email);
 	}
+
+	@Override
+	public List<MemberDto> profileUpdate(MemberDto dto){
+		return sqlSession.selectList(namespace + "profileUpdate", dto);
+	}
+
+	@Override
+	public MemberDto profileAf(MemberDto dto) {
+		
+		return sqlSession.selectOne(namespace + "profileAf", dto);
+	}
+
+	
 	
 
 }
