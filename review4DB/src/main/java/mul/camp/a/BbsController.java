@@ -37,5 +37,16 @@ public class BbsController {
 		req.getSession().setAttribute("bbsList", bbsList);
 		return "bbs";
 	}
-	
+	@RequestMapping(value = "bbswriteAF.do", method = RequestMethod.GET)
+	public String bbswrite(BbsDto dto) {
+		System.out.println(dto);
+		service.bbswrite(dto);
+		
+		return "main";
+	}
+	@RequestMapping(value = "bbswrite.do", method = RequestMethod.GET)
+	public String bbswrite() {
+		
+		return "bbswrite";
+	}
 }

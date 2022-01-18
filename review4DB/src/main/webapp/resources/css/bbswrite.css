@@ -1,0 +1,14 @@
+.h1center {
+  text-align: center;
+  line-height: 200px;
+}
+.divwidht {
+  width: 650px;
+}
+.divmargin {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.textareaheight {
+  height: 400px;
+}

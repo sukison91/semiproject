@@ -64,7 +64,6 @@ private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 		
 		logger.info("MemberController loginAF() " + new Date());
 		MemberDto mem = service.logininfo(dto);
-		
 		if(mem != null) {
 			req.setAttribute("logininfo", mem);
 			req.getSession().setAttribute("logininfo", mem);

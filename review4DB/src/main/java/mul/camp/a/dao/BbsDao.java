@@ -10,4 +10,5 @@ public interface BbsDao {
 
 	List<BbsDto> getBbs(String cat);
 
+	int bbswrite(BbsDto dto);
 }

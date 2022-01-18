@@ -16,6 +16,11 @@
 	WHERE CAT=#{cat}
 	ORDER BY SEQ DESC
 </select>
-
+<insert id="bbswrite" parameterType="mul.camp.a.dto.BbsDto">
+	INSERT INTO BBS(CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG,BLIKE)
+	VALUES (#{cat} , NEXTVAL(SEQ__BBS), #{id} , (SELECT NVL(MAX(REF)+1,0)FROM BBS ALIAS_FOR_SUBQUERY) ,0 , 0 , #{title} , #{content} ,NOW(), 0,0,0,0 )
+	<!-- SEQ__BBS.NEXTVAL -->
+	<!-- (SELECT NVL(MAX(REF)+1,0)FROM BBS) -->
+</insert>
 
 </mapper>
