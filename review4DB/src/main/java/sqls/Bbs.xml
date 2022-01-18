@@ -23,4 +23,39 @@
 	<!-- (SELECT NVL(MAX(REF)+1,0)FROM BBS) -->
 </insert>
 
+<select id="getCat1" resultType="mul.camp.a.dto.BbsDto">
+	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
+	FROM BBS
+	WHERE CAT=1
+	ORDER BY SEQ DESC
+</select>
+
+<select id="getCat2" resultType="mul.camp.a.dto.BbsDto">
+	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
+	FROM BBS
+	WHERE CAT=2
+	ORDER BY SEQ DESC
+</select>
+
+<select id="getCat3" resultType="mul.camp.a.dto.BbsDto">
+	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
+	FROM BBS
+	WHERE CAT=3
+	ORDER BY SEQ DESC
+</select>
+
+<select id="getCat4" resultType="mul.camp.a.dto.BbsDto">
+	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
+	FROM BBS
+	WHERE CAT=4
+	ORDER BY SEQ DESC
+</select>
+
+<select id="getSearch" parameterType="String" resultType="mul.camp.a.dto.BbsDto">
+	<!-- <bind name="searchValue" value="'%' + #{searchValue} + '%'" /> -->
+	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG,BLIKE 
+	FROM BBS
+	WHERE LOWER(TITLE) LIKE CONCAT('%',#{searchValue},'%')
+	ORDER BY SEQ DESC
+</select>
 </mapper>

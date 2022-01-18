@@ -1,15 +1,14 @@
 <%@page import="mul.camp.a.dto.MemberDto"%>
 <%@page import="mul.camp.a.dto.BbsDto"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     <%MemberDto dto = (MemberDto)request.getSession().getAttribute("logininfo");%>
     <%List<BbsDto> bbsList = (List<BbsDto>)request.getSession().getAttribute("bbsList");%>
-    <%String cat = request.getParameter("cat");%>
    	<%System.out.println(dto);%>
    	<%System.out.println(bbsList);%>
-   	<%System.out.println(cat);%>
    	
 <!DOCTYPE html>
 <html lang="ko">
@@ -24,6 +23,7 @@
 			src="https://kit.fontawesome.com/e95584c635.js"
 			crossorigin="anonymous"
 		></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<!-- NavBar -->
@@ -69,7 +69,9 @@
 			<!-- Search Bar and Category Link -->
 			<div class="searchNCat">
 				<div class="search">
-					<h3><a href="search.do">Search</a> <i class="fas fa-search"></i></h3>
+					<h3>
+						<a href="search.do">Search</a> <i class="fas fa-search"></i>
+					</h3>
 				</div>
 				<div class="cat">
 					<ul>
@@ -81,44 +83,75 @@
 					</ul>
 				</div>
 			</div>
-			<!-- Show All Board Posts and Category Boards -->
+			<!-- search -->
 			<div class="showBoards">
-				<!-- recent post -->
-				<div class="recentPosts">
-				
-										 <% if(cat == null){ %>
-					 <h3>전체계시판</h3>
-							
-					 <%} else { %>
-						 <h3>Cat <%=cat%></h3>
-						 <h3><a href="bbswrite.do">글쓰기</a></h3>
-					 <%}%> 
-
-					
-					<!-- recent post list -->
-					<div class="rpList">
-						<ul>
-							<% if(bbsList == null || bbsList.size() == 0){ %>
-								<p>작성된 글이 없습니다!</p>
-							<% }else{
-							
-							for(int i = 0; i < bbsList.size(); i++){
-								BbsDto bbs = bbsList.get(i);
-							%>
-							<li>
-								<a href="bbsdetail.do?seq=<%=bbs.getSeq()%>" >
-									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
-									><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
-								</a>
-							</li>
-							<%
-								}
-							}
-							%>
-						</ul>
+				<div class="search">
+					<input type="text" name="searchBar" id="searchBar" placeholder="데이터베이스에서 제목을 검색합니다">
+					<button type="button" onclick="searchResults()">검색</button>
+					<div class="showResults">
+						<p style="display:none" class="noSearchResults"></p>
+						<div style="display:none" class="searchResults rpList">
+						
+						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
 		</div>
+		
+		<script>
+		let count; 
+		let searchValue; 
+		let hiddenP = document.querySelector(".noSearchResults"); 
+		let hiddenSR = document.querySelector(".searchResults"); 
+		console.log(searchValue);
+		
+		function searchResults(){
+		
+			searchValue = document.querySelector("#searchBar").value.toLowerCase(); 
+			console.log(searchValue);
+			// Search Results -> ajax
+	 		$.ajax({
+				url:"searchResult.do",
+				type:"get",
+				data:{searchValue:$("#searchBar").val().toLowerCase()},
+				success:function(bbsDto){
+				
+					if(bbsDto != null && bbsDto.length != 0){
+						console.log(bbsDto); 				
+						count = 1; 
+						displayResults(count, bbsDto); 
+						
+					}else{
+						count = 0; 
+						displayResults(count);
+					}			
+				},
+				error:function(){
+					alert('error');
+					console.log(bbsDto);
+				}
+			});
+		};	
+		
+		
+		function displayResults(count, bbsDto){
+			hiddenSR.innerHTML = "";
+			hiddenP.innerHTML = "";
+			if(count == 1) {
+				hiddenSR.style.display ="block"; 
+				
+				for (let i = 0; i < bbsDto.length; i++) {
+					let resultP = document.createElement("ul"); 
+					resultP.innerHTML = "<li><a href=\"#\"> <span>Cat" + bbsDto[i].cat + "</span><span>" + bbsDto[i].title + "</span><span><i class=\"fas fa-eye\"></i>" + bbsDto[i].readcount + "</span></a></li>"; 
+					hiddenSR.appendChild(resultP); 
+				}
+				
+			} else {
+				hiddenP.style.display = "block"; 
+				hiddenP.innerHTML = "<p>" + searchValue + " -> 찾을 수 없었습니다</p>"
+			}
+		}
+		</script>
 	</body>
-</html>
+</html> 
+
