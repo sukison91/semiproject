@@ -29,4 +29,10 @@ public class BbsDaoimpl implements BbsDao {
 		
 		return sqlSession.selectList(ns+"getBbscat",cat);
 	}
+	
+	@Override
+	public int bbswrite(BbsDto dto) {
+		
+		return sqlSession.insert(ns+"bbswrite", dto);
+	}
 }

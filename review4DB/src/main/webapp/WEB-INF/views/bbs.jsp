@@ -85,6 +85,7 @@
 				<div class="recentPosts">
 				
 					<h3><a href="#">전체계시판</a></h3>
+					<h3><a href="bbswrite.do">글쓰기</a></h3>
 					
 					<!-- recent post list -->
 					<div class="rpList">
@@ -97,7 +98,7 @@
 								BbsDto bbs = bbsList.get(i);
 							%>
 							<li>
-								<a href="#">
+								<a href="bbsdetail.do?seq=<%=bbs.getSeq()%>" >
 									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
 									><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 								</a>

@@ -27,4 +27,10 @@ public class BbsServiceimpl implements BbsService {
 		return dao.getBbs(cat);
 	}
 	
+	@Override
+	public int bbswrite(BbsDto dto) {
+		
+		return dao.bbswrite(dto);
+	}
+	
 }
