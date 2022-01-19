@@ -106,7 +106,7 @@
 						<option value="recently">최신순</option>
 						<option value="old">오래된순</option>
 						<option value="readcount">조회순</option>
-						<option>공감순</option>
+						<option value="blike">공감순</option>
 					</select>
 				</div>	
 				
@@ -122,8 +122,8 @@
 							%>
 							<li>
 								<a href="bbsdetail.do?seq=<%=bbs.getSeq()%>" >
-									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
-									><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
+									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span>
+									<span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 								</a>
 							</li>
 							<%
@@ -138,19 +138,28 @@
 		
 		<script type="text/javascript">
 		function func() {
-			alert('func');
+			//alert('func');
 			$.ajax({
 				type : "get",
 				url : "bbssort.do",
 				data : {category :$("#category").val()},
 				success : function(bbsList){
 					console.log(bbsList)
-					alert(bbsList[0].id)
-					$("#rpul").html("<li>" + bbsList[0].id + "</li>");
+					//alert(bbsList[0].id)
+					//$("#rpul").html("<li>" + bbsList[for(i=0; i<bbsList; i++){}].id + "</li>");
 					
-				/*	if(category == "recently"){
-						$("#recently").reverse();//내림차순
-					} */
+					//alert(bbsList);
+					//alert(JSON.stringify(bbsList));	// json -> string
+					
+					let str = "";
+					
+					for(i = 0;i < bbsList.length; i++){
+						str += "<li>" + "목록" + bbsList[i].cat +" &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"제목 : "+ bbsList[i].title + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+ "조회수 : "+ bbsList[i].readcount + "</li>"; //위의 기본 배열을 초기화(?)한 후 새로 지정한 for문으로 재배열
+						//str += "<li>" + bbsList[i].cat + "</li>";	//리스트 형식이라서 원하는 값들은 아래로 정렬된다.
+						//str += "<li>" + bbsList[i].title + "</li>";	
+						
+					}
+					$("#rpul").html(str);//재배열한 for문을 여기서 출력시켜준다.
 				},
 				error : function(){
 					alert('error');
@@ -183,65 +192,6 @@
 		*/	
 		</script>
 		
-		<!-- 게시글 정렬 
-		<script type="text/javascript">
-		
-		function(recently){
-			$.ajax({
-				type : "post",
-				url : "recently.do",
-				data : wdate :$("#wdate").val(),
-				success : function(data){
-					//여기다가 조건 넣어야함
-				},
-				error : function(){
-					alert('error');
-				}
-			});
-		};
-		
-		function(old){
-			$.ajax({
-				type : "post",
-				url : "old.do",
-				data : wdate :$("#wdate").val(),
-				success : function(data){
-					//여기다가 조건 넣어야함
-				},
-				error : function(){
-					alert('error');
-				}
-			});
-		};
-		
-		function(readcount){
-			$.ajax({
-				type : "post",
-				url : "readcount.do",
-				data : readcount :$("#readcount").val(),
-				success : function(data){
-					//여기다가 조건 넣어야함
-				},
-				error : function(){
-					alert('error');
-				}
-			});
-		};
-		
-		function(blike){
-			$.ajax({
-				type : "post",
-				url : "blike.do",
-				data : blike :$("#blike").val(),
-				success : function(data){
-					//여기다가 조건 넣어야함
-				},
-				error : function(){
-					alert('error');
-				}
-			});
-		};
-		
-		 </script>-->
+
 	</body>
 </html>

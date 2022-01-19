@@ -27,8 +27,6 @@ public class BbsDaoimpl implements BbsDao {
 	@Override
 	public List<BbsDto> getime(String category) {
 		
-		System.out.println("여기는 category입니다 " + category);
-		
 		return sqlSession.selectList(ns+"getime", category);
 	}
 

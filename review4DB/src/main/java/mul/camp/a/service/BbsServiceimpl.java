@@ -24,8 +24,6 @@ public class BbsServiceimpl implements BbsService {
 	@Override
 	public List<BbsDto> getime(String category) {
 
-		System.out.println("여기는 category입니다 " + category);
-		
 		return dao.getime(category);
 	}
 

@@ -144,37 +144,8 @@ public class BbsController {
 	//	req.getSession().setAttribute("bbsList", bbsList);
 		
 		List<BbsDto> bbsList = service.getime(category);		
-		//req.getSession().setAttribute("bbsList", bbsList);
 		
 		return bbsList;
 	}
-	
-	/*@RequestMapping(value = "old.do", method = RequestMethod.GET)
-	public String getold(HttpServletRequest req, String category) {
-		
-		List<BbsDto> bbsList = service.getold(category);
-		req.getSession().setAttribute("bbsList", bbsList);
-		
-		return "bbs";
-	}
-	
-	@RequestMapping(value = "readcount.do", method = RequestMethod.GET)
-	public String getreadcount(HttpServletRequest req, String category) {
-		
-		List<BbsDto> bbsList = service.getreadcount(category);
-		req.getSession().setAttribute("bbsList", bbsList);
-		
-		return "bbs";
-	}
-	
-	@RequestMapping(value = "blike.do", method = RequestMethod.GET)
-	public String getblike(HttpServletRequest req, String category) {
-		
-		List<BbsDto> bbsList = service.getblike(category);
-		req.getSession().setAttribute("bbsList", bbsList);
-		
-		
-		return "bbs";
-	}
-	*/
+
 }
