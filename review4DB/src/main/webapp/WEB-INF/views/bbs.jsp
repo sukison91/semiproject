@@ -121,11 +121,9 @@
 								if(bbs.getDel() != 1) {
 							%>
 							<li>
-
 								<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
 									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle() %></span>
 									<span><i class="fas fa-eye"></i> <%=bbs.getReadcount() %></span>
-
 								</a>
 							</li>
 								<% } 
@@ -156,8 +154,15 @@
 					let str = "";
 					
 					for(i = 0;i < bbsList.length; i++){
-						str += "<li>" + "목록" + bbsList[i].cat +" &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"제목 : "+ bbsList[i].title + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+ "조회수 : "+ bbsList[i].readcount + "</li>"; //위의 기본 배열을 초기화(?)한 후 새로 지정한 for문으로 재배열
-						//str += "<li>" + bbsList[i].cat + "</li>";	//리스트 형식이라서 원하는 값들은 아래로 정렬된다.
+						str += "<li>"+ "<a href='bbsdetail.do?ref="+ bbsList[i].ref + "'>" + "<span>"+"cat" + bbsList[i].cat +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" 
+						+ bbsList[i].title + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<i class='fas fa-eye'>" +
+						"</i>"+" "+ bbsList[i].readcount + "</span>"+ "</a></li>"; 
+						
+						/* str += "<li>"+"cat" + bbsList[i].cat +" &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" 
+								+ bbsList[i].title + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+ "<i class='fas fa-eye'>" +
+								"</i>"+" "+ bbsList[i].readcount + "</li>" */ //위의 기본 배열을 초기화(?)한 후 새로 지정한 for문으로 재배열
+						
+								//str += "<li>" + bbsList[i].cat + "</li>";	//리스트 형식이라서 원하는 값들은 아래로 정렬된다.
 						//str += "<li>" + bbsList[i].title + "</li>";	
 						
 					}
@@ -168,30 +173,7 @@
 				}
 			});
 		};
-		
-		function test(){
-			console.log($("#category").val());
-		};
-		/*
-		function func() {
-			alert('func');
-			$.ajax({
-				type : "post",
-				url : "bbs.do",
-				data : recently :$("#old").val(),
-				dataType : "String",
-				success : function(category){
-					if(category == "old"){
-						$("#old").sortBy();//오름차순
-						alert('success');
-					} 
-				},
-				error : function(){
-					alert('error');
-				}
-			});
-		};
-		*/	
+	
 		</script>
 		
 
