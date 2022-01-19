@@ -96,14 +96,17 @@ public class BbsServiceimpl implements BbsService {
 	public int comment(BbsDto dto) {
 		return dao.comment(dto);
 	}
-	@Override
-	public int readcount(int ref) {
-		return dao.readcount(ref);
-	}
+
 
 	@Override
 	public int updateBbs(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
 		return dao.updateBbs(params);
+	}
+
+	@Override
+	public int readcount(int ref) {
+		// TODO Auto-generated method stub
+		return dao.readcount(ref);
 	}
 }

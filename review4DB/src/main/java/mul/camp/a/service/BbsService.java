@@ -33,7 +33,6 @@ public interface BbsService {
 	List<BbsDto> bbsdetail(int ref);
 	
 	int comment(BbsDto dto);
-
 	
 
 	int updateBbs(HashMap<String, Object> params);
