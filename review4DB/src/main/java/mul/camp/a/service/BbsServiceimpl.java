@@ -23,6 +23,13 @@ public class BbsServiceimpl implements BbsService {
 	}
 
 	@Override
+	public List<BbsDto> getime(String category) {
+
+		return dao.getime(category);
+	}
+
+	
+	@Override
 	public List<BbsDto> getBbs(String cat) {
 		return dao.getBbs(cat);
 	}

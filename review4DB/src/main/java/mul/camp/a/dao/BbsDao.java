@@ -11,6 +11,8 @@ public interface BbsDao {
 
 	List<BbsDto> getBbs();
 
+	List<BbsDto> getime(String category);
+
 	List<BbsDto> getBbs(String cat);
 
 	List<BbsDto> getMyBbs(String id);

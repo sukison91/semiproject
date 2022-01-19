@@ -26,6 +26,12 @@ public class BbsDaoimpl implements BbsDao {
 	}
 
 	@Override
+	public List<BbsDto> getime(String category) {
+		
+		return sqlSession.selectList(ns+"getime", category);
+	}
+
+	@Override
 	public List<BbsDto> getBbs(String cat) {
 		return sqlSession.selectList(ns+"getBbscat",cat);
 	}

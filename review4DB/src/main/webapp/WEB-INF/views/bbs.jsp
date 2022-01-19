@@ -24,6 +24,9 @@
 			src="https://kit.fontawesome.com/e95584c635.js"
 			crossorigin="anonymous"
 		></script>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	</head>
 	<body>
 		<!-- NavBar -->
@@ -95,9 +98,19 @@
 					 <%}%> 
 
 					
+				<!-- 글 정렬 -->
+				<div>
+					<select id="category" onchange="func()">
+						<option value="recently">최신순</option>
+						<option value="old">오래된순</option>
+						<option value="readcount">조회순</option>
+						<option value="blike">공감순</option>
+					</select>
+				</div>	
+				
 					<!-- recent post list -->
 					<div class="rpList">
-						<ul>
+						<ul id="rpul">
 							<% if(bbsList == null || bbsList.size() == 0){ %>
 								<p>작성된 글이 없습니다!</p>
 							<% }else{
@@ -121,5 +134,46 @@
 				</div>	
 			</div>
 		</div>
+		
+		<script type="text/javascript">
+		function func() {
+			//alert('func');
+			$.ajax({
+				type : "get",
+				url : "bbssort.do",
+				data : {category :$("#category").val()},
+				success : function(bbsList){
+					console.log(bbsList)
+					//alert(bbsList[0].id)
+					//$("#rpul").html("<li>" + bbsList[for(i=0; i<bbsList; i++){}].id + "</li>");
+					
+					//alert(bbsList);
+					//alert(JSON.stringify(bbsList));	// json -> string
+					
+					let str = "";
+					
+					for(i = 0;i < bbsList.length; i++){
+						str += "<li>"+ "<a href='bbsdetail.do?ref="+ bbsList[i].ref + "'>" + "<span>"+"cat" + bbsList[i].cat +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" 
+						+ bbsList[i].title + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<i class='fas fa-eye'>" +
+						"</i>"+" "+ bbsList[i].readcount + "</span>"+ "</a></li>"; 
+						
+						/* str += "<li>"+"cat" + bbsList[i].cat +" &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" 
+								+ bbsList[i].title + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+ "<i class='fas fa-eye'>" +
+								"</i>"+" "+ bbsList[i].readcount + "</li>" */ //위의 기본 배열을 초기화(?)한 후 새로 지정한 for문으로 재배열
+						
+								//str += "<li>" + bbsList[i].cat + "</li>";	//리스트 형식이라서 원하는 값들은 아래로 정렬된다.
+												
+					}
+					$("#rpul").html(str);//재배열한 for문을 여기서 출력시켜준다.
+				},
+				error : function(){
+					alert('error');
+				}
+			});
+		};
+	
+		</script>
+		
+
 	</body>
 </html>
