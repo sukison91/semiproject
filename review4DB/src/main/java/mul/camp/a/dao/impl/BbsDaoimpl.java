@@ -74,4 +74,16 @@ public class BbsDaoimpl implements BbsDao {
 	 * @Override public List<BbsDto> getSearchList(List<String> searchValue) {
 	 * return sqlSession.selectList(ns+"getSearchList", searchValue); }
 	 */
+
+	@Override
+	public List<BbsDto> bbsdetail(int ref) {
+		
+		return sqlSession.selectList(ns+"bbsdetail", ref);
+	}
+	
+	@Override
+	public int comment(BbsDto dto) {
+		return sqlSession.insert(ns+"comment",dto);
+	}
+
 }

@@ -106,7 +106,7 @@
 								BbsDto bbs = bbsList.get(i);
 							%>
 							<li>
-								<a href="bbsdetail.do?seq=<%=bbs.getSeq()%>" >
+								<a href="bbsdetail.do?ref=<%=bbs.getRef() %>" >
 									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
 									><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 								</a>

@@ -58,10 +58,13 @@ public class BbsController {
 
 	/* 게시판 상세글보기 */
 	@RequestMapping(value = "bbsdetail.do", method = RequestMethod.GET)
-	public String bbsdetail() {
-		logger.info("BbsController bbsdetail() " + new Date());
+	public String bbsdetail(int ref,Model model) {
+
+		List<BbsDto> dto = service.bbsdetail(ref);
+		System.out.println("detail"+dto);
+		System.out.println("=================================================");
+		model.addAttribute("detail",dto);
 		
-	
 		return "bbsdetail";
 	}
 	
@@ -130,6 +133,23 @@ public class BbsController {
 		System.out.println("searchResults: " + searchResults);		
 		
 		return searchResults; 
+	}
+	@ResponseBody
+	@RequestMapping(value = "comment.do", method = RequestMethod.POST)
+	public String comment(BbsDto dto) {
+		System.out.println("코멘트---------"+dto);
+
+		service.comment(dto);
+		
+		return "YES";
+	}
+	@RequestMapping(value = "commentAF.do", method = RequestMethod.GET)
+	public String commentAF(int ref,Model model) {
+
+		List<BbsDto> dto = service.bbsdetail(ref);
+
+		model.addAttribute("detail",dto);
+		return "bbsdetail";
 	}
 	
 	/* 게시글 삭제*/

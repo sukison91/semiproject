@@ -26,6 +26,10 @@ public interface BbsDao {
 	public void delete(int seq);
 
 	/* List<BbsDto> getSearchList(List<String> searchValue); */
+	
+	List<BbsDto> bbsdetail(int ref);
+	
+	int comment(BbsDto dto);
 
 
 }
