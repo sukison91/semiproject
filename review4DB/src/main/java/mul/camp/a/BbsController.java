@@ -40,7 +40,7 @@ public class BbsController {
 	@RequestMapping(value = "bbsall.do", method = RequestMethod.GET)
 	public String getallBbs(HttpServletRequest req) {
 		
-		List<BbsDto> bbsList = service.getBbs();
+		List<BbsDto> bbsList = service.getime("recently");
 		req.getSession().setAttribute("bbsList", bbsList);
 		return "bbs";
 	}
@@ -151,6 +151,24 @@ public class BbsController {
 		return "bbsdetail";
 	}
 	
+	//글순서 정렬
+	@ResponseBody
+	@RequestMapping(value = "bbssort.do", method = RequestMethod.GET)
+	public List<BbsDto> getime(String category) {
+		
+		logger.info("BbsController getime() " + new Date());
+		
+		//System.out.println("BbsController getime");
+		System.out.println("category:" + category);
+		
+	//	List<BbsDto> bbsList = service.getime(category);		
+	//	req.getSession().setAttribute("bbsList", bbsList);
+		
+		List<BbsDto> bbsList = service.getime(category);		
+		
+		return bbsList;
+	}
+
 	/* 게시글 삭제*/
 	@RequestMapping(value = "deletebbs.do", method = RequestMethod.GET)
 	public String deletebbs(int seq) {
