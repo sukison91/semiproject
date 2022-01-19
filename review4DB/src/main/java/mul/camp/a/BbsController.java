@@ -55,13 +55,16 @@ public class BbsController {
 		
 		return "bbswrite";
 	}
+
+	/* 게시판 상세글보기 */
 	@RequestMapping(value = "bbsdetail.do", method = RequestMethod.GET)
-	public String bbsdetail(int seq) {
+	public String bbsdetail() {
+		logger.info("BbsController bbsdetail() " + new Date());
 		
-		// 추가 부탁드리겠습니다 (_ _ )
-		
+	
 		return "bbsdetail";
 	}
+	
 	@RequestMapping(value = "main.do", method = RequestMethod.GET)
 	public String main(HttpServletRequest req) {
 		
@@ -127,6 +130,16 @@ public class BbsController {
 		System.out.println("searchResults: " + searchResults);		
 		
 		return searchResults; 
+	}
+	
+	/* 게시글 삭제*/
+	@RequestMapping(value = "deletebbs.do", method = RequestMethod.POST)
+	public String deletebbs(BbsDto dto) {
+		logger.info("BbsController delete() " + new Date());
+		
+		service.bbsdelete(dto.getSeq());
+		
+		return "redirect:main.do";
 	}
 
 }

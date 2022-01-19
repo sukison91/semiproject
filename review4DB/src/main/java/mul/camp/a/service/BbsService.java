@@ -23,6 +23,8 @@ public interface BbsService {
 	List<BbsDto> getCat4();
 
 	List<BbsDto> getSearch(String searchValue);
+	
+	public void bbsdelete(int seq);
 
 //	List<BbsDto> getSearchList(List<String> searchValue);
 	

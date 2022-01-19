@@ -4,7 +4,6 @@
 
 <mapper namespace="Bbs">
 
-
 <select id="getMyBbs" parameterType="String" resultType="mul.camp.a.dto.BbsDto">
 	SELECT CAT, SEQ, ID, REF, STEP, DEPTH, TITLE, CONTENT, WDATE, DEL, READCOUNT, IMG, BLIKE
 	FROM BBS
@@ -66,4 +65,13 @@
 	WHERE LOWER(TITLE) LIKE CONCAT('%',#{searchValue},'%')
 	ORDER BY SEQ DESC
 </select>
+
+<!-- 게시글 삭제 -->
+<delete id="bbsdelete" parameterType="Integer">
+	DELETE
+	FROM BBS
+	WHERE SEQ=#{seq}
+</delete>
+
+
 </mapper>

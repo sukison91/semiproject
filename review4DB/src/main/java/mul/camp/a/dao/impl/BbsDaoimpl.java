@@ -23,22 +23,17 @@ public class BbsDaoimpl implements BbsDao {
 		return sqlSession.selectList(ns+"getBbs");
 	}
 
-
 	@Override
 	public List<BbsDto> getBbs(String cat) {
-		
 		return sqlSession.selectList(ns+"getBbscat",cat);
 	}
-
-
-
+	
 	@Override
 	public List<BbsDto> getMyBbs(String id) {
 		return sqlSession.selectList(ns+"getMyBbs",id);
 	}
-	
 
-	
+
 	@Override
 	public int bbswrite(BbsDto dto) {
 		
@@ -68,6 +63,11 @@ public class BbsDaoimpl implements BbsDao {
 	public List<BbsDto> getSearch(String searchValue) {
 		System.out.println(searchValue);
 		return sqlSession.selectList(ns+"getSearch", searchValue); 
+	}
+
+	@Override
+	public void delete(int seq) {
+		sqlSession.delete(ns+"bbsdelete", seq);
 	}
 	
 	/*

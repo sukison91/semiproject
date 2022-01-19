@@ -66,6 +66,12 @@ public class BbsServiceimpl implements BbsService {
 	public List<BbsDto> getSearch(String searchValue) {
 		return dao.getSearch(searchValue); 
 	}
+
+	@Override
+	public void bbsdelete(int seq) {
+		dao.delete(seq);
+	}
+
 	
 //	@Override	
 //	public List<BbsDto> getSearchList(List<String> searchValue) {

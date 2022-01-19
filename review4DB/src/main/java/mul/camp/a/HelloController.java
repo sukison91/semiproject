@@ -142,7 +142,7 @@ public class HelloController {
 		logger.info("MemberController profile() " + new Date());
 		String id = ((MemberDto)req.getSession().getAttribute("logininfo")).getId();
 		
-		List<BbsDto> bbsList = bbsService.getMyBbs("aaa");
+		List<BbsDto> bbsList = bbsService.getMyBbs(id);
 		for (BbsDto bbsDto : bbsList) {
 			System.out.println(bbsDto.toString());
 		}

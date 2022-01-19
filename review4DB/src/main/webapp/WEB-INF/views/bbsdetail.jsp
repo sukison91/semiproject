@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +35,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">글수정</button>
-        <button type="submit" class="btn btn-primary">글삭제</button>
+        <button type="submit" class="btn btn-primary" onclick="deletebbs()">글삭제</button>
 
         
 
@@ -55,7 +57,7 @@
                     <label for="disabledTextInput" class="form-label">[cat]</label>
                     <label for="disabledTextInput" class="form-label">title</label> <br>
                     <label for="disabledTextInput" class="form-label">by nickname</label>&nbsp;&nbsp;&middot;&nbsp;&nbsp;
-                    <label for="disabledTextInput" class="form-label">wirte date</label>
+                    <label for="disabledTextInput" class="form-label">write date</label>
                   </div>
                 </div><br>
                 <div class="content">
@@ -65,13 +67,12 @@
             
             
           </form>
-          
-
-          
-
-          
-          
-        
       </form>
+ 
+<script type="text/javascript">
+function deletebbs(){
+	
+}
+</script>
 </body>
 </html>

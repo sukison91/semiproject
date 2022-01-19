@@ -10,7 +10,6 @@ public interface BbsDao {
 
 	List<BbsDto> getBbs(String cat);
 
-
 	List<BbsDto> getMyBbs(String id);
 
 	int bbswrite(BbsDto dto);
@@ -23,6 +22,8 @@ public interface BbsDao {
 	List<BbsDto> getCat4();
 
 	List<BbsDto> getSearch(String searchValue);
+	
+	public void delete(int seq);
 
 	/* List<BbsDto> getSearchList(List<String> searchValue); */
 
