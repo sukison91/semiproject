@@ -44,6 +44,16 @@ public class MemberServiceImpl implements MemberService {
 		
 		return dao.logininfo(dto);
 	}
+	@Override
+	public List<MemberDto> profileUpdate(MemberDto dto) {
+		return dao.profileUpdate(dto);
+	}
+
+	@Override
+	public MemberDto profileAf(MemberDto dto) {
+		return dao.profileAf(dto);
+	}
+
 
 	@Override
 	public String forgetemailCheck(String email) {

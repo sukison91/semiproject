@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mul.camp.a.dao.BbsDao;
+import mul.camp.a.dao.MemberDao;
 import mul.camp.a.dto.BbsDto;
 
 @Service
@@ -23,9 +24,21 @@ public class BbsServiceimpl implements BbsService {
 	}
 
 	@Override
+	public List<BbsDto> getime(String category) {
+
+		return dao.getime(category);
+	}
+
+	
+	@Override
 	public List<BbsDto> getBbs(String cat) {
 		
 		return dao.getBbs(cat);
+	}
+
+	@Override
+	public List<BbsDto> getMyBbs(String id) {
+		return dao.getMyBbs(id);
 	}
 	
 	@Override
@@ -63,6 +76,12 @@ public class BbsServiceimpl implements BbsService {
 	public List<BbsDto> getSearch(String searchValue) {
 		return dao.getSearch(searchValue); 
 	}
+
+	@Override
+	public void bbsdelete(int seq) {
+		dao.bbsdelete(seq);
+	}
+
 	
 //	@Override	
 //	public List<BbsDto> getSearchList(List<String> searchValue) {

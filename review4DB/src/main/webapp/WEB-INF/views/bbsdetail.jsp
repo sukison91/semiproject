@@ -160,6 +160,9 @@ $('#commentbutton').on("click", function() {
 	});
 $('#backhome').on("click", function() {	// main으로 가는 func
 	$("#home").submit();
-})
+});
+$('#deletebbs').on("click", function() {
+	location.href = "deletebbs.do?seq=" + $("#seq").val();
+});
 </script>
 </html>

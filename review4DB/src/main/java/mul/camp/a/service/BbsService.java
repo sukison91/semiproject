@@ -8,9 +8,13 @@ import mul.camp.a.dto.BbsDto;
 public interface BbsService {
 
 	List<BbsDto> getBbs();
+	
+	List<BbsDto> getime(String category);
 
 	List<BbsDto> getBbs(String cat);
 	
+	List<BbsDto> getMyBbs(String id);
+
 	int bbswrite(BbsDto dto);
 
 	List<BbsDto> getCat1();
@@ -22,6 +26,8 @@ public interface BbsService {
 	List<BbsDto> getCat4();
 
 	List<BbsDto> getSearch(String searchValue);
+	
+	public void bbsdelete(int seq);
 
 //	List<BbsDto> getSearchList(List<String> searchValue);
 	List<BbsDto> bbsdetail(int ref);
