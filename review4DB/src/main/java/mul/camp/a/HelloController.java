@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import mul.camp.a.dto.BbsDto;
 import mul.camp.a.dto.MemberDto;
 import mul.camp.a.service.BbsService;
 import mul.camp.a.service.MemberService;
@@ -68,7 +69,7 @@ private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 			req.setAttribute("logininfo", mem);
 			req.getSession().setAttribute("logininfo", mem);
 			System.out.println("로그인성공" + mem);
-			return "main";
+			return "redirect:/main.do";
 		}else {
 			return "redirect:/hello.do";
 		}
