@@ -2,7 +2,8 @@
 
 /* Import URL */
 
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
 /* General Style */
 * {
@@ -13,8 +14,13 @@
 
 html,
 body {
-	font-family: "Nanum Gothic", sans-serif;
-	font-size: 14px;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+	font-size: 13px;
+	background-color: #ede8e7; 
+}
+
+a{
+	color:black; 
 }
 
 /* Navbar */
@@ -136,10 +142,13 @@ ul {
 /* Main Body */
 
 .mainBody {
-	width: 100%;
+	width: 60%;
 	height: auto;
 	display: flex;
-	justify-content: space-evenly;
+  	align-self: center;
+  	background-color: white;
+  	margin: 0 auto;
+  	justify-content: space-between;
 }
 
 /* Search and Categories */
@@ -149,121 +158,187 @@ ul {
 	height: 300px;
 	display: flex;
 	flex-direction: column;
-	font-size: 24px;
+	color: #fbb717;
+	margin-top: 20px;
 }
 
 .searchNCat a {
 	text-decoration: none;
-	color: black;
+	color: #1b6187;
 }
 
 .searchNCat .search {
 	margin-top: 20px;
-	text-align: center;
+	text-align:center;
 }
+
 
 .searchNCat .cat ul {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
-	padding: 20px 0;
+	margin-top: 15px; 
+	
 }
 
 .searchNCat .cat ul li {
-	padding: 5px;
-	margin-bottom: 10px;
+	margin-bottom: 10px; 
+	font-size: 13px;
+	
 }
 
 /* Show Boards */
 
 .showBoards {
-	width: 75%;
-	height: auto;
-	background-color: #ede8e7;
-	margin: 50px 0;
+	width: 60%;
+	height: auto;	
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-between;
+	padding-right: 20px; 
+	padding-bottom: 180px; 
 }
 
 .showBoards a {
 	text-decoration: none;
-	color: black;
 }
 
 /* Recent Posts */
 
-.showBoards .recentPosts {
-	text-align: center;
+.catBtn {
+	background-color: #1b6187;
+ 	color: white;
+  	text-align: center;
+  	text-decoration: none;
+  	border-radius: 2px;
+  	padding: 3px; 
+  	border: 1px solid #082636;
+  	margin-right: 10px; 
+ 
 }
 
-.recentPosts span {
-	display: inline-block;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width: 20ch;
+.catBtn a {
+	color:white;
+	text-decoration: none;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+.showBoards .recentPosts {
+	text-align: left;
+	margin-left: 0; 
+	margin-right: auto; 
+	width: 80%; 
+}
+
+.headerLine {
+	width:100%;
+	margin-top: 0.5em;
+  	margin-bottom: 0.5em;
+ 	margin-left: auto;
+  	margin-right: auto;
+  	border-style: solid;
+  	border-width: 1px;
+  	border-color: #fbb717; 
 }
 
 .recentPosts h3 {
-	font-size: 30px;
-	margin: 20px 0;
+	font-size: 20px;
+	margin-top: 35px; 
+	margin-bottom: 10px; 
 }
 
 .rpList ul {
+	width: 100%; 
+	margin-top: 10px; 
 	display: flex;
 	flex-direction: column;
+	align-content: center; 
 }
 
 .rpList ul li {
-	padding: 10px;
-	margin: 10px 0;
+	width: 100%; 
+	margin-left: 0; 
+  	margin-right: auto; 
+	margin-bottom: 8px; 
 }
 
-.rpList ul li a span:nth-child(2) {
-	margin: 0 60px;
-}
-
-/* Show Cat */
-
-.showCat {
-	width: 75%;
-	display: flex;
-	flex-flow: row wrap;
-	height: auto;
-	background-color: #ede8e7;
-	margin: 50px 0;
-	align-items: center;
-}
-
-.showCat h3 {
-	font-size: 20px;
-	text-align: center;
-	margin: 10px 0;
-}
-
-.showCat li {
-	padding: 10px;
-	margin: 10px 0;
-}
-
-.showCat ul li a span:nth-child(2) {
-	margin: 0 15px;
-}
-
-.showCat span {
-	display: inline-block;
+#spanOne {
+	display:inline-block; 
+	margin-left: 5px; 
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	max-width: 20ch;
+}
+#spanTwo {
+	display:inline-block; 
+	float:right;
+
+}
+
+
+/* Show Cat */
+
+.showCat a {
+	text-decoration: none;
+	
+}
+
+.headerLineCat {
+	width:100%;
+	margin-top: 0.5em;
+  	margin-bottom: 0.5em;
+ 	margin-left: 0;
+  	margin-right: auto;
+  	border-style: solid;
+  	border-width: 1px;
+  	border-color: #fbb717; 
+}
+
+
+
+.showCat {
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	height: auto;
+	justify-content: space-between; 
+	margin-top: 20px;
+}
+
+
+
+.showCat h3 {
+	font-size: 15px;
+	margin-top: 25px; 
+	margin-bottom: 10px; 
+	text-align: left; 
+}
+
+.showCat h3 a {
+	color:black;
+}
+
+.showCat ul {
+	width: 100%; 
+	margin-top: 10px; 
+	display: flex;
+	flex-direction: column;
+	align-content: center; 
+}
+
+.showCat ul li {
+	width: 100%; 
+	margin-left: 0; 
+  	margin-right: auto; 
+	margin-bottom: 8px; 
 }
 
 .topLeft,
 .topRight,
 .bottomLeft,
 .bottomRight {
-	width: 48%;
+	width: 44%;
 }
 
 .cat1List ul,
@@ -272,4 +347,43 @@ ul {
 .cat4List ul {
 	display: flex;
 	flex-flow: column wrap;
+}
+
+/* BBS.JSP */
+
+#bbsH3 {
+	font-size: 25px;
+	margin-bottom: 30px; 
+}
+
+#bbsH3Btn {
+	color:white;
+	text-decoration: none;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+	font-size: 14px; 
+	padding: 3px; 
+	height: 30px; 
+	text-align: center;
+}
+
+
+.categoryDiv {
+	width: 100%; 
+	display:flex; 
+	justify-content: space-between; 
+	align-items: center; 
+}
+
+#category {
+	float:right; 
+	background-size: 20px;
+  	padding: 5px 30px 5px 10px;
+  	border-radius: 4px;
+  	outline: 0 none;
+  	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  	color: #fbb717;
+}
+
+#bbsRpList {
+	margin-top: 60px; 
 }
