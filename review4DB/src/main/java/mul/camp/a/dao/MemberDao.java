@@ -15,6 +15,10 @@ public interface MemberDao {
 	
 	MemberDto login(MemberDto mem);
 	
+	/* 회원정보수정 */
+	List<MemberDto> profileUpdate(MemberDto dto);
+	MemberDto profileAf(MemberDto dto);
+	
 	public MemberDto logininfo(MemberDto dto);
 	
 

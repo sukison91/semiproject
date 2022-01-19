@@ -89,7 +89,6 @@
 				<!-- recent post -->
 				<div class="recentPosts">
 				
-
 					<% if(cat == null){ %>
 					 <h3>전체게시판</h3>
 							
@@ -163,8 +162,7 @@
 								"</i>"+" "+ bbsList[i].readcount + "</li>" */ //위의 기본 배열을 초기화(?)한 후 새로 지정한 for문으로 재배열
 						
 								//str += "<li>" + bbsList[i].cat + "</li>";	//리스트 형식이라서 원하는 값들은 아래로 정렬된다.
-						//str += "<li>" + bbsList[i].title + "</li>";	
-						
+												
 					}
 					$("#rpul").html(str);//재배열한 for문을 여기서 출력시켜준다.
 				},

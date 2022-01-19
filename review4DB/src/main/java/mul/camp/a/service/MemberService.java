@@ -15,6 +15,14 @@ public interface MemberService {
 	
 	
 	MemberDto login(MemberDto mem);
+	/*
+	 * List<MemberDto> allmember();
+	 * 
+	 * MemberDto getmember(MemberDto dto);
+	 */
+	List<MemberDto> profileUpdate(MemberDto dto);
+	
+	MemberDto profileAf(MemberDto dto);
 	
 	public MemberDto logininfo(MemberDto dto);
 	
