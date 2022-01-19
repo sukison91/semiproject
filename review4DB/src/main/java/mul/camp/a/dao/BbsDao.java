@@ -1,6 +1,9 @@
 package mul.camp.a.dao;
 
+import java.util.HashMap;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 
 import mul.camp.a.dto.BbsDto;
 
@@ -26,5 +29,7 @@ public interface BbsDao {
 	List<BbsDto> bbsdetail(int ref);
 	
 	int comment(BbsDto dto);
+
+	int updateBbs(HashMap<String, Object> params);
 
 }

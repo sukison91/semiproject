@@ -61,6 +61,16 @@
 	<%} %>
 <%}}%> <!-- for문 끝 -->
 
+
+<!-- 글수정 -->
+<div class="form-floating divmargin" id="updateDiv" style="display:none">
+    <!-- 댓글작성란 -->
+    <label for="updateLabel" id = "updateLabel">글수정</label>
+	<textarea class="form-control shadow p-3 mb-5 bg-body rounded" placeholder="글을 수정해주세요" id="newContent" style="height: 100px"></textarea>
+	<button type="button" id="updateBtn" class="btn btn-primary">수정 완료</button>
+</div>
+<!-- 글수정 -->
+
 <!-- ============================================댓글작성======================================================= -->  
 <div class="mb-3 divmargin">comment write</div>
 <div class="form-floating divmargin">
@@ -99,6 +109,41 @@
 <form style="display: none" action="main.do" id="home"></form> <!-- 돌아가기 버튼 전용  -->
 </body>
 <script type="text/javascript">
+
+let initUpdateBbs = document.querySelector("#updatebbs"); 
+let updateDiv = document.querySelector("#updateDiv"); 
+
+initUpdateBbs.addEventListener("click", function() {
+  	updateDiv.style.display = "block"; 
+});
+
+
+$('#updateBtn').on("click", function() {
+	$.ajax({
+		url:"updateBbs.do",
+		type:"get",
+		data:{newContent:$("#newContent").val(),
+			  sequence:$("#seq").val()
+			  }, //수정글 value
+		success:function( msg ){
+			if(msg == "YES"){
+				console.log("Success!");
+				console.log(msg);
+				updateDiv.style.display = "none";
+				location.reload();
+			} else {
+				alert("에러가 있었습니다!")
+				updateDiv.style.display = "none";
+			}
+		}
+	})
+});
+
+
+
+
+
+
 $('#commentbutton').on("click", function() {
 		$.ajax({
 			url:"comment.do",
