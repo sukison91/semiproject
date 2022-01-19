@@ -69,7 +69,7 @@ public class BbsServiceimpl implements BbsService {
 
 	@Override
 	public void bbsdelete(int seq) {
-		dao.delete(seq);
+		dao.bbsdelete(seq);
 	}
 
 	

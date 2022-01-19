@@ -68,12 +68,12 @@
 </select>
 
 
-<!-- 게시글 삭제 -->
-<!-- <delete id="bbsdelete" parameterType="Integer">
-	INSERT INTO BBS(DEL)
-	FROM BBS
-	WHERE SEQ=#{seq}
-</delete> -->
+<!-- 게시글 삭제: del값을 1로 부여한다.-->
+<update id="bbsdelete" parameterType="Integer">
+	UPDATE BBS
+	SET DEL=1
+	WHERE SEQ=#{seq};
+</update>
 
 
 <select id="bbsdetail" parameterType="Integer" resultType="mul.camp.a.dto.BbsDto">

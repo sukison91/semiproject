@@ -153,11 +153,11 @@ public class BbsController {
 	}
 	
 	/* 게시글 삭제*/
-	@RequestMapping(value = "deletebbs.do", method = RequestMethod.POST)
-	public String deletebbs(BbsDto dto) {
+	@RequestMapping(value = "deletebbs.do", method = RequestMethod.GET)
+	public String deletebbs(int seq) {
 		logger.info("BbsController delete() " + new Date());
 		
-		service.bbsdelete(dto.getSeq());
+		service.bbsdelete(seq);
 		
 		return "redirect:main.do";
 	}

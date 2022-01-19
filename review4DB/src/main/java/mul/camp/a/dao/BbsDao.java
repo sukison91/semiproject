@@ -23,7 +23,7 @@ public interface BbsDao {
 
 	List<BbsDto> getSearch(String searchValue);
 	
-	public void delete(int seq);
+	public void bbsdelete(int seq);
 
 	/* List<BbsDto> getSearchList(List<String> searchValue); */
 	

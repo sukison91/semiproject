@@ -86,8 +86,8 @@
 				<!-- recent post -->
 				<div class="recentPosts">
 				
-										 <% if(cat == null){ %>
-					 <h3>전체계시판</h3>
+					<% if(cat == null){ %>
+					 <h3>전체게시판</h3>
 							
 					 <%} else { %>
 						 <h3>Cat <%=cat%></h3>
@@ -101,17 +101,18 @@
 							<% if(bbsList == null || bbsList.size() == 0){ %>
 								<p>작성된 글이 없습니다!</p>
 							<% }else{
-							
+		
 							for(int i = 0; i < bbsList.size(); i++){
 								BbsDto bbs = bbsList.get(i);
+								if(bbs.getDel() != 1) {
 							%>
 							<li>
-								<a href="bbsdetail.do?ref=<%=bbs.getRef() %>" >
-									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
-									><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
+								<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
+									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle() %></span>
+									<span><i class="fas fa-eye"></i> <%=bbs.getReadcount() %></span>
 								</a>
 							</li>
-							<%
+								<% } 
 								}
 							}
 							%>

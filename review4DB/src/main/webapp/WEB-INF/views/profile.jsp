@@ -116,20 +116,23 @@
 	} else {
 	for(int i = 0;i < bbslist.size(); i++){
 		BbsDto bbs = bbslist.get(i);
+		if(bbs.getDel() == 1) {
 	%>
+		<tr><td style="display:none">이 게시물은 삭제되었습니다.</td></tr>
+		<% } else { %>
 	<tr>	
 		<td>Cat<%=bbs.getCat() %></td>
 		<td>
-			<a href="bbsdetail.do?seq=<%=bbs.getSeq() %>"><%=bbs.getTitle() %></a>
+			<a href="bbsdetail.do?ref=<%=bbs.getRef() %>"><%=bbs.getTitle() %></a>
 		</td>
 		<td>
 			<%=bbs.getWdate() %>
 		</td>	
-		<%
+	<%
+			}
 		}
 	}
 	%>
-
 </table>
 </div>
 

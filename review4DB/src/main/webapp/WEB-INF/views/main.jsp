@@ -94,23 +94,28 @@
 					<!-- recent post list -->
 					<div class="rpList">
 						<ul>
-							<% if(bbsList == null || bbsList.size() == 0){ %>
+							<% 
+							int count = 5; 
+					
+							if(bbsList == null || bbsList.size() == 0){ %>
 								<p>작성된 글이 없습니다!</p>
-							<% }else{
+							<% }else {
 							
-							for(int i = 0; i < 5; i++){
+							for(int i = 0; i < count; i++){
 								BbsDto bbs = bbsList.get(i);
-							%>
+								if(bbs.getDel() != 1) {
+							%>	
 							<li>
 								<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
 									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
 									><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 								</a>
 							</li>
-							<%
-								}
+								<% } else {
+									count+= 1;
+								} 
 							}
-							%>
+							}%>
 						</ul>
 					</div>
 					<!-- recent post list -->
@@ -122,21 +127,24 @@
 						<h3><a href="#">Cat 1</a></h3>
 						<div class="cat1List">
 							<ul>
-								<% if(cat1 == null || cat1.size() == 0){ %>
-									<p>작성된 글이 없습니다!</p>
-								<% }else{
-							
-									for(int i = 0; i < 3; i++){
-									BbsDto bbs = cat1.get(i);
-								%>
-								<li>
-									<a href="#">
-										<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
-										><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
-									</a>
-								</li>
 								<%
-									}
+								int ccount1 = 3;
+								if(cat1 == null || cat1.size() == 0){ %>
+									<p>작성된 글이 없습니다!</p>
+								<% }else {
+									
+								 	for(int i = 0; i < ccount1; i++){
+										BbsDto bbs = cat1.get(i);
+										if(bbs.getDel() != 1) {
+									%>
+									<li>
+										<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
+											<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle() %></span>
+											<span><i class="fas fa-eye"></i> <%=bbs.getReadcount() %></span>
+										</a>
+									</li> 
+										<% } else { ccount1++; }
+										} 
 								}
 								%>
 							</ul>
@@ -146,21 +154,24 @@
 						<h3><a href="#">Cat 2</a></h3>
 						<div class="cat2List">
 							<ul>
-								<% if(cat2 == null || cat2.size() == 0){ %>
-									<p>작성된 글이 없습니다!</p>
-								<% }else{
-							
-									for(int i = 0; i < 3; i++){
-									BbsDto bbs = cat2.get(i);
-								%>
-								<li>
-									<a href="#">
-										<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
-										><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
-									</a>
-								</li>
 								<%
-									}
+								int ccount2 = 3;
+								if(cat2 == null || cat2.size() == 0){ %>
+									<p>작성된 글이 없습니다!</p>
+								<% }else {
+							
+								 	for(int i = 0; i < ccount2; i++){
+										BbsDto bbs = cat2.get(i);
+										if(bbs.getDel() != 1) {
+									%>
+									<li>
+										<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
+											<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle() %></span>
+											<span><i class="fas fa-eye"></i> <%=bbs.getReadcount() %></span>
+										</a>
+									</li> 
+										<% } else { ccount2++; }
+										} 
 								}
 								%>
 							</ul>
@@ -170,20 +181,24 @@
 						<h3><a href="#">Cat 3</a></h3>
 						<div class="cat3List">
 							<ul>
-								<% if(cat3 == null || cat3.size() == 0){ %>
-									<p>작성된 글이 없습니다!</p>
-								<% } else {
-									for(int i = 0; i < 3; i++){
-									BbsDto bbs = cat3.get(i);
-								%>
-								<li>
-									<a href="#">
-										<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
-										><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
-									</a>
-								</li>
 								<%
-									}
+								int ccount3 = 3;
+								if(cat2 == null || cat3.size() == 0){ %>
+									<p>작성된 글이 없습니다!</p>
+								<% }else {
+							
+								 	for(int i = 0; i < ccount3; i++){
+										BbsDto bbs = cat2.get(i);
+										if(bbs.getDel() != 1) {
+									%>
+									<li>
+										<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
+											<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle() %></span>
+											<span><i class="fas fa-eye"></i> <%=bbs.getReadcount() %></span>
+										</a>
+									</li> 
+										<% } else { ccount3++; }
+										} 
 								}
 								%>
 							</ul>
@@ -193,21 +208,24 @@
 						<h3><a href="#">Cat 4</a></h3>
 						<div class="cat4List">
 							<ul>
-								<% if(cat4 == null || cat4.size() == 0){ %>
-									<p>작성된 글이 없습니다!</p>
-								<% }else{
-							
-									for(int i = 0; i < 3; i++){
-									BbsDto bbs = cat4.get(i);
-								%>
-								<li>
-									<a href="#">
-										<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
-										><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
-									</a>
-								</li>
 								<%
-									}
+								int ccount4 = 3;
+								if(cat2 == null || cat4.size() == 0){ %>
+									<p>작성된 글이 없습니다!</p>
+								<% }else {
+							
+								 	for(int i = 0; i < ccount4; i++){
+										BbsDto bbs = cat2.get(i);
+										if(bbs.getDel() != 1) {
+									%>
+									<li>
+										<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
+											<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle() %></span>
+											<span><i class="fas fa-eye"></i> <%=bbs.getReadcount() %></span>
+										</a>
+									</li> 
+										<% } else { ccount4++; }
+										} 
 								}
 								%>
 							</ul>

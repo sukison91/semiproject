@@ -66,7 +66,7 @@ public class BbsDaoimpl implements BbsDao {
 	}
 
 	@Override
-	public void delete(int seq) {
+	public void bbsdelete(int seq) {
 		sqlSession.delete(ns+"bbsdelete", seq);
 	}
 	
