@@ -84,4 +84,10 @@ public class BbsServiceimpl implements BbsService {
 		// TODO Auto-generated method stub
 		return dao.updateBbs(params);
 	}
+
+	@Override
+	public int readcount(int ref) {
+		// TODO Auto-generated method stub
+		return dao.readcount(ref);
+	}
 }
