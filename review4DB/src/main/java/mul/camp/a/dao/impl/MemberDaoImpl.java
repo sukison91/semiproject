@@ -1,5 +1,7 @@
 package mul.camp.a.dao.impl;
 
+
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,9 +21,9 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public MemberDto logininfo(MemberDto dto) {
-		
 		return sqlSession.selectOne(namespace+"login", dto);
 	}
+	
 	public int addmember(MemberDto mem) {
 		int count = sqlSession.insert(namespace + "addmember", mem);
 		return count;
@@ -47,6 +49,19 @@ public class MemberDaoImpl implements MemberDao {
 	public int getemail(String email) {
 		return sqlSession.selectOne(namespace + "getemail", email);
 	}
+
+
+	@Override
+	public List<MemberDto> profileUpdate(MemberDto dto){
+		return sqlSession.selectList(namespace + "profileUpdate", dto);
+	}
+
+	@Override
+	public MemberDto profileAf(MemberDto dto) {
+		
+		return sqlSession.selectOne(namespace + "profileAf", dto);
+	}
+
 	/*
 	 * @Override public List<MemberDto> allmember() { // DB로부터 불러오는 작업 2개이상의 데이터는
 	 * selectList List<MemberDto> list = sqlSession.selectList(namespace +
@@ -81,6 +96,4 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return sqlSession.selectOne(namespace+"forgetidCheck", id);
 	}
-	
-
 }

@@ -4,6 +4,11 @@
 
 <mapper namespace="Bbs">
 
+<select id="getMyBbs" parameterType="String" resultType="mul.camp.a.dto.BbsDto">
+	SELECT CAT, SEQ, ID, REF, STEP, DEPTH, TITLE, CONTENT, WDATE, DEL, READCOUNT, IMG, BLIKE
+	FROM BBS
+	WHERE ID=#{id} AND CAT != 10
+</select>
 
 <select id="getBbs" parameterType="String" resultType="mul.camp.a.dto.BbsDto"> <!-- (추천)최신순 오래된순은 FOR문으로 반대로 쓰기 --> 
 	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
@@ -38,12 +43,19 @@
 	WHERE CAT=#{cat}
 	ORDER BY SEQ DESC
 </select>
+
 <insert id="bbswrite" parameterType="mul.camp.a.dto.BbsDto">
 	INSERT INTO BBS(CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG,BLIKE)
 	VALUES (#{cat} , NEXTVAL(SEQ__BBS), #{id} , (SELECT NVL(MAX(REF)+1,0)FROM BBS ALIAS_FOR_SUBQUERY) ,0 , 0 , #{title} , #{content} ,NOW(), 0,0,0,0 )
 	<!-- SEQ__BBS.NEXTVAL -->
 	<!-- (SELECT NVL(MAX(REF)+1,0)FROM BBS) -->
 </insert>
+
+<update id="updateBbs" parameterType ="map">
+	UPDATE BBS
+	SET CONTENT = #{newContent}
+	WHERE SEQ = #{sequence}
+</update>
 
 <select id="getCat1" resultType="mul.camp.a.dto.BbsDto">
 	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
@@ -77,7 +89,38 @@
 	<!-- <bind name="searchValue" value="'%' + #{searchValue} + '%'" /> -->
 	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG,BLIKE 
 	FROM BBS
-	WHERE LOWER(TITLE) LIKE CONCAT('%',#{searchValue},'%')
+	WHERE LOWER(TITLE) LIKE CONCAT('%',#{searchValue},'%') AND CAT != 10
 	ORDER BY SEQ DESC
 </select>
+
+
+<!-- 게시글 삭제: del값을 1로 부여한다.-->
+<update id="bbsdelete" parameterType="Integer">
+	UPDATE BBS
+	SET DEL=1
+	WHERE SEQ=#{seq};
+</update>
+
+
+<select id="bbsdetail" parameterType="Integer" resultType="mul.camp.a.dto.BbsDto">
+	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG,BLIKE
+	FROM BBS
+	WHERE REF=#{ref}
+	ORDER BY STEP DESC
+</select>
+<insert id="comment" parameterType="mul.camp.a.dto.BbsDto">
+	INSERT INTO BBS(CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG,BLIKE)
+	VALUES (10 , NEXTVAL(SEQ__BBS), #{id} , 
+	(SELECT REF FROM BBS ALIAS_FOR_SUBQUERY WHERE SEQ=#{seq}),
+	(SELECT STEP FROM BBS ALIAS_FOR_SUBQUERY WHERE SEQ=#{seq}) + 1 , 
+	(SELECT DEPTH FROM BBS ALIAS_FOR_SUBQUERY WHERE SEQ=#{seq}) + 1 , 
+	'댓글' , #{content} ,NOW(), 0,0,0,0 )
+</insert>
+
+<update id="readcount" parameterType="Integer">
+	UPDATE BBS
+	SET READCOUNT = READCOUNT+1
+	WHERE REF=#{ ref }
+</update>
+
 </mapper>

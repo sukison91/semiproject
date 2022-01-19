@@ -41,11 +41,19 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberDto logininfo(MemberDto dto) {
-		
 		return dao.logininfo(dto);
 	}
 
 	@Override
+	public List<MemberDto> profileUpdate(MemberDto dto) {
+		return dao.profileUpdate(dto);
+	}
+
+	@Override
+	public MemberDto profileAf(MemberDto dto) {
+		return dao.profileAf(dto);
+	}
+
 	public String forgetemailCheck(String email) {
 		
 		return dao.forgetemailCheck(email);
@@ -82,5 +90,6 @@ public class MemberServiceImpl implements MemberService {
 	 * @Override public MemberDto getmember(MemberDto dto) { return
 	 * dao.getmember(dto); }
 	 */
+
 	
 }

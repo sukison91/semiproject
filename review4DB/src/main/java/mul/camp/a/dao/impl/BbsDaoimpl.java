@@ -1,7 +1,9 @@
 package mul.camp.a.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,7 +25,6 @@ public class BbsDaoimpl implements BbsDao {
 		return sqlSession.selectList(ns+"getBbs");
 	}
 
-
 	@Override
 	public List<BbsDto> getime(String category) {
 		
@@ -33,10 +34,15 @@ public class BbsDaoimpl implements BbsDao {
 
 
 	public List<BbsDto> getBbs(String cat) {
-		
 		return sqlSession.selectList(ns+"getBbscat",cat);
 	}
 	
+	@Override
+	public List<BbsDto> getMyBbs(String id) {
+		return sqlSession.selectList(ns+"getMyBbs",id);
+	}
+
+
 	@Override
 	public int bbswrite(BbsDto dto) {
 		
@@ -67,10 +73,37 @@ public class BbsDaoimpl implements BbsDao {
 		System.out.println(searchValue);
 		return sqlSession.selectList(ns+"getSearch", searchValue); 
 	}
+
+	@Override
+	public void bbsdelete(int seq) {
+		sqlSession.delete(ns+"bbsdelete", seq);
+	}
 	
 	/*
 	 * @Override public List<BbsDto> getSearchList(List<String> searchValue) {
 	 * return sqlSession.selectList(ns+"getSearchList", searchValue); }
 	 */
+
+	@Override
+	public List<BbsDto> bbsdetail(int ref) {
+		
+		return sqlSession.selectList(ns+"bbsdetail", ref);
+	}
 	
+	@Override
+	public int comment(BbsDto dto) {
+		return sqlSession.insert(ns+"comment",dto);
+	}
+
+	@Override
+	public int updateBbs(HashMap<String, Object> params) {
+		// TODO Auto-generated method stub
+		System.out.println("Param---------"+ params);
+		return sqlSession.update(ns+"updateBbs", params);
+	}
+	
+	@Override
+	public int readcount(int ref) {
+		return sqlSession.update(ns+"readcount",ref);
+	}
 }

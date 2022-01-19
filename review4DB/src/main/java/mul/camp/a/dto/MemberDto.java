@@ -15,11 +15,7 @@ public class MemberDto implements Serializable{	// 직렬화(데이터에 줄을
 	private int exp;
 	private int lv;
 	
-	@Override
-	public String toString() {
-		return "MemberDto [id=" + id + ", pwd=" + pwd + ", name=" + name + ", email=" + email + ", auth=" + auth
-				+ ", aka=" + aka + ", img=" + img + ", qst=" + qst + ", asw=" + asw + ", exp=" + exp + ", lv=" + lv
-				+ "]";
+	public MemberDto() {		
 	}
 
 	public String getId() {
@@ -126,7 +122,10 @@ public class MemberDto implements Serializable{	// 직렬화(데이터에 줄을
 		this.lv = lv;
 	}
 
-	public MemberDto() {		
+	@Override
+	public String toString() {
+		return "MemberDto [id=" + id + ", pwd=" + pwd + ", name=" + name + ", email=" + email + ", auth=" + auth
+				+ ", aka=" + aka + ", img=" + img + ", qst=" + qst + ", asw=" + asw + ", exp=" + exp + ", lv=" + lv
+				+ "]";
 	}
-
 }
