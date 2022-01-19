@@ -48,11 +48,27 @@
 			type:"post",
 			data:{ id:$("#id").val() },
 			success:function( req ){
+				let str = "";
 				if(req == "NO"){
 					alert('없는 아이디 입니다');
 				}
 				else{
-					$("#qst").val( req );
+						if(req == 1){
+							str = "당신이 좋아하는 장소는?";
+						}
+						else if(req == 2){
+							str = "당신이 존경하는 것은?";	
+						}
+						else if(req == 3){
+							str = "당신이 인상깊게 봤던 영화는?";
+						}
+						else if(req == 4){
+							str = "당신의 비밀은?";
+						}
+						else if(req == 5){
+							str = "당신의 좋아하는 계절은?"
+						}
+					$("#qst").val( str );
 				}
 			}
  		})

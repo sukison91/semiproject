@@ -65,7 +65,7 @@
 <!-- 글수정 -->
 <div class="form-floating divmargin" id="updateDiv" style="display:none">
     <!-- 댓글작성란 -->
-    <label for="updateLabel" id = "updateLabel"></label>
+    <label for="updateLabel" id = "updateLabel">글수정</label>
 	<textarea class="form-control shadow p-3 mb-5 bg-body rounded" placeholder="글을 수정해주세요" id="newContent" style="height: 100px"></textarea>
 	<button type="button" id="updateBtn" class="btn btn-primary">수정 완료</button>
 </div>
