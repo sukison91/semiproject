@@ -26,4 +26,6 @@ public interface BbsService {
 	List<BbsDto> bbsdetail(int ref);
 	
 	int comment(BbsDto dto);
+	
+	int readcount(int ref);
 }

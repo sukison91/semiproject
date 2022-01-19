@@ -75,4 +75,9 @@ public class BbsDaoimpl implements BbsDao {
 	public int comment(BbsDto dto) {
 		return sqlSession.insert(ns+"comment",dto);
 	}
+	
+	@Override
+	public int readcount(int ref) {
+		return sqlSession.update(ns+"readcount",ref);
+	}
 }

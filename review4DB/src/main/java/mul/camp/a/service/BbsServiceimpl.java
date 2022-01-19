@@ -75,4 +75,8 @@ public class BbsServiceimpl implements BbsService {
 	public int comment(BbsDto dto) {
 		return dao.comment(dto);
 	}
+	@Override
+	public int readcount(int ref) {
+		return dao.readcount(ref);
+	}
 }

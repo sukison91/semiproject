@@ -55,7 +55,7 @@ public class BbsController {
 	}
 	@RequestMapping(value = "bbsdetail.do", method = RequestMethod.GET)
 	public String bbsdetail(int ref,Model model) {
-
+		service.readcount(ref);
 		List<BbsDto> dto = service.bbsdetail(ref);
 		System.out.println("detail"+dto);
 		System.out.println("=================================================");
