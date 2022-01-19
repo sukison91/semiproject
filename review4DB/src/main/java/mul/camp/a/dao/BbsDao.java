@@ -29,7 +29,8 @@ public interface BbsDao {
 	List<BbsDto> bbsdetail(int ref);
 	
 	int comment(BbsDto dto);
-
+	
+	int readcount(int ref);
 	int updateBbs(HashMap<String, Object> params);
 
 }

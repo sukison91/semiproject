@@ -78,6 +78,7 @@ public class BbsServiceimpl implements BbsService {
 		return dao.comment(dto);
 	}
 
+
 	@Override
 	public int updateBbs(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub

@@ -85,4 +85,8 @@ public class BbsDaoimpl implements BbsDao {
 		return sqlSession.update(ns+"updateBbs", params);
 	}
 	
+	@Override
+	public int readcount(int ref) {
+		return sqlSession.update(ns+"readcount",ref);
+	}
 }
