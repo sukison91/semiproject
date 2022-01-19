@@ -1,7 +1,9 @@
 package mul.camp.a.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -75,5 +77,16 @@ public class BbsDaoimpl implements BbsDao {
 	public int comment(BbsDto dto) {
 		return sqlSession.insert(ns+"comment",dto);
 	}
+
+	@Override
+	public int updateBbs(HashMap<String, Object> params) {
+		// TODO Auto-generated method stub
+		System.out.println("Param---------"+ params);
+		return sqlSession.update(ns+"updateBbs", params);
+	}
 	
+	@Override
+	public int readcount(int ref) {
+		return sqlSession.update(ns+"readcount",ref);
+	}
 }

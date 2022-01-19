@@ -128,7 +128,7 @@
 									BbsDto bbs = cat1.get(i);
 								%>
 								<li>
-									<a href="#">
+									<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
 										<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
 										><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 									</a>
@@ -152,7 +152,7 @@
 									BbsDto bbs = cat2.get(i);
 								%>
 								<li>
-									<a href="#">
+									<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
 										<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
 										><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 									</a>
@@ -175,7 +175,7 @@
 									BbsDto bbs = cat3.get(i);
 								%>
 								<li>
-									<a href="#">
+									<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
 										<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
 										><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 									</a>
@@ -199,7 +199,7 @@
 									BbsDto bbs = cat4.get(i);
 								%>
 								<li>
-									<a href="#">
+									<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
 										<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
 										><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 									</a>

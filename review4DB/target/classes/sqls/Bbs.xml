@@ -24,6 +24,12 @@
 	<!-- (SELECT NVL(MAX(REF)+1,0)FROM BBS) -->
 </insert>
 
+<update id="updateBbs" parameterType ="map">
+	UPDATE BBS
+	SET CONTENT = #{newContent}
+	WHERE SEQ = #{sequence}
+</update>
+
 <select id="getCat1" resultType="mul.camp.a.dto.BbsDto">
 	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
 	FROM BBS
@@ -73,4 +79,9 @@
 	(SELECT DEPTH FROM BBS ALIAS_FOR_SUBQUERY WHERE SEQ=#{seq}) + 1 , 
 	'댓글' , #{content} ,NOW(), 0,0,0,0 )
 </insert>
+<update id="readcount" parameterType="Integer">
+	UPDATE BBS
+	SET READCOUNT = READCOUNT+1
+	WHERE REF=#{ ref }
+</update>
 </mapper>

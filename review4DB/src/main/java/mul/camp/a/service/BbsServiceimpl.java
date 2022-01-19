@@ -1,5 +1,6 @@
 package mul.camp.a.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,5 +76,15 @@ public class BbsServiceimpl implements BbsService {
 	@Override
 	public int comment(BbsDto dto) {
 		return dao.comment(dto);
+	}
+	@Override
+	public int readcount(int ref) {
+		return dao.readcount(ref);
+	}
+
+	@Override
+	public int updateBbs(HashMap<String, Object> params) {
+		// TODO Auto-generated method stub
+		return dao.updateBbs(params);
 	}
 }

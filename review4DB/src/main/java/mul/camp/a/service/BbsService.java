@@ -1,5 +1,6 @@
 package mul.camp.a.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import mul.camp.a.dto.BbsDto;
@@ -26,5 +27,10 @@ public interface BbsService {
 	List<BbsDto> bbsdetail(int ref);
 	
 	int comment(BbsDto dto);
+
 	
+
+	int updateBbs(HashMap<String, Object> params);
+	
+	int readcount(int ref);
 }
