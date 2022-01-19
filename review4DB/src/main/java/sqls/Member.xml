@@ -11,7 +11,6 @@
 	INSERT INTO MEMBER(ID,PWD,EMAIL,NAME,AUTH,AKA,IMG,QST,ASW,EXP,LV)
 	VALUES (#{id},#{pwd},#{email},#{name},1,#{aka},'default.png',#{qst},#{asw},0,1)
 	<!-- 이미지 변경 필요(추후) -->
-
 </insert>
 <select id="login" parameterType="mul.camp.a.dto.MemberDto" resultType="mul.camp.a.dto.MemberDto">
 	SELECT ID,PWD,EMAIL,NAME,AUTH,AKA,IMG,QST,ASW,EXP,LV
@@ -24,6 +23,7 @@
 	FROM MEMBER
 	WHERE ID=#{id}
 </select>				
+
 						
 <select id="allmember" resultType="mul.camp.a.dto.MemberDto">	<!-- 나오는 값은 객체로 나온다 -->
 	SELECT ID,PWD,EMAIL,NAME,AUTH,AKA,IMG,QST,ASW,EXP,LV

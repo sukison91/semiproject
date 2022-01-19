@@ -17,12 +17,10 @@ public interface MemberDao {
 	
 	public MemberDto logininfo(MemberDto dto);
 	
-
 	/* 회원정보수정 */
 	List<MemberDto> profileUpdate(MemberDto dto);
 	MemberDto profileAf(MemberDto dto);
 	
-
 	String forgetemailCheck(String email);
 	
 	String forgetaswCheck(MemberDto dto);

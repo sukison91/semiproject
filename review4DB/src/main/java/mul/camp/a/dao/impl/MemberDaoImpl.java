@@ -50,7 +50,6 @@ public class MemberDaoImpl implements MemberDao {
 		return sqlSession.selectOne(namespace + "getemail", email);
 	}
 
-
 	@Override
 	public List<MemberDto> profileUpdate(MemberDto dto){
 		return sqlSession.selectList(namespace + "profileUpdate", dto);

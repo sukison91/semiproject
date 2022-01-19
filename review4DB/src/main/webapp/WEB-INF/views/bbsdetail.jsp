@@ -139,11 +139,6 @@ $('#updateBtn').on("click", function() {
 	})
 });
 
-
-
-
-
-
 $('#commentbutton').on("click", function() {
 		$.ajax({
 			url:"comment.do",
