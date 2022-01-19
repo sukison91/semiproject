@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +23,7 @@ import mul.camp.a.service.BbsService;
 
 @Controller
 public class BbsController {
-
+	private static Logger logger = LoggerFactory.getLogger(BbsController.class);
 	
 	@Autowired
 	BbsService service;
@@ -54,6 +56,8 @@ public class BbsController {
 		
 		return "bbswrite";
 	}
+
+	/* 게시판 상세글보기 */
 	@RequestMapping(value = "bbsdetail.do", method = RequestMethod.GET)
 	public String bbsdetail(int ref,Model model) {
 		service.readcount(ref);
@@ -147,6 +151,17 @@ public class BbsController {
 		return "bbsdetail";
 	}
 	
+	/* 게시글 삭제*/
+	@RequestMapping(value = "deletebbs.do", method = RequestMethod.GET)
+	public String deletebbs(int seq) {
+		logger.info("BbsController delete() " + new Date());
+		
+		service.bbsdelete(seq);
+		
+		return "redirect:main.do";
+	}
+
+
 	@ResponseBody
 	@RequestMapping(value = "updateBbs.do", method = RequestMethod.GET)
 	public String updateBbs(String newContent, Integer sequence) {

@@ -17,7 +17,12 @@
 	SELECT ID,PWD,EMAIL,NAME,AUTH,AKA,IMG,QST,ASW,EXP,LV
 	FROM MEMBER
 	WHERE ID=#{id} AND PWD=#{pwd}
-</select>					
+</select>
+<select id="profileAf" parameterType="mul.camp.a.dto.MemberDto" resultType="mul.camp.a.dto.MemberDto">
+	SELECT ID,PWD,EMAIL,NAME,AUTH,AKA,IMG,QST,ASW,EXP,LV
+	FROM MEMBER
+	WHERE ID=#{id}
+</select>						
 						
 <select id="allmember" resultType="mul.camp.a.dto.MemberDto">	<!-- 나오는 값은 객체로 나온다 -->
 	SELECT ID,PWD,EMAIL,NAME,AUTH,AKA,IMG,QST,ASW,EXP,LV

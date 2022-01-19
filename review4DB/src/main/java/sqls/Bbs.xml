@@ -4,6 +4,11 @@
 
 <mapper namespace="Bbs">
 
+<select id="getMyBbs" parameterType="String" resultType="mul.camp.a.dto.BbsDto">
+	SELECT CAT, SEQ, ID, REF, STEP, DEPTH, TITLE, CONTENT, WDATE, DEL, READCOUNT, IMG, BLIKE
+	FROM BBS
+	WHERE ID=#{id} AND CAT != 10
+</select>
 
 <select id="getBbs" resultType="mul.camp.a.dto.BbsDto">
 	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG, BLIKE 
@@ -65,6 +70,16 @@
 	WHERE LOWER(TITLE) LIKE CONCAT('%',#{searchValue},'%') AND CAT != 10
 	ORDER BY SEQ DESC
 </select>
+
+
+<!-- 게시글 삭제: del값을 1로 부여한다.-->
+<update id="bbsdelete" parameterType="Integer">
+	UPDATE BBS
+	SET DEL=1
+	WHERE SEQ=#{seq};
+</update>
+
+
 <select id="bbsdetail" parameterType="Integer" resultType="mul.camp.a.dto.BbsDto">
 	SELECT CAT,SEQ,ID,REF,STEP,DEPTH,TITLE,CONTENT,WDATE,DEL,READCOUNT,IMG,BLIKE
 	FROM BBS

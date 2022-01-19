@@ -47,8 +47,8 @@
 					<ul>
 						<!-- 회원정보 수정 -->
 						<li class="profile">
-							<!-- MemberController의 profileAf.do로 이동 -->
-							<a href="profileAf.do">Profile</a>
+							<!-- HelloController의 profile.do로 이동 -->
+							<a href="profile.do">Profile</a>
 						</li>
 						<li class="logout">
 							<a href="logoutAf.do">Logout</a>
@@ -86,8 +86,8 @@
 				<!-- recent post -->
 				<div class="recentPosts">
 				
-										 <% if(cat == null){ %>
-					 <h3>전체계시판</h3>
+					<% if(cat == null){ %>
+					 <h3>전체게시판</h3>
 							
 					 <%} else { %>
 						 <h3>Cat <%=cat%></h3>
@@ -104,14 +104,15 @@
 							
 							for(int i = 0; i < bbsList.size(); i++){
 								BbsDto bbs = bbsList.get(i);
+								if(bbs.getDel() != 1) {
 							%>
 							<li>
-								<a href="bbsdetail.do?ref=<%=bbs.getRef() %>" >
-									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle()%></span
-									><span><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
+								<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
+									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle() %></span>
+									<span><i class="fas fa-eye"></i> <%=bbs.getReadcount() %></span>
 								</a>
 							</li>
-							<%
+								<% } 
 								}
 							}
 							%>
