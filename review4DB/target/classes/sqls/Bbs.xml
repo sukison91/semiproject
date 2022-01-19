@@ -67,11 +67,11 @@
 </select>
 
 <!-- 게시글 삭제 -->
-<delete id="bbsdelete" parameterType="Integer">
-	DELETE
+<!-- <delete id="bbsdelete" parameterType="Integer">
+	INSERT INTO BBS(DEL)
 	FROM BBS
 	WHERE SEQ=#{seq}
-</delete>
+</delete> -->
 
 
 </mapper>
