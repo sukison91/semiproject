@@ -159,7 +159,6 @@
 								if(cat2 == null || cat2.size() == 0){ %>
 									<p>작성된 글이 없습니다!</p>
 								<% }else {
-							
 								 	for(int i = 0; i < ccount2; i++){
 										BbsDto bbs = cat2.get(i);
 										if(bbs.getDel() != 1) {
@@ -213,7 +212,6 @@
 								if(cat2 == null || cat4.size() == 0){ %>
 									<p>작성된 글이 없습니다!</p>
 								<% }else {
-							
 								 	for(int i = 0; i < ccount4; i++){
 										BbsDto bbs = cat2.get(i);
 										if(bbs.getDel() != 1) {

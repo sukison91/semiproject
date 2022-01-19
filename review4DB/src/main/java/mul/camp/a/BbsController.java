@@ -3,6 +3,7 @@ package mul.camp.a;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,7 +60,7 @@ public class BbsController {
 	/* 게시판 상세글보기 */
 	@RequestMapping(value = "bbsdetail.do", method = RequestMethod.GET)
 	public String bbsdetail(int ref,Model model) {
-
+		service.readcount(ref);
 		List<BbsDto> dto = service.bbsdetail(ref);
 		System.out.println("detail"+dto);
 		System.out.println("=================================================");
@@ -162,4 +163,25 @@ public class BbsController {
 		return "redirect:main.do";
 	}
 
+
+	@ResponseBody
+	@RequestMapping(value = "updateBbs.do", method = RequestMethod.GET)
+	public String updateBbs(String newContent, Integer sequence) {
+		System.out.println("newContent---------"+ newContent);
+		System.out.println("sequence---------"+ sequence);
+		
+		HashMap<String, Object> params = new HashMap<>();
+	  params.put("newContent", newContent);
+	  params.put("sequence", sequence);
+		
+		String result = null; 
+		int updateBbs = service.updateBbs(params); 
+		if(updateBbs == 1) {
+			result = "YES";
+		} else {
+			result = "NO"; 
+		}
+		System.out.println("Result---------"+ result);
+		return result;
+	}
 }
