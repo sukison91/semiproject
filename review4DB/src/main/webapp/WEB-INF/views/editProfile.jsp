@@ -17,24 +17,24 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://kit.fontawesome.com/0032d948de.js" crossorigin="anonymous"></script>
 	</head>
-	<body>
+	<body style="background-color: rgba(251,183,23,.2); ">
 	<!-- NavBar -->
 		<navbar class="navContainer">
 			<div class="navInner">
 				<div class="navLeft">
 					<a href="#"><img src="resources/img/logo.png" alt="logo" /></a>
 					<ul>
-						<li><a href="main.do">Home</a></li>
-						<li><a href="#">Announcement</a></li>
-						<li><a href="#">About Us</a></li>
+						<li><a href="main.do" style="color: #1b6187">Home</a></li>
+						<li><a href="#" style="color: #1b6187">Announcement</a></li>
+						<li><a href="#" style="color: #1b6187">About Us</a></li>
 					</ul>
 				</div>
 				<div class="navCenter"></div>
 				<div class="navRight">
 					<img src="resources/img/logo.png" alt="logo" />
-					<p>
-						Hi <br />
-						<%=dto.getAka()%>!
+					<p style="color: #1b6187">
+						Welcome <br />
+						<b><%=dto.getAka()%></b>!
 					</p>
 					<ul>
 						<!-- 회원정보 수정 -->
@@ -50,12 +50,12 @@
 			</div>
 		</navbar>
 
-<div align="center">
-<h2>회원정보 수정</h2>
+<div align="center" >
+<h2 style="color: #1b6187">회원정보 수정</h2>
 <br>
 
 <form id="frm" action="profileAf.do" method="post">
-	<table border="1">
+	<table border="1" class="userPosts">
 		<tr>
 			<th>아이디 </th>
 			<td><input type="text" name="id" readonly="readonly" value="<%=dto.getId() %>"></td>
@@ -72,7 +72,7 @@
 			<th>닉네임 </th>
 			<td>
 				<input type="text" id="aka" name="aka"  placeholder="닉네임을 입력하세요.">
-				<button type="button" onclick="akacheck()">중복확인</button>
+				<button type="button" class="catBtn"onclick="akacheck()">중복확인</button>
 				<p id="akacheck" style="font-size: 8px"></p>
 			</td>
 		</tr>
@@ -84,7 +84,7 @@
 			<th>이메일 </th>
 			<td>
 				<input type="text" id="email" name="email" placeholder="이메일을 입력하세요.">
-				<button type="button" onclick="emailcheck()">중복확인</button>
+				<button type="button" class="catBtn" onclick="emailcheck()">중복확인</button>
 				<p id="emailcheck" style="font-size: 8px"></p>
 			</td>
 			
@@ -117,8 +117,8 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<button type="button" onclick="profileUpdate()">수정완료</button>
-				<button type="button" onclick="location.href='profile.do'">수정취소</button>
+				<button type="button" class="catBtn" onclick="profileUpdate()">수정완료</button>
+				<button type="button" class="catBtn" onclick="location.href='profile.do'">수정취소</button>
 			</td>
 		</tr>
 	</table>

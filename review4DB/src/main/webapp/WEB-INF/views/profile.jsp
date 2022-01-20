@@ -20,24 +20,24 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://kit.fontawesome.com/0032d948de.js" crossorigin="anonymous"></script>
 	</head>
-	<body>
+	<body style="background-color: rgba(251,183,23,.2); ">
 	<!-- NavBar -->
 		<navbar class="navContainer">
 			<div class="navInner">
 				<div class="navLeft">
 					<a href="#"><img src="resources/img/logo.png" alt="logo" /></a>
 					<ul>
-						<li><a href="main.do">Home</a></li>
-						<li><a href="#">Announcement</a></li>
-						<li><a href="#">About Us</a></li>
+						<li><a href="main.do" style="color: #1b6187">Home</a></li>
+						<li><a href="#" style="color: #1b6187">Announcement</a></li>
+						<li><a href="#" style="color: #1b6187">About Us</a></li>
 					</ul>
 				</div>
 				<div class="navCenter"></div>
 				<div class="navRight">
 					<img src="resources/img/logo.png" alt="logo" />
-					<p>
-						Hi <br />
-						<%=dto.getAka()%>!
+					<p style="color: #1b6187">
+						Welcome <br />
+						<b><%=dto.getAka()%></b>!
 					</p>
 					<ul>
 						<!-- 회원정보 수정 -->
@@ -56,9 +56,9 @@
 <!-- Hobby Flow 회원정보 화면을 출력한다. -->
 <!-- 두개의 div에 회원정보, 작성 게시글 목록 출력 -->
 <div align="center"> <!-- 1.회원정보 출력 -->
-<h2>Hobby Flow 회원정보</h2>
+<h2 style="margin-top: 25px; color: #1b6187">Hobby Flow 회원정보</h2>
 <br>
-<table border="1">
+<table border="1" style="text-align: center" class="profileTable">
 <tr>
 	<td rowspan="6">
 		<!-- 프로필 이미지를 세팅.-->
@@ -92,7 +92,7 @@
 </tr>
 <tr>
 	<td colspan="3">
-	<button type="button" onclick="location.href='editProfile.do'">회원정보 수정</button><!-- 회원정보 수정 페이지로 이동하는 버튼 -->
+	<button type="button" class="catBtn" style="margin-top: 20px" onclick="location.href='editProfile.do'">회원정보 수정</button><!-- 회원정보 수정 페이지로 이동하는 버튼 -->
 	</td>
 </tr>
 </table>
@@ -101,12 +101,12 @@
 <br><br>
 
 <div align="center"><!-- 2.사용자의 작성글을 출력 -->
-<h3>작성글 목록</h3>
-<table border="1" style="width: 1000px">
-	<tr>
-		<th>카테고리</th>
-		<th>제목</th>
-		<th>날짜</th>
+<h3 style="margin-bottom: 25px; color:#1b6187; font-size: 17px; ">작성글 목록</h3>
+<table border="1" style="width: 1000px" class="userPosts">
+	<tr >
+		<th style="background-color:#fbb717; color: white; font-size: 17px">카테고리</th>
+		<th style="background-color:#fbb717; color: white; font-size: 17px">제목</th>
+		<th style="background-color:#fbb717; color: white; font-size: 17px">날짜</th>
 	</tr>
 	<tr>
 	<% if(bbslist == null || bbslist.size() == 0){ %>
@@ -119,13 +119,24 @@
 		if(bbs.getDel() == 1) {
 	%>
 		<tr><td style="display:none">이 게시물은 삭제되었습니다.</td></tr>
-		<% } else { %>
-	<tr>	
-		<td>Cat<%=bbs.getCat() %></td>
+		<% } else {
+			
+			String catName1 = ""; 
+			if (bbs.getCat() == 1){ 
+				 catName1 = "#sports"; 
+			} else if (bbs.getCat() == 2){
+				catName1 = "#politics"; 
+			} else if (bbs.getCat() == 3){
+				catName1 = "#hobby"; 
+			} else {
+				catName1 = "#coding"; 
+			}
+		%> <tr>	
+		<td style="text-align: center"><%=catName1%></td>
 		<td>
 			<a href="bbsdetail.do?ref=<%=bbs.getRef() %>"><%=bbs.getTitle() %></a>
 		</td>
-		<td>
+		<td style="text-align: center">
 			<%=bbs.getWdate() %>
 		</td>	
 	<%

@@ -19,8 +19,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
-		<link rel="stylesheet" href="resources/css/main.css?after
-		"/>
+		<link rel="stylesheet" href="resources/css/main.css?after"/>
 		<script defer src=""></script>
 		<script
 			src="https://kit.fontawesome.com/e95584c635.js"
@@ -50,7 +49,7 @@
 						<!-- 회원정보 수정 -->
 						<li class="profile">
 							<!-- MemberController의 profileAf.do로 이동 -->
-							<a href="profileAf.do">Profile</a>
+							<a href="profile.do">Profile</a>
 						</li>
 						<li class="logout">
 							<a href="logoutAf.do">Logout</a>

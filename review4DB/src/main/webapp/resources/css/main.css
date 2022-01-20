@@ -16,7 +16,6 @@ html,
 body {
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 	font-size: 13px;
-	background-color: #ede8e7; 
 }
 
 a{
@@ -28,6 +27,7 @@ a{
 	width: 100%;
 	height: 100%;
 	margin: 0 auto;
+	background-color: white; 
 }
 
 .navInner {
@@ -273,9 +273,7 @@ ul {
 #spanTwo {
 	display:inline-block; 
 	float:right;
-
 }
-
 
 /* Show Cat */
 
@@ -386,4 +384,84 @@ ul {
 
 #bbsRpList {
 	margin-top: 60px; 
+}
+
+/* SEARCH.JSP */
+
+
+.searchJsp {
+	margin-top: 30px; 
+	width: 100%; 
+}
+
+.btnJsp{
+	padding: 10px; 
+	font-size: 14px; 
+	color: white; 
+}
+
+#searchBar{
+	width: 300px; 
+	padding: 15px; 
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+	background-color: #fbb717;
+	opacity: 0.3;
+	margin-right: 20px; 
+	border-radius: 5px; 
+}
+
+.showResults {
+	width: 100%; 
+	margin-top: 30px;
+}
+
+.noSearchResults {
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+	font-size: 15px; 
+	width: 300px; 
+	text-align: left; 
+	color: #1b6187; 
+}
+
+/* PROFILE.JSP */
+.profileTable {
+	border-radius: 7px;
+	border: solid 7px #fbb717; 
+	padding: 30px; 
+	background-color:white; 
+}
+
+.profileTable td{
+	border-collapse: collapse;
+	border:none; 
+}
+
+
+.profileTable tr{
+	border-collapse: collapse;
+	border:none; 
+}
+
+
+.profileTable th{
+	border-radius: 7px;
+	border: solid 3px #fbb717; 
+	padding: 5px; 
+}
+
+.userPosts {
+	border-radius: 7px;
+	border: solid 7px #fbb717; 
+	padding: 30px; 
+	background-color:white; 
+}
+
+.userPosts tr{
+	border-collapse: collapse;
+	border:none; 
+}
+
+.userPosts td{
+	border-collapse: collapse;
+	border:none; 
 }
