@@ -79,6 +79,13 @@
 	SET PWD=#{ pwd }
 	WHERE ID=#{ id }
 </update>
+<!-- 프로필 수정(프로필 사진, 닉네임) -->
+<update id="profileUpdate" parameterType="mul.camp.a.dto.MemberDto">
+	UPDATE MEMBER
+	SET PWD=#{pwd}, NAME=#{name}, AKA=#{aka}, EMAIL=#{email}, IMG=#{img}, QST=#{qst}, ASW=#{asw}
+	WHERE ID=#{ id }
+</update>
+
 
 
 </mapper>        

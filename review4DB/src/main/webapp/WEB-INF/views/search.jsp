@@ -41,14 +41,14 @@
 				<div class="navRight">
 					<img src="resources/img/logo.png" alt="logo" />
 					<p>
-						Hi <br />
-						<%=dto.getAka()%>!
+						Welcome <br />
+						<b><%=dto.getAka()%></b>!
 					</p>
 					<ul>
 						<!-- 회원정보 수정 -->
 						<li class="profile">
 							<!-- MemberController의 profileAf.do로 이동 -->
-							<a href="profileAf.do">Profile</a>
+							<a href="profile.do">Profile</a>
 						</li>
 						<li class="logout">
 							<a href="logoutAf.do">Logout</a>
@@ -60,7 +60,7 @@
 
 		<!-- Black Space -->
 		<div class="blackSpace">
-			<h1>Welcome to TBD!</h1>
+			<h1>Welcome to Hobby Flow!</h1>
 		</div>
 
 		<!-- Main Body Container -->
@@ -85,9 +85,9 @@
 			</div>
 			<!-- search -->
 			<div class="showBoards">
-				<div class="search">
+				<div class="searchJsp">
 					<input type="text" name="searchBar" id="searchBar" placeholder="데이터베이스에서 제목을 검색합니다">
-					<button type="button" onclick="searchResults()">검색</button>
+					<button type="button" class="catBtn btnJsp" onclick="searchResults()">검색</button>
 					<div class="showResults">
 						<p style="display:none" class="noSearchResults"></p>
 						<div style="display:none" class="searchResults rpList">
@@ -142,7 +142,27 @@
 				
 				for (let i = 0; i < bbsDto.length; i++) {
 					let resultP = document.createElement("ul"); 
-					resultP.innerHTML = "<li><a href=\"#\"> <span>Cat" + bbsDto[i].cat + "</span><span>" + bbsDto[i].title + "</span><span><i class=\"fas fa-eye\"></i>" + bbsDto[i].readcount + "</span></a></li>"; 
+					let catName = "";
+					
+					if(bbsDto[i].cat == 1) {
+						catName = "#sports"; 
+					} else if(bbsDto[i].cat == 2){
+						catName = "#politics"; 
+					} else if(bbsDto[i].cat == 3) {
+						catName = "#hobby"; 
+					} else {
+						catName = "#coding";
+					}
+				
+					resultP.innerHTML = "<li><button class='catBtn'><a href='bbs.do?cat="
+						+bbsDto[i].cat+
+						"'>"
+						+catName+"</a></button><span id='spanOne'><a href='bbsdetail.do?ref="
+							+bbsDto[i].ref+
+							"'>"
+						+bbsDto[i].title+
+						"</span><span id='spanTwo'><i class='fas fa-eye'></i>"
+						+ bbsDto[i].readcount + "</span></li>";
 					hiddenSR.appendChild(resultP); 
 				}
 				

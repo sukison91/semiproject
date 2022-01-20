@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
-<link href="${pageContext.request.contextPath}/resources/css/bbswrite.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/resources/css/bbswrite.css?after" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <% for(int i = 0;i < dto.size();i++){
@@ -110,15 +110,17 @@
 </body>
 <script type="text/javascript">
 
-let initUpdateBbs = document.querySelector("#updatebbs"); 
-let updateDiv = document.querySelector("#updateDiv"); 
-
-initUpdateBbs.addEventListener("click", function() {
-  	updateDiv.style.display = "block"; 
-});
+if(document.querySelector("#updatebbs")){
+	document.querySelector("#updatebbs").addEventListener("click", function() {
+	  	updateDiv.style.display = "block"; 
+	});
+}
 
 
 $('#updateBtn').on("click", function() {
+	let initUpdateBbs = document.querySelector("#updatebbs"); 
+	let updateDiv = document.querySelector("#updateDiv"); 
+	
 	$.ajax({
 		url:"updateBbs.do",
 		type:"get",

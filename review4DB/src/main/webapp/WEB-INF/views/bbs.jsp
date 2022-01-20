@@ -44,8 +44,8 @@
 				<div class="navRight">
 					<img src="resources/img/logo.png" alt="logo" />
 					<p>
-						Hi <br />
-						<%=dto.getAka()%>!
+						Welcome <br />
+						<b><%=dto.getAka()%></b>!
 					</p>
 					<ul>
 						<!-- 회원정보 수정 -->
@@ -63,7 +63,7 @@
 
 		<!-- Black Space -->
 		<div class="blackSpace">
-			<h1>Welcome to TBD!</h1>
+			<h1>Welcome to Hobby Flow!</h1>
 		</div>
 
 		<!-- Main Body Container -->
@@ -76,11 +76,11 @@
 				</div>
 				<div class="cat">
 					<ul>
-						<li><a href="bbsall.do">전체</a></li>
-						<li><a href="bbs.do?cat=1">Cat 1</a></li>
-						<li><a href="bbs.do?cat=2">Cat 2</a></li>
-						<li><a href="bbs.do?cat=3">Cat 3</a></li>
-						<li><a href="bbs.do?cat=4">Cat 4</a></li>
+						<li><a href="bbsall.do">전체계시판</a></li>
+						<li><a href="bbs.do?cat=1"># Sports</a></li>
+						<li><a href="bbs.do?cat=2"># Politics</a></li>
+						<li><a href="bbs.do?cat=3"># Hobby</a></li>
+						<li><a href="bbs.do?cat=4"># Coding</a></li>
 					</ul>
 				</div>
 			</div>
@@ -89,17 +89,26 @@
 				<!-- recent post -->
 				<div class="recentPosts">
 				
-					<% if(cat == null){ %>
-					 <h3>전체게시판</h3>
-							
-					 <%} else { %>
-						 <h3>Cat <%=cat%></h3>
-						 <h3><a href="bbswrite.do">글쓰기</a></h3>
-					 <%}%> 
-
+					<% String catName1 = ""; 
+					if(cat == null){
+						catName1 = "전체게시판"; 
+					}else if (Integer.parseInt(cat) == 1){ 
+						 catName1 = "#sports"; 
+					} else if (Integer.parseInt(cat) == 2){
+						catName1 = "#politics"; 
+					} else if (Integer.parseInt(cat) == 3){
+						catName1 = "#hobby"; 
+					} else {
+						catName1 = "#coding"; 
+					}%>
+						<div id = "bbsHeaderDiv">
+							<h3 id ="bbsH3"><%=catName1%></h3>
+						</div>
+						
 					
 				<!-- 글 정렬 -->
-				<div>
+				<div class ="categoryDiv">
+					<button class = "catBtn" id="bbsH3Btn"><a href="bbswrite.do">글쓰기</a></button>
 					<select id="category" onchange="func()">
 						<option value="recently">최신순</option>
 						<option value="old">오래된순</option>
@@ -109,7 +118,7 @@
 				</div>	
 				
 					<!-- recent post list -->
-					<div class="rpList">
+					<div class="rpList" id="bbsRpList">
 						<ul id="rpul">
 							<% if(bbsList == null || bbsList.size() == 0){ %>
 								<p>작성된 글이 없습니다!</p>
@@ -117,13 +126,22 @@
 							
 							for(int i = 0; i < bbsList.size(); i++){
 								BbsDto bbs = bbsList.get(i);
+								String catName = "";
+								if(bbs.getCat() == 1) {
+									catName = "#sports"; 
+								} else if(bbs.getCat() == 2){
+									catName = "#politics"; 
+								} else if(bbs.getCat() == 3) {
+									catName = "#hobby"; 
+								} else {
+									catName = "#coding";
+								}
 								if(bbs.getDel() != 1) {
 							%>
 							<li>
-								<a href="bbsdetail.do?ref=<%=bbs.getRef() %>">
-									<span>Cat <%=bbs.getCat()%></span><span><%=bbs.getTitle() %></span>
-									<span><i class="fas fa-eye"></i> <%=bbs.getReadcount() %></span>
-								</a>
+								<button class="catBtn"><a href="bbs.do?cat=<%=bbs.getCat()%>"><%=catName%></a></button>
+								<span id="spanOne"><a href="bbsdetail.do?ref=<%=bbs.getRef()%>"><%=bbs.getTitle()%></a></span>
+								<span id="spanTwo"><i class="fas fa-eye"></i> <%=bbs.getReadcount()%></span>
 							</li>
 								<% } 
 								}
@@ -151,11 +169,32 @@
 					//alert(JSON.stringify(bbsList));	// json -> string
 					
 					let str = "";
+					let catName = "";
 					
 					for(i = 0;i < bbsList.length; i++){
-						str += "<li>"+ "<a href='bbsdetail.do?ref="+ bbsList[i].ref + "'>" + "<span>"+"cat" + bbsList[i].cat +" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" 
-						+ bbsList[i].title + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<i class='fas fa-eye'>" +
-						"</i>"+" "+ bbsList[i].readcount + "</span>"+ "</a></li>"; 
+			
+						if(bbsList[i].cat == 1) {
+							catName = "#sports"; 
+						} else if(bbsList[i].cat == 2){
+							catName = "#politics"; 
+						} else if(bbsList[i].cat == 3) {
+							catName = "#hobby"; 
+						} else {
+							catName = "#coding";
+						}
+						
+						
+						str += "<li><button class='catBtn'><a href='bbs.do?cat="
+						+bbsList[i].cat+
+						"'>"
+						+catName+"</a></button><span id='spanOne'><a href='bbsdetail.do?ref="
+							+bbsList[i].ref+
+							"'>"
+						+bbsList[i].title+
+						"</span><span id='spanTwo'><i class='fas fa-eye'></i>"
+						+ bbsList[i].readcount + "</span></li>";
+						
+					
 						
 						/* str += "<li>"+"cat" + bbsList[i].cat +" &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" 
 								+ bbsList[i].title + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+ "<i class='fas fa-eye'>" +
